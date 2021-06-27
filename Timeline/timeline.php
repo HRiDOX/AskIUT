@@ -37,18 +37,23 @@
         <div id="red_bar">
             <div style="width: 800px; margin:auto; font-size: 30px;">
                 AskIUT &nbsp &nbsp <input type="text" id="search_box" placeholder="Search tags">
-                <img src="milkmocha.jpg" style="width: 50px; float:right; border-radius:50px;"
+                <img src="milkmocha.jpg" style="width: 50px; float:right; border-radius:50px;">
              </div>
         
         </div>
         <br>
         <!--cover area-->
         <div style="width: 800px;margin:auto; background-color: black; min-height:400px;">
-            <div style="background-color:white; text-align:center; color:#EEEEEE">
+            <div style="background-color:white; text-align:center; color:#222831">
                 <img src="rsz_cover.jpg" style="width:100%;">
                 <img id="profile_pic" src="milkmocha.jpg">
                 <br>
-                <p style="color: #222831">Timeline &nbsp About &nbsp Repository &nbsp Queries &nbsp Settings</p>
+                User
+                <br>
+                <div id="menu_buttons">Timeline</div>
+                <div id="menu_buttons"> Repository</div>
+                <div id="menu_buttons">Groups</div>
+                <div id="menu_buttons">Settings</div>
             </div>
         </div>
     </body>
