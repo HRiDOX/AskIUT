@@ -12,5 +12,3 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>AskIUT</title>
 </head>
-
-<body style="background:#CCC">

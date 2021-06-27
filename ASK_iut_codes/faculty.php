@@ -1,15 +1,16 @@
 <?php require_once('includes/header.php') ?>
 
+<body background="logo/faculty.jpg">
 
 
-<! --Navigation Bar -->
-    <?php require_once('includes/nav.php') ?>
+    <! --Navigation Bar -->
+        <?php require_once('includes/nav.php') ?>
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 m-auto">
-                <div class="card bg-light mt-5 py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+
 
                     <div class="card-title">
 
@@ -34,13 +35,13 @@
                         </form>
                     </div>
 
+
+
                 </div>
 
             </div>
 
+
         </div>
 
-
-    </div>
-
-    <?php require_once('includes/footer.php') ?>
+        <?php require_once('includes/footer.php') ?>
