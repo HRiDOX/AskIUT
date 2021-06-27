@@ -30,6 +30,48 @@
             border: solid 2px white;
         }
 
+        #menu_buttons{
+            width: 100px;
+            display: inline;
+            margin: 20px;
+        }
+
+        #notice_box{
+            width:90%;
+            border: none; 
+            padding: 4px;
+            font-size: 14px;
+            font-family: helvetica;
+        }
+
+        #notice_board{
+            background-color: #A7BBC7;
+            min-height: 400px;
+            margin-top: 20px;
+            color: #222831;
+            padding: 8px;
+        }
+
+        #post_button{
+            float:right;
+            background-color: #2A6171;
+            border: none;
+            color: white;
+            padding: 4px;
+            font-size: 14px;
+            border-radius: 2px;
+            width: 50px;
+        }
+
+        #posting_post{
+            width: 100%;
+            border: none; 
+            padding: 4px;
+            font-size: 14px;
+            font-family: helvetica;
+            height: 60px;
+        }
+
     </style>
     
     <body style="font-family: helvetica; background-color: #E1E5EA">
@@ -43,17 +85,41 @@
         </div>
         <br>
         <!--cover area-->
-        <div style="width: 800px;margin:auto; background-color: black; min-height:400px;">
+        <div style="width: 800px;margin:auto; min-height:400px;">
             <div style="background-color:white; text-align:center; color:#222831">
                 <img src="rsz_cover.jpg" style="width:100%;">
                 <img id="profile_pic" src="milkmocha.jpg">
                 <br>
-                User
+                    <div style="font-size: 20px;">User</div>
                 <br>
                 <div id="menu_buttons">Timeline</div>
                 <div id="menu_buttons"> Repository</div>
                 <div id="menu_buttons">Groups</div>
                 <div id="menu_buttons">Settings</div>
+            </div>
+
+            <!--below cover area-->
+            <div style="display: flex;">
+
+                <!--notice board area-->
+                <div style="flex:1; min-height: 400px;">
+                    <div id="notice_board">
+                        Notice Board <br>
+                        <textarea id="notice_box" placeholder="Share a Notice" ></textarea>
+                        <input id="post_button" type="submit" value="Share!">
+                    </div>
+            
+                </div>
+
+                <!--posts area-->
+                <div style="flex:2.5; padding:20px; min-height: 400px; padding-right: 0px;">
+
+                    <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
+
+                        <textarea id="posting_post" placeholder="What's your query?"></textarea>
+                        <input id="post_button" type="submit" value="Ask!">
+                        <br>
+                    </div>
             </div>
         </div>
     </body>
