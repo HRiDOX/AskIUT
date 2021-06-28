@@ -54,6 +54,13 @@ function send_email($email, $sub, $msg, $header)
 
 //***********************User Validation Function** */
 
+//errors function
+
+function Error_validation($Error)
+{
+    return '<div class="alert alert-danger">' . $Error . '</div>';
+}
+
 //User Validation Function
 
 function user_validation()
@@ -109,7 +116,7 @@ function user_validation()
         }
         if (!empty($Errors)) {
             foreach ($Errors as $Error) {
-                echo '<div class ="alert alert-danger">' . $Error . '</div>';
+                echo Error_validation($Error);
             }
         } else {
 
@@ -179,7 +186,7 @@ function faculty_validation()
         }
         if (!empty($Errors)) {
             foreach ($Errors as $Error) {
-                echo '<div class ="alert alert-danger">' . $Error . '</div>';
+                echo Error_validation($Error);
             }
         } else {
 
@@ -354,6 +361,33 @@ function faculty_activation()
             redirect('login.php');
         } else {
             echo '<p class = "bg-danger text-center lead">Your account  not Activated ! try again later </p>';
+        }
+    }
+}
+
+//user login validation
+
+function login_validation()
+{
+    $Errors = [];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $UserEmail = clean($_POST['UEmail']);
+        $UserPass = clean($_POST['UPass']);
+
+        if (empty($UserEmail)) {
+            $Errors[] = "Please Enter Your Email";
+        }
+        if (empty($UserPass)) {
+
+            $Errors[] = "Please Enter Your Password";
+        }
+
+        if (!empty($Errors)) {
+
+            foreach ($Errors as $Error) {
+
+                echo Error_validation($Error);
+            }
         }
     }
 }
