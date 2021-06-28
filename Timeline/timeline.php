@@ -25,7 +25,6 @@
 
         #profile_pic{
             width: 150px;
-            margin-top: -200px;
             border-radius: 50%;
             border: solid 2px white;
         }
@@ -71,6 +70,17 @@
             font-family: helvetica;
             height: 60px;
         }
+        #post_bar{
+            margin-top: 20px;
+            background-color: white;
+            padding: 10px;
+        }
+        #post{
+            padding: 4px;
+            font-size: 12px;
+            display: flex;
+            margin-bottom:20px;
+        }
 
     </style>
     
@@ -78,19 +88,18 @@
        <!--top bar-->
         <div id="red_bar">
             <div style="width: 800px; margin:auto; font-size: 30px;">
-                AskIUT &nbsp &nbsp <input type="text" id="search_box" placeholder="Search tags">
-                <img src="milkmocha.jpg" style="width: 50px; float:right; border-radius:50px;">
+                &nbsp &nbsp AskIUT &nbsp &nbsp <input type="text" id="search_box" placeholder="Search tags">
+                <img src="milkmocha.jpg" style="width: 50px; float:left; border-radius:50px;">
              </div>
         
         </div>
         <br>
-        <!--cover area-->
+        <!--profile pic area-->
         <div style="width: 800px;margin:auto; min-height:400px;">
-            <div style="background-color:white; text-align:center; color:#222831">
-                <img src="rsz_cover.jpg" style="width:100%;">
+            <div style="text-align:center; color:#222831">
                 <img id="profile_pic" src="milkmocha.jpg">
                 <br>
-                    <div style="font-size: 20px;">User</div>
+                    <div style="font-size: 20px;">Milk and Mocha</div>
                 <br>
                 <div id="menu_buttons">Timeline</div>
                 <div id="menu_buttons"> Repository</div>
@@ -115,12 +124,42 @@
                 <div style="flex:2.5; padding:20px; min-height: 400px; padding-right: 0px;">
 
                     <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
-
                         <textarea id="posting_post" placeholder="What's your query?"></textarea>
                         <input id="post_button" type="submit" value="Ask!">
                         <br>
                     </div>
+                <!--posts-->
+                    <div id="post_bar">
+                    <!--post 1-->
+                        <div id="post">
+                            <div>
+                                <img src="milkmocha.jpg" style="width: 70px; margin-right: 4px; border-radius:50%;">
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: black;"> Milk and Mocha </div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed consectetur dolor. Maecenas pulvinar risus euismod tincidunt varius. Suspendisse malesuada nunc efficitur augue vulputate rutrum. Aliquam aliquet accumsan mollis. Morbi cursus massa in nunc volutpat, in euismod magna fringilla. Nunc quis sollicitudin justo. Duis nec ipsum in magna rhoncus dignissim ut et justo. Sed suscipit commodo ante.
+                                <br/><br/>
+                                <a href="">Like</a> . <a href="">Comment</a> . <span style="#999;">June 28 2021</span>
+                                </div>
+                            </div>
+
+                        <!--post 2-->
+                        <div id="post">
+                            <div>
+                                <img src="panda.jpg" style="width: 70px; margin-right: 4px; border-radius:50%;">
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: black;"> Panda </div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed consectetur dolor. Maecenas pulvinar risus euismod tincidunt varius. Suspendisse malesuada nunc efficitur augue vulputate rutrum. Aliquam aliquet accumsan mollis. Morbi cursus massa in nunc volutpat, in euismod magna fringilla. Nunc quis sollicitudin justo. Duis nec ipsum in magna rhoncus dignissim ut et justo. Sed suscipit commodo ante.
+                                <br/><br/>
+                                <a href="">Like</a> . <a href="">Comment</a> . <span style="#999;">June 28 2021</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     </body>
 </html>
