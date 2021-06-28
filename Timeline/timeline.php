@@ -21,12 +21,14 @@
             background-image:url(rsz_search.png);
             background-repeat: no-repeat;
             background-position: right;
+            position: relative;
+            left:100px;
+            bottom:30px;
         }
 
-        #profile_pic{
-            width: 150px;
-            border-radius: 50%;
-            border: solid 2px white;
+        #user_pic{
+            position:relative;
+            top: 20px;
         }
 
         #menu_buttons{
@@ -87,20 +89,24 @@
     <body style="font-family: helvetica; background-color: #E1E5EA">
        <!--top bar-->
         <div id="red_bar">
-            <div style="width: 800px; margin:auto; font-size: 30px;">
-                &nbsp &nbsp AskIUT &nbsp &nbsp <input type="text" id="search_box" placeholder="Search tags">
-                <img src="milkmocha.jpg" style="width: 50px; float:left; border-radius:50px;">
+            <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
+                AskIUT
              </div>
         
         </div>
+        <!--search bar-->
+        <div>
+            <div style="width: 800px; margin:auto;min-height:70px;">
+            <a href=""><img src="milkmocha.jpg" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
+                <input type="text" id="search_box" placeholder="Search tags for posts">
+            
+            </div>
+        </div>
+
         <br>
-        <!--profile pic area-->
+        <!--Menu button area-->
         <div style="width: 800px;margin:auto; min-height:400px;">
             <div style="text-align:center; color:#222831">
-                <img id="profile_pic" src="milkmocha.jpg">
-                <br>
-                    <div style="font-size: 20px;">Milk and Mocha</div>
-                <br>
                 <div id="menu_buttons">Timeline</div>
                 <div id="menu_buttons"> Repository</div>
                 <div id="menu_buttons">Groups</div>
