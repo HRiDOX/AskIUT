@@ -6,9 +6,9 @@
 
     <style type="text/css">
         
-        #red_bar{
+        #top_bar{
             height: 50px;
-            background-color: #D53333;
+            background-color: #060930;
             color: #EEEEEE;
         }
         #search_box{
@@ -46,7 +46,7 @@
         }
 
         #notice_board{
-            background-color: #A7BBC7;
+            background-color: #595B83;
             min-height: 400px;
             margin-top: 20px;
             color: #222831;
@@ -55,7 +55,7 @@
 
         #post_button{
             float:right;
-            background-color: #2A6171;
+            background-color: #000000;
             border: none;
             color: white;
             padding: 4px;
@@ -86,9 +86,9 @@
 
     </style>
     
-    <body style="font-family: helvetica; background-color: #E1E5EA">
+    <body style="font-family: helvetica; background-color: #8FD6E1">
        <!--top bar-->
-        <div id="red_bar">
+        <div id="top_bar">
             <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
                 AskIUT
              </div>
@@ -131,7 +131,7 @@
 
                     <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
                         <textarea id="posting_post" placeholder="What's your query?"></textarea>
-                        <input id="post_button" type="submit" value="Ask!">
+                        <input id="post_button" type="submit" value="Post!">
                         <br>
                     </div>
                 <!--posts-->
