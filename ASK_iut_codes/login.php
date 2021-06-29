@@ -4,7 +4,7 @@
 
     <! --Navigation Bar -->
 
-        <?php require_once('includes/nav.php') ?>
+        <?php require_once('includes/nav_beforeLogin.php') ?>
 
         <div class="container ">
             <div class="row">
@@ -29,11 +29,12 @@
                             <input type="password" name="UPass" placeholder=" Password " class="form-control py-2 mb-2 bg-info">
                             <button class="btn btn-dark float-right">Log in</button>
 
-                        </form>
+
                     </div>
                     <div class="card-footer">
                         <input type="checkbox" name="remember"> <span>Remember Me</span>
                         <a href="recover.php" class="float-right">Forget Passowrd</a>
+                        </form>
 
                     </div>
 

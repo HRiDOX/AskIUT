@@ -4,7 +4,7 @@
 
 
     <! --Navigation Bar -->
-        <?php require_once('includes/nav.php') ?>
+        <?php require_once('includes/nav_beforeLogin.php') ?>
 
 
         <div class="container">
