@@ -12,7 +12,7 @@
 }
 
 #Search_box {
-    width: 400px;
+    width: 1px;
     height: 20px;
     border-radius: 5px;
     border: none;
@@ -40,6 +40,7 @@
     margin: 2px;
     /* background-color: #2F5D62; */
     color: #313f3b;
+    font-size: 14px;
   
 
 
