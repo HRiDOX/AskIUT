@@ -22,7 +22,7 @@
                 <div class="card-footer">
 
                     <a href="forget.php" class="btn btn-danger float-right">Cancel</a>
-                    <a href="forget.php" class="btn btn-success float-right">Send Passowrd</a>
+                    <a href="forget.php" class="btn btn-dark float-left">Send Passowrd</a>
 
                 </div>
 
