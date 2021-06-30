@@ -10,6 +10,7 @@
             height: 50px;
             background-color: #060930;
             color: #EEEEEE;
+            font-family: 'Satisfy',cursive;
         }
         #search_box{
             width: 400px;
