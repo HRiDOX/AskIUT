@@ -111,11 +111,11 @@ textarea {
 
 
 
-<body style="font-family: Georgia, serif; background-color:#DFEEEA;">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left, #2F5D62,#DFEEEA);">
     <!--Top Bar-->
     <div id="My_bar">
         <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
-            AskIUT &nbsp &nbsp <input type="text" id="Search_box" placeholder="Search Your Knowledge😤">
+            AskIUT &nbsp &nbsp <input type="text" id="Search_box" placeholder="Search Your Knowledge😊">
             <img src="Anika.jpg" style="width: 40px; float:right; border-radius:30px;border: 2px solid white;">
 
 
@@ -127,7 +127,7 @@ textarea {
         
         <div style="width:800px;margin:auto;font-size: 30px;">
 
-            <div style="background-color:white ;min-height:400px;text-align:center;color:#2F5D62 ">
+            <div style="background: linear-gradient(to left, #2F5D62,#DFEEEA) ;min-height:400px;text-align:center;color:#2F5D62 ">
                 <img id="Pro_Pic" src="Anika.jpg">
                 <br>
                 <div style="font-size: 20px;">
