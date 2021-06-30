@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
 
 <head>
+    
+	
     <link rel="stylesheet" href="style.css">
     <title>AskIUT Profile</title>
 </head>
@@ -47,6 +49,7 @@
     /* background-color: #2F5D62; */
     color: #313f3b;
     font-size: 14px;
+    cursor: pointer;
 
 
 
@@ -107,11 +110,99 @@ textarea {
     display: flex;
     margin-bottom: 20px;
 }
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'Baloo 2', cursive;
+}
+
+.animation-area {
+	background: linear-gradient(to left, #2F5D62,#A7C4BC);
+	width: 100%;
+	min-height: 100vh;
+}
+.box-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 130vh;
+	overflow: hidden;
+}
+.box-area li {
+	position: absolute;
+	display: block;
+	list-style: none;
+	width: 25px;
+	height: 25px;
+	background: rgba(255, 255, 255, 0.2);
+	animation: animate 20s linear infinite;
+	bottom: -150px;
+}
+.box-area li:nth-child(1) {
+	left: 86%;
+	width: 80px;
+	height: 80px;
+	animation-delay: 0s;
+}
+.box-area li:nth-child(2) {
+	left: 12%;
+	width: 30px;
+	height: 30px;
+	animation-delay: 1.5s;
+	animation-duration: 10s;
+}
+.box-area li:nth-child(3) {
+	left: 70%;
+	width: 100px;
+	height: 100px;
+	animation-delay: 5.5s;
+}
+.box-area li:nth-child(4) {
+	left: 42%;
+	width: 150px;
+	height: 150px;
+	animation-delay: 0s;
+	animation-duration: 15s;
+}
+.box-area li:nth-child(5) {
+	left: 65%;
+	width: 40px;
+	height: 40px;
+	animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+	left: 15%;
+	width: 110px;
+	height: 110px;
+	animation-delay: 3.5s;
+}
+
+a {
+  border-bottom: 1px solid #453886;
+  color: #453886;
+  padding-bottom: .25em;
+  text-decoration: none;
+}
+
+a:hover {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 20%;
+  border-bottom: 0;
+  padding-bottom: .3em;
+  text-decoration: none;
+}
+
 </style>
 
 
 
-<body style="font-family: Georgia, serif;background: linear-gradient(to left, #2F5D62,#DFEEEA);">
+<body style="font-family: Georgia, serif; background: linear-gradient(to left, #2F5D62,#A7C4BC);">
+
     <!--Top Bar-->
     <div id="My_bar">
         <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
@@ -127,7 +218,7 @@ textarea {
         
         <div style="width:800px;margin:auto;font-size: 30px;">
 
-            <div style="background: linear-gradient(to left, #2F5D62,#DFEEEA) ;min-height:400px;text-align:center;color:#2F5D62 ">
+            <div style="background: linear-gradient(to left, #2F5D62,#A7C4BC);min-height:400px;text-align:center;color:#2F5D62 ">
                 <img id="Pro_Pic" src="Anika.jpg">
                 <br>
                 <div style="font-size: 20px;">
@@ -218,7 +309,7 @@ textarea {
                 </div>
             </div>
         </div>
-    </div>
+  
 
 </body>
 

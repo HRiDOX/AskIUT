@@ -11,12 +11,16 @@
 	<div class="banner-text">
 		<ul>
 			<li>Home</li>
-			<li>About</li>
+			<li><a href="https://www.w3schools.com/cssref/sel_link.asp"> About</a></li>
 			<li>Portfolio</li>
 			<li>Services</li>
 			<li>Contact</li>
 		</ul>
-		<h2>Welcome to our Website</h2>
+		
+		<h2><a href="https://www.w3schools.com/cssref/sel_link.asp">Hello</a> </h2>
+
+	
+        
 	</div>
 	<div class="animation-area">
 		<ul class="box-area">
