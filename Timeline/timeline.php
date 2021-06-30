@@ -87,7 +87,7 @@
 
     </style>
     
-    <body style="font-family: helvetica; background-color: #8FD6E1">
+    <body style="font-family: helvetica; background-image:linear-gradient(to right, rgba(255,0,0,0), rgba(126,164,246,1));">
        <!--top bar-->
         <div id="top_bar">
             <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
@@ -98,7 +98,7 @@
         <!--search bar-->
         <div>
             <div style="width: 800px; margin:auto;min-height:70px;">
-            <a href=""><img src="milkmocha.jpg" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
+            <a href="http://localhost/AskIUT/AskIUT/Profile/profile.php"><img src="milkmocha.jpg" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
                 <input type="text" id="search_box" placeholder="Search tags for posts">
             
             </div>
@@ -108,8 +108,8 @@
         <!--Menu button area-->
         <div style="width: 800px;margin:auto; min-height:400px;">
             <div style="text-align:center; color:#222831">
-                <div id="menu_buttons">Timeline</div>
-                <div id="menu_buttons"> Repository</div>
+                <div id="menu_buttons"> <a href="http://localhost/AskIUT/AskIUT/Timeline/timeline.php"> Timeline</a></div>
+                <div id="menu_buttons"><a href="http://localhost/AskIUT/repository.php">Repository</a> </div>
                 <div id="menu_buttons">Groups</div>
                 <div id="menu_buttons">Settings</div>
             </div>
