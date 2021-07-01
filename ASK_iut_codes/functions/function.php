@@ -61,6 +61,19 @@ function Error_validation($Error)
     return '<div class="alert alert-danger">' . $Error . '</div>';
 }
 
+//creating user_id
+function create_userid()
+{
+
+    $length = rand(4, 19);
+    $number = '';
+    for ($i = 0; $i < $length; $i++) {
+        $new_rand = rand(0, 9);
+        $number = $number . $new_rand;
+    }
+
+    return $number;
+}
 //User Validation Function
 
 function user_validation()
@@ -266,8 +279,10 @@ function user_registration($FName, $LName, $UName, $Email, $Pass)
     } else {
         $Password = md5($Pass);
         $Validation_code = md5('$UserName + microtime()');
+        $userid = create_userid();
+        $url_address = strtolower($FirstName) . "." . strtolower($LastName);
 
-        $sql = "Insert into users(FirstName ,LastName,UserName,Email,Password,Validation_Code,Active) values('$FirstName','$LastName',' $UserName','$Email','$Password','$Validation_code','0')";
+        $sql = "Insert into users(userid,FirstName ,LastName,UserName,Email,Password,Validation_Code,Active,url_address) values('$userid','$FirstName','$LastName',' $UserName','$Email','$Password','$Validation_code','0','$url_address')";
 
         $result = query($sql);
 
@@ -303,8 +318,10 @@ function faculty_registration($FName, $LName, $UName, $Depart, $Faculty, $Email,
     } else {
         $Password = md5($Pass);
         $Validation_code = md5('$UserName + microtime()');
+        $userid = create_userid();
+        $url_address = strtolower($FirstName) . "." . strtolower($LastName);
 
-        $sql = "Insert into users_faculty(FirstName ,LastName,UserName,Department,Faculty,Email,Password,Validation_Code,Active) values('$FirstName','$LastName',' $UserName','$Department','$Faculty','$Email','$Password','$Validation_code','0')";
+        $sql = "Insert into users_faculty(userid,FirstName ,LastName,UserName,Department,Faculty,Email,Password,Validation_Code,Active,url_address) values('$userid','$FirstName','$LastName',' $UserName','$Department','$Faculty','$Email','$Password','$Validation_code','0','$url_address')";
 
         $result = query($sql);
         $subject = "Active Your Account";
@@ -392,7 +409,7 @@ function login_validation()
         } else {
             if (user_login($UserEmail, $UserPass, $Remember)) {
 
-                redirect("admin.php");
+                redirect("profile.php");
             } else {
                 echo Error_validation("Please Enter Correct Email or Password");
             }
@@ -408,13 +425,13 @@ function user_login($UEmail, $UPass, $Remember)
     if ($row = fatech_data($result)) {
         $db_pass = $row['Password'];
         if (md5($UPass) == $db_pass) {
-
+            $_SESSION['mybook_userid'] = $row['userid'];
             if ($Remember == true) {
 
                 setcookie('email', $UEmail, time() + 86400);
             }
-
             $_SESSION['Email'] = $UEmail;
+
             return true;
         }
     } else {
@@ -427,7 +444,7 @@ function user_login($UEmail, $UPass, $Remember)
             $db_pass1 = $row1['Password'];
 
             if (md5($UPass) == $db_pass1) {
-
+                $_SESSION['mybook_userid'] = $row1['userid'];
                 if ($Remember == true) {
 
                     setcookie('email', $UEmail, time() + 86400);
@@ -451,4 +468,55 @@ function logged_in()
         return false;
     }
 }
+// after login user profile
 
+function check_login($id)
+{
+
+
+    $query = "select userid from users where userid ='$id' and Active ='1' ";
+    $result = Query($query);
+    if ($result) {
+        return true;
+    } else {
+        $query1 = "select userid from users_faculty where userid ='$id' and Active ='1' ";
+        $result1 = Query($query1);
+        if ($result1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+function get_data($id)
+{
+
+    $query = "select *from users where userid='$id' and Active = '1'";
+
+    $result = read($query);
+    if ($result) {
+        $row = $result[0];
+        return $row;
+    } else {
+        $query1 = "select *from users_faculty where userid='$id' and Active = '1'";
+
+        $result1 = read($query1);
+        if ($result1) {
+            $row1 = $result1[0];
+            return $row1;
+        } else {
+            return false;
+        }
+    }
+}
+
+///////////////////////////////recover function/////////
+function recover_password()
+{
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        echo "it's working fine";
+    }
+}

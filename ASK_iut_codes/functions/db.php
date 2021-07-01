@@ -41,3 +41,31 @@ function row_count($count)
 {
     return mysqli_num_rows($count);
 }
+function read($query)
+{
+
+    global $con;
+    $result = mysqli_query($con, $query);
+    if (!$result) {
+        return false;
+    } else {
+        $data = false;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+
+        return $data;
+    }
+}
+
+function save($query)
+{
+
+    global $con;
+    $result = mysqli_query($con, $query);
+    if (!$result) {
+        return false;
+    } else {
+        return true;
+    }
+}

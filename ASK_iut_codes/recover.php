@@ -1,4 +1,7 @@
-<?php require_once('includes/header.php') ?>
+<?php require_once('includes/header.php');
+
+
+?>
 
 
 <body>
@@ -14,18 +17,19 @@
                         <hr>
                         <hr>
                         <hr>
-
+                        <?php recover_password(); ?>
                     </div>
                     <div class="card-body">
-                        <input type="email" name="Email" placeholder="User Email " class="form-control py-2 mb-2">
-
+                        <form method="POST">
+                            <input type="email" name="Email" placeholder="User Email " class="form-control py-2 mb-2">
+                            <input type="hidden" name="token" value="<?php echo Token_Generator(); ?>">
                     </div>
                     <div class="card-footer">
 
                         <a href="forget.php" class="btn btn-link float-right">Cancel</a>
                         <a href="forget.php" class="btn btn-info float-left">Send Passowrd</a>
 
-
+                        </form>
                     </div>
 
 

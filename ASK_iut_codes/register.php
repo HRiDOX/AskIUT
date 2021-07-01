@@ -1,7 +1,8 @@
 <?php require_once('includes/header.php') ?>
 
-<body background="logo/register.jpg">
 
+
+<body background="logo/register.jpg">
 
     <! --Navigation Bar -->
         <?php require_once('includes/nav_beforeLogin.php') ?>
