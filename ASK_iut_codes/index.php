@@ -1,4 +1,8 @@
-<?php require_once('functions/config.php') ?>
+<?php require_once('functions/config.php');
+require_once('functions/function.php');
+
+
+?>
 
 <html lang="en">
 

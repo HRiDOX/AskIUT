@@ -1,6 +1,8 @@
 <?php
 
 require_once('includes/header.php');
+require_once('functions/activation_function.php');
+
 require_once('includes/nav_beforeLogin.php');
 ?>
 <!--------Activate Main Page--->

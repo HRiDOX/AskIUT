@@ -36,6 +36,7 @@ function fatech_data($result)
 {
     return mysqli_fetch_assoc($result);
 }
+
 //    Row values From database;
 function row_count($count)
 {

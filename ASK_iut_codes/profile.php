@@ -1,4 +1,6 @@
 <?php require_once('functions/config.php');
+require_once('functions/after_login_function.php');
+
 
 
 
@@ -8,7 +10,7 @@
 if (isset($_SESSION['mybook_userid']) || isset($_SESSION['Email']) || isset($_COOKIE['email'])) {
 
     $id = $_SESSION['mybook_userid'];
-
+    print_r($id);
     $result = check_login($id);
     print_r($result);
     if ($result) {

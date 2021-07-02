@@ -1,4 +1,6 @@
-<?php require_once('includes/header.php') ?>
+<?php require_once('includes/header.php');
+require_once('functions/login_function.php');
+?>
 
 <! --Navigation Bar -->
 

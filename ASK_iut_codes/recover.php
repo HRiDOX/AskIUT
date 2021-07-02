@@ -21,13 +21,13 @@
                     </div>
                     <div class="card-body">
                         <form method="POST">
-                            <input type="email" name="Email" placeholder="User Email " class="form-control py-2 mb-2">
+                            <input type="email" name="UEmail" placeholder="User Email " class="form-control py-2 mb-2">
                             <input type="hidden" name="token" value="<?php echo Token_Generator(); ?>">
                     </div>
                     <div class="card-footer">
 
-                        <a href="forget.php" class="btn btn-link float-right">Cancel</a>
-                        <a href="forget.php" class="btn btn-info float-left">Send Passowrd</a>
+                        <button class="btn btn-link float-right">Cancel</button>
+                        <button class="btn btn-info float-left">Send Passowrd</button>
 
                         </form>
                     </div>
