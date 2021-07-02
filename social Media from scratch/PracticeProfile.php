@@ -1,10 +1,17 @@
 <?php
+   session_start();
+   . 
+   . 
+   .
+   include("classes/post.php")
 
 //posting starts here
  if($_SERVER['REQUEST_METHOD']=="POST")
 
  {
-     print_r($_POST);
+    $post= new Post();
+    $id = $_SESSION['mybook_userid'];  
+    $result=$post->create_post($id,$_POST);
  }
 
 ?>
