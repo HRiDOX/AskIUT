@@ -1,3 +1,47 @@
+<?php 
+
+session_start();
+
+	include("classes/connect.php");
+	include("classes/login.php");
+ 
+	$email = "";
+	$password = "";
+	
+	if($_SERVER['REQUEST_METHOD'] == 'POST')
+	{
+
+
+		$login = new Login();
+		$result = $login->evaluate($_POST);
+		
+		if($result != "")
+		{
+
+			echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+			echo "<br>The following errors occured:<br><br>";
+			echo $result;
+			echo "</div>";
+		}else
+		{
+
+			header("Location: profile.php");
+			die;
+		}
+ 
+
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		
+
+	}
+
+
+	
+
+?>
+
+
 <html>
     <head>
         <title>AskIUT | Login</title>
@@ -49,13 +93,15 @@
     <body style="font-family: tahoma; background-color: #e9ebee;">
         <div id="top_bar">
             <div style="font-size:30px;">AskIUT</div>
+            <a href="signup.php">
             <div id="signup_button">Signup</div>
+            </a>
         </div>
         <div id="login_bar">
             Log in to AskIUT <br> <br>
 
-            <input type="text" id="text" placeholder="Email"> <br><br>
-            <input type="password" id="text" placeholder="Password"> <br><br>
+            <input name="email" value="<?php echo $email ?>" type="text" id="text" placeholder="Email"><br><br>
+				<input name="password" value="<?php echo $password ?>" type="password" id="text" placeholder="Password"><br><br>
             <input type="submit" id="button" value="Log in">
         </div>
     </body>

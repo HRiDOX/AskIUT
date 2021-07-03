@@ -25,13 +25,13 @@ class Signup
 
     public function create_user($data)
     {
-        $first_name = $data['$first_name'];
-        $last_name = $data['$last_name'];
-        $email = $data['$email'];
-        $department = $data['$department'];
-        $program = $data['$program'];
-        $batch = $data['$batch'];
-        $password = $data['$password'];
+        $first_name = $data['first_name'];
+        $last_name = $data['last_name'];
+        $email = $data['email'];
+        $department = $data['department'];
+        $program = $data['program'];
+        $batch = $data['batch'];
+        $password = $data['password'];
 
         //create this
         $url_address = strtolower($first_name) . "." . strtolower($last_name);
