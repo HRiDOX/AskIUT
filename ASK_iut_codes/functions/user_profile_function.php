@@ -165,3 +165,16 @@ function get_data($id)
         }
     }
 }
+
+function get_user($id)
+{
+
+    $query = "select  *from users where userid ='$id' and Active='1'";
+    $result = read($query);
+
+    if ($result) {
+        return $result[0];
+    } else {
+        return false;
+    }
+}

@@ -18,6 +18,7 @@ function set_message($msg)
 {
     if (!empty($msg)) {
         $_SESSION['Message'] = $msg;
+        // setcookie('message', $msg, time() + 10);
     } else {
         $msg = "";
     }
@@ -375,6 +376,7 @@ function faculty_activation()
             $result2 = Query($sqlquery);
             Confirm($result2);
             set_message('<p class = "bg-success text-center lead">Your Account Successfully Activated </p>');
+
             redirect('login.php');
         } else {
             echo '<p class = "bg-danger text-center lead">Your account  not Activated ! try again later </p>';
@@ -545,5 +547,42 @@ function recover_password()
         } else {
             redirect("index.php");
         }
+    }
+}
+
+
+/////////validation  code function
+
+function validation_code()
+{
+
+    if (isset($_COOKIE['temp_code'])) {
+        if (!isset($_GET['Email']) && !isset($_GET['Code'])) {
+            redirect("index.php");
+        }
+         else if (empty($_GET['Email']) && empty($_GET['Code'])) {
+            redirect("index.php");
+        } 
+        else {
+            if (isset($_POST['recover-code'])) {
+                 $Code = $_POST['recover-code'];
+                 $Email = $_GET['Email'];
+
+                 $query = "select *from users where Validation_Code='$Code' and Email='$Email' ";
+                 $result = Query($query);
+
+                 if (fatech_data($result)) {
+                     redirect("reset.php");
+                 }
+                 else{
+
+                    echo Error_validation("Query Failed");
+                 }
+
+            }
+        }
+    } else {
+        set_message('<div class="alert alert-danger"> Your Code Has Been Expired :) </div>');
+        redirect("recover.php");
     }
 }

@@ -128,10 +128,6 @@ function faculty_User_Exits($user)
 
 
 
-
-
-
-
 function recover_password()
 {
 
@@ -167,3 +163,4 @@ function recover_password()
         }
     }
 }
+ 

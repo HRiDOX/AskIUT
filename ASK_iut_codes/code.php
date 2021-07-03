@@ -14,17 +14,19 @@
                     <hr>
                     <hr>
                     <hr>
+                    <?php validation_code();?>
 
                 </div>
                 <div class="card-body">
-                    <input type="text" name="recover-code" placeholder="###### " class="form-control py-2 mb-2">
+                    <form method="POST">
+                        <input type="text" name="recover-code" placeholder="###### " class="form-control py-2 mb-2">
 
                 </div>
                 <div class="card-footer">
 
                     <a href="forget.php" class="btn btn-danger float-right">Cancel</a>
                     <a href="forget.php" class="btn btn-success float-left">Send Passowrd</a>
-
+                    </form>
                 </div>
 
             </div>

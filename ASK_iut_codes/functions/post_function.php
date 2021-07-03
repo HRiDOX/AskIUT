@@ -25,3 +25,16 @@ function create_postid()
 
     return $number;
 }
+function get_posts($id)
+{
+    $query = "select * from posts where userid = '$id' order by id desc limit 10";
+
+
+    $result = read($query);
+
+    if ($result) {
+        return $result;
+    } else {
+        return false;
+    }
+}

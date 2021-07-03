@@ -1,5 +1,5 @@
 <?php require_once('functions/config.php');
-require_once('functions/user_profile.php');
+require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 
 
@@ -28,7 +28,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_SESSION['mybook_userid'];
 
     $result = create_post($id, $_POST);
+
+    if ($result == "") {
+        redirect("profile.php");
+        die;
+    } else {
+        echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+        echo "<br>The following errors occured:<br><br>";
+        print_r($result);
+        echo "</div>";
+    }
 }
+
+
+//collect posts
+
+
+$id = $_SESSION['mybook_userid'];
+
+$posts = get_posts($id);
 
 
 
@@ -214,44 +232,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
                 <!-- post -->
                 <div id="post_bar">
-                    <!-- post 1 -->
-                    <div id="post">
-                        <div>
-                            <img src="user1.jpg" style="width: 75px;margin-right:4px;">
-                        </div>
-                        <div>
-                            <div style="font-weight:bold;color: #2F5D62">The Girl</div>
-                            <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-                                Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed
-                                convallis tristique sem. <b>Vestibulum lacinia arcu eget nulla</b>. Proin ut ligula
-                                vel
-                                nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non,
-                                massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus,
-                                ullamcorper vel, tincidunt sed, euismod in, nibh. <i>Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit</i>. Quisque volutpat condimentum velit. </p>
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #aaa;">Jun 24
-                                2021</span>
-                        </div>
-                    </div>
-                    <!-- post 2 -->
-                    <div id="post">
-                        <div>
-                            <img src="user2.jpg" style="width: 75px;margin-right:4px;">
-                        </div>
-                        <div>
-                            <div style="font-weight:bold;color: #2F5D62"> Anika Another Girl</div>
-                            <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-                                Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed
-                                convallis tristique sem. <b>Vestibulum lacinia arcu eget nulla</b>. Proin ut ligula
-                                vel
-                                nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non,
-                                massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus,
-                                ullamcorper vel, tincidunt sed, euismod in, nibh. <i>Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit</i>. Quisque volutpat condimentum velit. </p>
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #aaa;">Jun 24
-                                2021</span>
-                        </div>
-                    </div>
+                    <?php
+
+                    if ($posts) {
+                        foreach ($posts as $ROW) {
+
+
+                            $ROW_USER = get_user($ROW['userid']);
+
+                            include("post.php");
+                        }
+                    }
+
+                    ?>
+
+
                 </div>
             </div>
         </div>

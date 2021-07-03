@@ -1,7 +1,7 @@
 <?php
    session_start();
   
-   include("classes/post.php")
+   include("classes/post.php");
 
 //posting starts here
  if($_SERVER['REQUEST_METHOD']=="POST")
