@@ -1,8 +1,6 @@
 <?php
    session_start();
-   . 
-   . 
-   .
+   
    include("classes/post.php")
 
 //posting starts here
@@ -189,22 +187,7 @@ textarea {
                 <!-- post -->
                 <div id="post_bar">
                     <!-- post 1 -->
-                    <div id="post">
-                        <div>
-                            <img src="user1.jpg" style="width: 75px;margin-right:4px;">
-                        </div>
-                        <div>
-                            <div style="font-weight:bold;color: #2F5D62">The Girl</div>
-                            <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-                                Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed
-                                convallis tristique sem. <b>Vestibulum lacinia arcu eget nulla</b>. Proin ut ligula vel
-                                nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non,
-                                massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus,
-                                ullamcorper vel, tincidunt sed, euismod in, nibh. <i>Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit</i>. Quisque volutpat condimentum velit. </p>
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #aaa;">Jun 24 2021</span>
-                        </div>
-                    </div>
+                    
                     <!-- post 2 -->
                     <div id="post">
                         <div>
