@@ -1,7 +1,11 @@
 +<div id="post">
     <div>
-
-        <img src="logo/pic_holder.jpg" style="width: 75px;margin-right:4px;">
+        <?php
+                
+                $image="image/pic_holder.jpg";
+    
+        ?>
+        <img src="<?php echo $image ?>" style="width: 75px;margin-right:4px;">
     </div>
     <div>
         <div style="font-weight:bold;color: #2F5D62">

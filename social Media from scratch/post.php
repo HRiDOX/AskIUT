@@ -1,19 +1,23 @@
 <div id="post">
     <div>
-    <?php
-    $image="image/pic_holder";
+        <?php
+                
+                $image="image/pic_holder.jpg";
     
-        <img src="<?php echo $image ?>" style="width: 75px;margin-right:4px;">
         ?>
+        <img src="<?php echo $image ?>" style="width: 75px;margin-right:4px;">
     </div>
     <div>
         <div style="font-weight:bold;color: #2F5D62">
-        <?php echo $ROW_USER['first_name'] . " " . $ROW_USER['last_name']; ?>
+            <?php echo $ROW_USER['first_name'] . " " . $ROW_USER['last_name']; ?>
         </div>
-        
+
         <?php echo $ROW['post'] ?>
-        
-        <br/><br/>
-        <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #aaa;"><? echo $ROW['date'];?></span>
+
+        <br /><br />
+        <a href="">Like</a> . <a href="">Comment</a> .
+        <span style="color: #aaa;">
+            <?php echo $ROW['date'];?>
+        </span>
     </div>
 </div>
