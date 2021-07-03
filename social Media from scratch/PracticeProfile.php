@@ -1,6 +1,8 @@
 <?php
    session_start();
-   
+   . 
+   . 
+   .
    include("classes/post.php")
 
 //posting starts here
