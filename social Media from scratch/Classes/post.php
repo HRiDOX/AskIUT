@@ -21,7 +21,7 @@
          return $this->error;
      }
 
-     private function get_posts($id)
+     public function get_posts($id)
      {
         $query = "select * from posts where userid = '$id' order by id desc limit 10";
 
