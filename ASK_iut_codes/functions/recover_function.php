@@ -1,5 +1,3 @@
-
-
 <?php
 //Clean String Values
 
@@ -123,48 +121,49 @@ function faculty_User_Exits($user)
     }
 }
 
-///// user activation
-function users_activation()
+
+
+
+
+
+
+
+
+
+
+
+function recover_password()
 {
-    if ($_SERVER['REQUEST_METHOD'] == "GET") {
-        $Email = $_GET['Email'];
-        $Code = $_GET['Code'];
 
-        $sql = " select * from users where Email = '$Email' AND Validation_Code= '$Code'";
-        $result = Query($sql);
-        Confirm($result);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        if (fatech_data($result)) {
-            $sqlquery = "update users set Active = '1' , Validation_Code = '0' where Email='$Email' AND Validation_Code= '$Code' ";
-            $result2 = Query($sqlquery);
-            Confirm($result2);
-            set_message('<p class = "bg-success text-center lead">Your Account Successfully Activated </p>');
-            redirect('login.php');
+        if (isset($_SESSION['token']) && $_POST['token'] == $_SESSION['token']) {
+
+            $Email = $_POST['UEmail'];
+            if (Email_Exits($Email)) {
+
+
+                $code = md5('$Email + microtime()');
+                setcookie('temp_code', $code, time() + 60);
+                $sql = "update users set Validation_Code='$code' where Email='$Email'";
+                Query($sql);
+                $Subject = "Please Reset The Password";
+                $Message = "Please Follow On Below Link To Reset The Password http://localhost/loginpro/AskIUT/ASK_iut_codes/code.php?Email='$Email'&Code='$code'";
+                $header = "rgrrf123@gmail.com";
+                if (send_email($Email, $Subject, $Message, $header)) {
+                    echo '<div class = "alert alert-success">PLease Check Your Email:)</div>';
+                } else {
+
+                    echo Error_validation("We Couldn't Send an Email");
+                }
+            } else if (faculty_Email_Exits($Email)) {
+                echo 'data working';
+            } else {
+
+                echo Error_validation("Email not Found .......");
+            }
         } else {
-            echo '<p class = "bg-danger text-center lead">Your account  not Activated ! try again later </p>';
-        }
-    }
-}
-
-function faculty_activation()
-{
-    if ($_SERVER['REQUEST_METHOD'] == "GET") {
-        $Email = $_GET['Email'];
-        $Code = $_GET['Code'];
-
-        $sql = " select * from users_faculty where Email = '$Email' AND Validation_Code= '$Code'";
-        $result = Query($sql);
-        Confirm($result);
-
-        if (fatech_data($result)) {
-
-            $sqlquery = "update users_faculty set Active = '1' , Validation_Code = '0' where Email='$Email' AND Validation_Code= '$Code' ";
-            $result2 = Query($sqlquery);
-            Confirm($result2);
-            set_message('<p class = "bg-success text-center lead">Your Account Successfully Activated </p>');
-            redirect('login.php');
-        } else {
-            echo '<p class = "bg-danger text-center lead">Your account  not Activated ! try again later </p>';
+            redirect("index.php");
         }
     }
 }

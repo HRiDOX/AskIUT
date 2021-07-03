@@ -1,7 +1,6 @@
 <?php require_once('functions/config.php');
-require_once('functions/after_login_function.php');
-
-
+require_once('functions/user_profile.php');
+require_once('functions/post_function.php');
 
 
 //print_r($_SESSION);
@@ -11,6 +10,7 @@ if (isset($_SESSION['mybook_userid']) || isset($_SESSION['Email']) || isset($_CO
 
     $id = $_SESSION['mybook_userid'];
     print_r($id);
+
     $result = check_login($id);
     print_r($result);
     if ($result) {
@@ -23,7 +23,15 @@ if (isset($_SESSION['mybook_userid']) || isset($_SESSION['Email']) || isset($_CO
 
     redirect("login.php");
 }
-print_r($user_data)
+//posting starts here
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $id = $_SESSION['mybook_userid'];
+
+    $result = create_post($id, $_POST);
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -198,9 +206,11 @@ print_r($user_data)
             <!-- Post Area -->
             <div style="min-height:400px;flex:2.5;padding:20px;">
                 <div style="border: solid thin #aaa;padding: 10px;background-color: white;">
-                    <textarea placeholder="Ask Your Question...."></textarea>
-                    <input id="post_button" type="submit" value="Ask!">
-                    <br>
+                    <form method="post">
+                        <textarea name="post" placeholder="Ask Your Question...."></textarea>
+                        <input id="post_button" type="submit" value="Ask!">
+                        <br>
+                    </form>
                 </div>
                 <!-- post -->
                 <div id="post_bar">
