@@ -23,6 +23,18 @@ class Signup
         }
     }
 
+    private function create_userid()
+    {
+        $length = rand(4,19);
+        $number="";
+        for($i=0; $i< $length;$i++)
+        {
+            $new_rand= rand(0,9);
+            $number = $number . $new_rand;
+        }
+        return $number;
+    }
+
     public function create_user($data)
     {
         $first_name = $data['first_name'];
@@ -43,15 +55,4 @@ class Signup
 
     }
     
-    private function create_userid()
-    {
-        $length = rand(4,19);
-        $number="";
-        for($i=0; $i< $length;$i++)
-        {
-            $new_rand= rand(0,9);
-            $number = $number . $new_rand;
-        }
-        return $number;
-    }
 }
