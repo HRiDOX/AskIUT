@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 11:21 PM
+-- Generation Time: Jul 03, 2021 at 01:36 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -35,7 +35,8 @@ CREATE TABLE `posts` (
   `image` varchar(500) NOT NULL,
   `comments` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `has_image` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,7 +52,8 @@ ALTER TABLE `posts`
   ADD KEY `userid` (`userid`),
   ADD KEY `comments` (`comments`),
   ADD KEY `likes` (`likes`),
-  ADD KEY `date` (`date`);
+  ADD KEY `date` (`date`),
+  ADD KEY `has_image` (`has_image`);
 ALTER TABLE `posts` ADD FULLTEXT KEY `post` (`post`);
 
 --
