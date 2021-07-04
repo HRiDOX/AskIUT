@@ -1,9 +1,9 @@
 <?php 
 session_start();
-include("classes/post.php");
    include("classes/login.php");
     include("classes/user.php");
     include("classes/post.php");
+    include("classes/image.php");
     $login= new login();
     $user_data = $login->check_login($_SESSION['mybook_userid']);
 
@@ -12,30 +12,57 @@ include("classes/post.php");
         
         if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "")
         {
-            $filename = "uploads/" . $_FILES['file']['name'];
-            move_uploaded_file($_FILES['file']['tmp_name'], $filename);
-            if(file_exists($filename))
-            {
-                $userid = $user_data['userid'];
-                $query = "update users set profile_image = '$filename' where userid= '$userid' limit 1";
-                $DB= new Database();
-                $DB->save($query);
 
-                header(("Location: profile.php"));
-                die;
+            if($_FILES['file']['type']== "image/jpeg")
+            {
+                $allowed_size = (1024 * 1024) * 3;
+                if($_FILES['file']['size'] < $allowed_size)
+                {
+                    $filename = "uploads/" . $_FILES['file']['name'];
+                    move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+                    $image= new Image();
+
+                    $image->crop_image($filename, $filename, 800, 800);
+                    
+                    if(file_exists($filename))
+                    {
+                        $userid = $user_data['userid'];
+                        $query = "update users set profile_image = '$filename' where userid= '$userid' limit 1";
+                        $DB= new Database();
+                        $DB->save($query);
+
+                        header(("Location: profile.php"));
+                        die;
+                    }
+                    else
+                    {
+                        echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+                        echo "<br>The following errors occured:<br><br>";
+                        echo "please add a valid image";
+                        echo "</div>";
+
+                    }
+                }
+                else
+                {
+                    echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+                    echo "<br>The following errors occured:<br><br>";
+                    echo "Only images of size 3 MB or lower are allowed";
+                    echo "</div>";
+                }
+            }
+            else
+            {
+                echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+                echo "<br>The following errors occured:<br><br>";
+                echo "Only image of jpeg type are allowed";
+                echo "</div>";
             }
 
         }
-        else
-        {
-            echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
-            echo "<br>The following errors occured:<br><br>";
-            echo "please add a valid image";
-            echo "</div>";
-        }
         
     }
-    ?>
+?>
 <!DOCTYPE html>
     <html lang="en">
     <head>

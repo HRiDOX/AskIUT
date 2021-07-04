@@ -25,10 +25,9 @@ if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
         }
         else
         {
-            header("Location: login.php");
+            header("Location: profile.php");
             die;
         }
-    
     }
     else
     {
