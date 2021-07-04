@@ -1,9 +1,9 @@
 +<div id="post">
     <div>
         <?php
-                
-                $image="image/pic_holder.jpg";
-    
+
+        $image = "logo/pic_holder.jpg";
+
         ?>
         <img src="<?php echo $image ?>" style="width: 75px;margin-right:4px;">
     </div>

@@ -1,4 +1,6 @@
-<?php require_once('includes/header.php') ?>
+<?php require_once('includes/header.php');
+require_once('functions/function.php');
+?>
 
 
 
@@ -14,7 +16,7 @@
                     <hr>
                     <hr>
                     <hr>
-                    <?php validation_code();?>
+                    <?php validation_code(); ?>
 
                 </div>
                 <div class="card-body">
@@ -25,7 +27,7 @@
                 <div class="card-footer">
 
                     <a href="forget.php" class="btn btn-danger float-right">Cancel</a>
-                    <a href="forget.php" class="btn btn-success float-left">Send Passowrd</a>
+                    <a href="reset.php" class="btn btn-success float-left">Send Passowrd</a>
                     </form>
                 </div>
 

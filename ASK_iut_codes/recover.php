@@ -1,5 +1,5 @@
 <?php require_once('includes/header.php');
-require_once('functions/recover_function.php');
+require_once('functions/function.php');
 
 ?>
 
@@ -17,7 +17,10 @@ require_once('functions/recover_function.php');
                         <hr>
                         <hr>
                         <hr>
-                        <?php recover_password(); ?>
+                        <?php recover_password();
+                        display_message();
+
+                        ?>
                     </div>
                     <div class="card-body">
                         <form method="POST">

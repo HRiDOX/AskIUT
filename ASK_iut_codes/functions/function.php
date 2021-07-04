@@ -559,26 +559,22 @@ function validation_code()
     if (isset($_COOKIE['temp_code'])) {
         if (!isset($_GET['Email']) && !isset($_GET['Code'])) {
             redirect("index.php");
-        }
-         else if (empty($_GET['Email']) && empty($_GET['Code'])) {
+        } else if (empty($_GET['Email']) && empty($_GET['Code'])) {
             redirect("index.php");
-        } 
-        else {
+        } else {
             if (isset($_POST['recover-code'])) {
-                 $Code = $_POST['recover-code'];
-                 $Email = $_GET['Email'];
+                $Code = $_POST['recover-code'];
+                $Email = $_GET['Email'];
 
-                 $query = "select *from users where Validation_Code='$Code' and Email='$Email' ";
-                 $result = Query($query);
+                $query = "select *from users where Validation_Code='$Code' and Email='$Email' ";
+                $result = Query($query);
 
-                 if (fatech_data($result)) {
-                     redirect("reset.php");
-                 }
-                 else{
+                if (fatech_data($result)) {
+                    redirect("reset.php");
+                } else {
 
                     echo Error_validation("Query Failed");
-                 }
-
+                }
             }
         }
     } else {
