@@ -11,7 +11,7 @@ class Database
 
         function connect(){
             $connection = mysqli_connect($this->host,$this->username,$this->password,$this->db);
-            return;
+            return $connection;
         }
 
         function read($query)

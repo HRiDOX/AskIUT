@@ -1,43 +1,33 @@
-<?php 
-
+<?php
 session_start();
+    include("classes/connect.php");
+    include("classes/login.php");
 
-	include("classes/connect.php");
-	include("classes/login.php");
- 
-	$email = "";
-	$password = "";
-	
-	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
+        $email = "";
+        $password = "";
 
+    if($_SERVER['REQUEST_METHOD']== 'POST')
+    {
+        $login = new Login();
+        $result=$login->evaluate($_POST);
 
-		$login = new Login();
-		$result = $login->evaluate($_POST);
-		
-		if($result != "")
-		{
-
-			echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
-			echo "<br>The following errors occured:<br><br>";
-			echo $result;
-			echo "</div>";
-		}else
-		{
-
-			header("Location: profile.php");
-			die;
-		}
- 
-
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-		
-
-	}
-
-
-	
+        if($result != "")
+        {
+            echo "<div style='text-align: center; font-size: 14px; color:white; background-color: black;'>";
+            echo "<br>The following errors occured><br><br>";
+            echo $result;
+            echo "</div>";
+        }
+        else
+        {
+            header("Location: profile.php");
+            die;
+        }
+        
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        
+    }     
 
 ?>
 
@@ -98,11 +88,13 @@ session_start();
             </a>
         </div>
         <div id="login_bar">
+        <form method="post">
             Log in to AskIUT <br> <br>
 
             <input name="email" value="<?php echo $email ?>" type="text" id="text" placeholder="Email"><br><br>
-				<input name="password" value="<?php echo $password ?>" type="password" id="text" placeholder="Password"><br><br>
+			<input name="password" value="<?php echo $password ?>" type="password" id="text" placeholder="Password"><br><br>
             <input type="submit" id="button" value="Log in">
+            </form>
         </div>
     </body>
 </html>

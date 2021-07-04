@@ -20,8 +20,7 @@ class Login
 		{
 
 			$row = $result[0];
-
-			if($this->hash_text($password) == $row['password'])
+			if($password == $row['password'])
 			{
 
 				//create session data
@@ -41,18 +40,12 @@ class Login
 		
 	}
 
-	private function hash_text($text){
-
-		$text = hash("sha1", $text);
-		return $text;
-	}
-
 	public function check_login($id)
 	{
 		if(is_numeric($id))
 		{
 
-			$query = "select * from users where userid = '$id' limit 1 ";
+			$query = "select userid from users where userid = '$id' limit 1 ";
 
 			$DB = new Database();
 			$result = $DB->read($query);

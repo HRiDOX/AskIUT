@@ -1,10 +1,41 @@
 <?php
    session_start();
   
-   include("classes/post.php");
    include("classes/login.php");
     include("classes/user.php");
-    include("classes/post.php");
+    include("classes/connect.php");
+
+//checck if user is logged in
+if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
+{
+    $id= $_SESSION['mybook_userid'];
+    $login= new Login();
+
+    $result = $login->check_login($id);
+    if($result)
+    {
+        //retrieve user data
+        $user = new User();
+        $user_data = $user->get_data($id);
+
+        if(!$user_data)
+        {
+            header("Location: login.php");
+            die;
+        }
+        else
+        {
+            header("Location: login.php");
+            die;
+        }
+    
+    }
+    else
+    {
+        header("Location: login.php");
+        die;
+    }
+}
 
 //posting starts here
  if($_SERVER['REQUEST_METHOD']=="POST")
@@ -16,7 +47,7 @@
 
     if($result == "")
     {
-        header (" Location: profile.php");
+        header (" Location: login.php");
         die;
     }
     else
@@ -149,15 +180,25 @@ textarea {
 
 <body style="font-family: Georgia, serif; background-color:#DFEEEA; ">
     <!--Top Bar-->
-    <?php include("header.php"); ?>
+    <?php include(header.php); ?>
     <!--cover Area-->
     <div style="width: 800px;margin:auto; min-height:400px ">
         <div style="background-color:white; text-align:center;color: #2F5D62 ">
             <img src="cover.jpg" style="width:100%;">
-            <img id="Pro_Pic" src="Anika.jpg">
+            <span style="font_size:11px;">
+            <?php 
+                $image= "";
+                if(file_exists($user_data['profile_image']))
+                {
+                    $image = $user_data['profile_image'];
+                }
+            ?>
+            <img id="Pro_Pic" src="<?php echo $image ?>"> <br>
+            <a syle="text-decoration:none; color:#fof;" href="change_profile_image.php">Change Image</a>
+            </span>
             <br>
             <div style="font-size: 20px;">
-                <h2> Anika Islam</h2>
+                <?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?>
             </div>
             <div id="menu_button"> Timeline</div>
             <div id="menu_button"> About </div>

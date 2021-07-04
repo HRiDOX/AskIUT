@@ -1,16 +1,12 @@
-<?php
-    session_start();
-
-    include("classes/connect.php");
-    include("classes/login.php");
+<?php 
+session_start();
+include("classes/post.php");
+   include("classes/login.php");
     include("classes/user.php");
     include("classes/post.php");
-    $login = new login();
+    $login= new login();
     $user_data = $login->check_login($_SESSION['mybook_userid']);
-
     ?>
-
-
 <!DOCTYPE html>
     <html lang="en">
     <head>
