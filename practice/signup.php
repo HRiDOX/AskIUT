@@ -21,8 +21,15 @@
             echo $result;
             echo "</div>";
         }
+        else
+        {
+            header("Location: profile.php");
+            die;
+        }
         $first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
+        $department = $_POST['department'];
+        $program = $_POST['program'];
         $email = $_POST['email'];
         $batch = $_POST['batch'];
         
@@ -80,7 +87,7 @@
     <body style="font-family: tahoma; background-color: #e9ebee;">
         <div id="top_bar">
             <div style="font-size:30px;">AskIUT</div>
-            <div id="signup_button">Login</div>
+            <div id="signup_button"> <a href="login.php">Login</a> </div>
         </div>
         <div id="login_bar">
             Sign up to AskIUT <br> <br>
@@ -88,29 +95,8 @@
                 <input value="<?php echo $first_name ?>" name="first_name" type="text" id="text" placeholder="First Name"> <br><br>
                 <input value="<?php echo $last_name ?>" name="last_name" type="text" id="text" placeholder="Last Name"> <br><br>
                 <input value="<?php echo $email ?>" name="email" type="text" id="text" placeholder="Email"> <br><br>
-
-                <span>Department:</span><br>
-                <select name="Department" id="text">
-                <option><?php echo $department ?></option>
-                    <option>MCE</option>
-                    <option>EEE</option>
-                    <option>CEE</option>
-                    <option>CSE</option>
-                    <option>TVE</option>
-                    <option>BTM</option>
-                </select><br>
-                <span>Program:</span> <br>
-                <select name="Program" id="text">
-
-                <option ><?php echo $program ?></option>
-                    <option>MCE</option>
-                    <option>IPE</option>
-                    <option>EEE</option>
-                    <option>CEE</option>
-                    <option>CSE</option>
-                    <option>SWE</option>
-                    <option>BTM</option>
-                </select><br><br>
+                 <input value="<?php echo $department ?>" name="department" type="text" id="text" placeholder="Department"> <br><br>
+                  <input value="<?php echo $program ?>" name="program" type="text" id="text" placeholder="Program"> <br><br>
                 <input value="<?php echo $batch ?>" name="batch" type="text" id="text" placeholder="Batch (Admission year)"> <br><br>
                 <input name="password" type="password" id="text" placeholder="Password"> <br><br>
                 <input name="password2" type="password" id="text" placeholder="Retype Password"> <br><br>
