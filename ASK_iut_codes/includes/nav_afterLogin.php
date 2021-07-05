@@ -10,7 +10,7 @@
 
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Services</a>
+                <a href="contact/contact.php" class="nav-link">Contact Us</a>
 
             </li>
             <li class="nav-item">

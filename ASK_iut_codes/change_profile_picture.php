@@ -3,6 +3,7 @@ require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
+require_once('functions/image_crop_funnction.php');
 
 $user_data = check_login($_SESSION['mybook_userid']);
 
@@ -12,23 +13,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
 
         if ($_FILES['file']['type'] == "image/jpeg") {
-            $allowed_size = (1024 * 1024) * 3;
+            $allowed_size = (1024 * 1024) * 5;
             if ($_FILES['file']['size'] < $allowed_size) {
                 $filename = "uploads/" . $_FILES['file']['name'];
                 move_uploaded_file($_FILES['file']['tmp_name'], $filename);
-                $image = new Image();
 
-                $image->crop_image($filename, $filename, 800, 800);
+
+                // crop_image($filename, $filename, 800, 800);
 
                 if (file_exists($filename)) {
                     $userid = $user_data['userid'];
                     $query = "update users set profile_image = '$filename' where userid= '$userid' limit 1";
-                    $DB = new Database();
-                    $DB->save($query);
 
-                    header(("Location: profile.php"));
-                    die;
-                } else {
+                    save($query);
+
+                    redirect("profile.php");
+                } else if (file_exists($filename)) {
+                    $userid = $user_data['userid'];
+                    $query = "update users_faculty set profile_image = '$filename' where userid= '$userid' limit 1";
+
+                    save($query);
+
+                    redirect("profile.php");
+                }else {
                     echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
                     echo "<br>The following errors occured:<br><br>";
                     echo "please add a valid image";
@@ -37,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
                 echo "<br>The following errors occured:<br><br>";
-                echo "Only images of size 3 MB or lower are allowed";
+                echo "Only images of size 5 MB or lower are allowed";
                 echo "</div>";
             }
         } else {
@@ -54,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <head>
     <title>Change Profile Image | AskIUT</title>
-   
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
 <style type="text/css">

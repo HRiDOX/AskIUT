@@ -1,28 +1,16 @@
 <?php require_once('functions/config.php');
+require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
+require_once('functions/login_function.php');
+
+$user_data = check_login($_SESSION['mybook_userid']);
 
 
 //print_r($_SESSION);
 
 
-if (isset($_SESSION['mybook_userid']) || isset($_SESSION['Email']) || isset($_COOKIE['email'])) {
 
-    $id = $_SESSION['mybook_userid'];
-    print_r($id);
-
-    $result = check_login($id);
-    print_r($result);
-    if ($result) {
-        $user_data = get_data($id);;
-        echo "everything working fine";
-    } else {
-        redirect("login.php");
-    }
-} else {
-
-    redirect("login.php");
-}
 //posting starts here
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_SESSION['mybook_userid'];
@@ -58,6 +46,7 @@ $posts = get_posts($id);
 <head>
     <link rel="stylesheet" href="style.css">
     <title>AskIUT Profile</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <style>
     ::placeholder {
@@ -167,13 +156,7 @@ $posts = get_posts($id);
 
 <body style="font-family: Georgia, serif;background: linear-gradient(to left, #2F5D62,#DFEEEA);">
     <!--Top Bar-->
-    <div id="My_bar">
-        <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
-            AskIUT &nbsp &nbsp <input type="text" id="Search_box" placeholder="Search Your Knowledge😊">
-            <img src="Anika.jpg" style="width: 40px; float:right; border-radius:30px;border: 2px solid white;">
-
-
-        </div>
+    <?php include("topbar.php"); ?>
 
     </div>
     <!--cover Area-->
@@ -182,16 +165,28 @@ $posts = get_posts($id);
     <div style="width:800px;margin:auto;font-size: 30px;">
 
         <div style="background: linear-gradient(to left, #2F5D62,#DFEEEA) ;min-height:400px;text-align:center;color:#2F5D62 ">
-            <img id="Pro_Pic" src="Anika.jpg">
+            <?php
+            $image = " ";
+            if (file_exists($user_data['profile_image'])) {
+                $image = $user_data['profile_image'];
+            }
+
+            ?>
+
+            <img id="Pro_Pic" src="<?php echo $image ?>"><br>
+
+
             <br>
             <div style="font-size: 20px;">
                 <?php echo $user_data['UserName']; ?>
             </div>
-            <div id="menu_button"> Timeline</div>
+
+            <div id="menu_button"> <a href="index_timeline.php"> Timeline</a></div>
             <div id="menu_button"> About </div>
             <div id="menu_button">Friends</div>
             <div id="menu_button">Photos</div>
             <div id="menu_button">Settings</div>
+            <div id="menu_button"><a style="text-decoration: none;color: #f0f0f0;" href="change_profile_picture.php"> change image</a></div>
         </div>
         <!-- Below Cover Area -->
         <div style="width:800px;display:flex;">
