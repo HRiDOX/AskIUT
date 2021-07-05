@@ -32,6 +32,7 @@ require_once('functions/registration_function.php');
                             <input type="text" name="FirstName" placeholder="First Name " class="form-control py-2 mb-2" required>
                             <input type="text" name="LastName" placeholder="Last Name " class="form-control py-2 mb-2" required>
                             <input type="text" name="UserName" placeholder="User Name " class="form-control py-2 mb-2" required>
+
                             <input type="email" name="Email" placeholder="Email " class="form-control py-2 mb-2" required>
                             <input type="password" name="pass" placeholder="Password " class="form-control py-2 mb-2" required>
                             <input type="password" name="cpass" placeholder="Confirm Password " class="form-control py-2 mb-2" required>
