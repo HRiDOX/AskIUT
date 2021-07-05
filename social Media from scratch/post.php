@@ -15,9 +15,37 @@
         <?php echo $ROW['post'] ?>
 
         <br /><br />
-        <a href="">Like</a> . <a href="">Comment</a> .
+        <?php 
+			$likes = "";
+
+			$likes = ($ROW['likes'] > 0) ? "(" .$ROW['likes']. ")" : "" ;
+
+		?>
+        <a href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">Like<?php echo $likes ?></a> . <a href="">Comment</a> .
         <span style="color: #aaa;">
             <?php echo $ROW['date'];?>
         </span>
+        
+		<span style="color: #999;float:right">
+			
+			<?php 
+
+				$post = new Post();
+
+				if($post->i_own_post($ROW['postid'],$_SESSION['mybook_userid'])){
+
+					echo "
+					<a href='edit.php?id=$ROW[postid]'>
+		 				Edit
+					</a> .
+
+					 <a href='delete.php?id=$ROW[postid]' >
+		 				Delete
+					</a>";
+				}
+ 
+			 ?>
+
+		</span>
     </div>
 </div>
