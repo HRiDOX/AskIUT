@@ -62,18 +62,7 @@ function Error_validation($Error)
 }
 
 //creating user_id
-function create_userid()
-{
 
-    $length = rand(4, 19);
-    $number = '';
-    for ($i = 0; $i < $length; $i++) {
-        $new_rand = rand(0, 9);
-        $number = $number . $new_rand;
-    }
-
-    return $number;
-}
 
 //Email Exits Function stdent/faculty
 
