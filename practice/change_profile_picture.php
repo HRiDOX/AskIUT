@@ -12,13 +12,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
 
         if ($_FILES['file']['type'] == "image/jpeg") {
-            $allowed_size = (1024 * 1024) * 3;
-            if ($_FILES['file']['size'] < $allowed_size) {
-                $filename = "uploads/" . $_FILES['file']['name'];
-                move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+            $allowed_size = (1024 * 1024) * 5;
+            if ($_FILES['file']['size'] < $allowed_size) 
+            {
+                //creating folder
+                $folder = "uploads/" . $user_data['userid']. "/";
+                if(!file_exists($folder))
+                {
+                    mkdir($folder,0777,true);
+                }
+
                 $image = new Image();
 
-                $image->crop_image($filename, $filename, 800, 800);
+                $filename = $folder . $image->generate_filename(15) . ".jpg";
+                move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+                
+
+                if(file_exists($user_data['profile_image']))
+                {
+                    unlink($user_data['profile_image']);
+                }
+                $image->resize_image($filename, $filename, 800, 800);
 
                 if (file_exists($filename)) {
                     $userid = $user_data['userid'];
@@ -104,14 +118,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <input type="file" name="file">
                         <input id="post_button" type="submit" value="Change!">
                         <br>
+                        <div style="text-align: center;">
+                        <br><br>
+                            <img style="max-width: 500px;" src="<?php echo $user_data['profile_image'] ?>">
+                        </div>
+                    </div>
                 </form>
-
             </div>
-
-
         </div>
-
-    </div>
     </div>
 </body>
 
