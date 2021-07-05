@@ -1,6 +1,7 @@
 <?php
 
 require_once('functions/config.php');
+require_once('functions/all_common_function.php');
 require_once('functions/login_function.php');
 
 session_destroy();

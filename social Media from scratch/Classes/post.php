@@ -23,7 +23,7 @@
 
      public function get_posts($id)
      {
-        $query = "select * from posts where userid = '$id' order by id desc limit 10";
+        $query = "select * from posts where userid = '$id' order by id desc";
 
 		$DB = new Database();
 		$result = $DB->read($query);

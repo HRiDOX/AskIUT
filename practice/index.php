@@ -1,9 +1,6 @@
 <?php 
-session_start();
-include("classes/post.php");
-   include("classes/login.php");
-    include("classes/user.php");
-    include("classes/post.php");
+    include("classes/autoload.php");
+   
     $login= new login();
     $user_data = $login->check_login($_SESSION['mybook_userid']);
     ?>
