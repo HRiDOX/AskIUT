@@ -1,9 +1,5 @@
 <?php
-   session_start();
-  
-   include("classes/login.php");
-    include("classes/user.php");
-    include("classes/connect.php");
+   include("classes/autoload.php");
 
 //checck if user is logged in
 if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
@@ -42,7 +38,7 @@ if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
  {
     $post= new Post();
     $id = $_SESSION['mybook_userid'];  
-    $result = $post->create_post($id,$_POST);
+    $result = $post->create_post($id,$_POST,$_FILES);
 
     if($result == "")
     {
@@ -66,6 +62,7 @@ if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
  
  $posts = $post->get_posts($id);
 
+ $image_class = new Image();
 
 ?>
 
@@ -183,13 +180,12 @@ textarea {
     <!--cover Area-->
     <div style="width: 800px;margin:auto; min-height:400px ">
         <div style="background-color:white; text-align:center;color: #2F5D62 ">
-            <img src="cover.jpg" style="width:100%;">
             <span style="font_size:11px;">
             <?php 
-                $image= "";
+                $image= "images/pic_holder.jpg";
                 if(file_exists($user_data['profile_image']))
                 {
-                    $image = $user_data['profile_image'];
+                    $image = $image_class->get_thumb_profile($user_data['profile_image']);
                 }
             ?>
             <img id="Pro_Pic" src="<?php echo $image ?>"> <br>
@@ -236,8 +232,9 @@ textarea {
             <!-- Post Area -->
             <div style="min-height:400px;flex:2.5;padding:20px;">
                 <div style="border: solid thin #aaa;padding: 10px;background-color: white;">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <textarea name="post" placeholder="Ask Your Question...."></textarea>
+                        <input type="file" name="file">
                         <input id="post_button" type="submit" value="Ask!">
                         <br>
                     </form>
