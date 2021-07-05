@@ -5,7 +5,12 @@ require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/image_crop_funnction.php');
 
-$user_data = check_login($_SESSION['mybook_userid']);
+if (isset($_SESSION['Email'])) {
+    $id = $_SESSION['mybook_userid'];
+    $user_data = check_login($id);
+} else {
+    redirect("login.php");
+}
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -19,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 move_uploaded_file($_FILES['file']['tmp_name'], $filename);
 
 
-                // crop_image($filename, $filename, 800, 800);
+                //crop_image($filename, $filename, 800, 800);
 
                 if (file_exists($filename)) {
                     $userid = $user_data['userid'];
@@ -35,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     save($query);
 
                     redirect("profile.php");
-                }else {
+                } else {
                     echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
                     echo "<br>The following errors occured:<br><br>";
                     echo "please add a valid image";

@@ -94,26 +94,22 @@ function logged_in()
 
 function check_login($id)
 {
-    if (is_numeric($id)) {
 
-        $query = "select *from users where userid ='$id' and Active ='1' ";
-        $result = read($query);
-        if ($result) {
-            $user_data = $result[0];
-            return $user_data;
-        } else {
-            $query1 = "select * from users_faculty where userid ='$id' and Active ='1' ";
-            $result1 = read($query1);
-            if ($result1) {
-                $user_data1 = $result1[0];
-                return $user_data1;
-            } else {
 
-                redirect("login.php");
-            }
-        }
+    $query = "select *from users where userid ='$id' and Active ='1' ";
+    $result = read($query);
+    if ($result) {
+        $user_data = $result[0];
+        return $user_data;
     } else {
+        $query1 = "select * from users_faculty where userid ='$id' and Active ='1' ";
+        $result1 = read($query1);
+        if ($result1) {
+            $user_data1 = $result1[0];
+            return $user_data1;
+        } else {
 
-        redirect("login.php");
+            redirect("login.php");
+        }
     }
 }
