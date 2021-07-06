@@ -1,11 +1,11 @@
 <?php require_once('includes/header.php');
-require_once('functions/all_common_function.php');
+
 require_once('functions/registration_function.php');
 ?>
 
 
 
-<body background="logo/register.jpg">
+<body background="logo/register.jpg" style="width:100%;height:100%;">
 
     <! --Navigation Bar -->
         <?php require_once('includes/nav_beforeLogin.php') ?>
@@ -17,7 +17,7 @@ require_once('functions/registration_function.php');
 
                     <div class="card-title">
 
-                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Registration Form as a tudent</h2>
+                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Register as Student</h2>
 
 
                         <hr>
@@ -32,6 +32,8 @@ require_once('functions/registration_function.php');
                             <input type="text" name="FirstName" placeholder="First Name " class="form-control py-2 mb-2" required>
                             <input type="text" name="LastName" placeholder="Last Name " class="form-control py-2 mb-2" required>
                             <input type="text" name="UserName" placeholder="User Name " class="form-control py-2 mb-2" required>
+                            <input type="text" name="Batch" placeholder="Batch " class="form-control py-2 mb-2" required>
+                            <input type="text" name="Department" placeholder="Department " class="form-control py-2 mb-2" required>
 
                             <input type="email" name="Email" placeholder="Email " class="form-control py-2 mb-2" required>
                             <input type="password" name="pass" placeholder="Password " class="form-control py-2 mb-2" required>

@@ -43,3 +43,12 @@ function get_user($id)
         return false;
     }
 }
+
+function get_profile($id)
+{
+
+    $id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' active 1";
+    return read($query);
+}

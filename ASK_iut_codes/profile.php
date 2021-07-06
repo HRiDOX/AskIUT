@@ -1,4 +1,5 @@
-<?php require_once('functions/config.php');
+<?php
+require_once('functions/config.php');
 require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
@@ -18,7 +19,7 @@ if (isset($_SESSION['Email'])) {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_SESSION['mybook_userid'];
 
-    $result = create_post($id, $_POST);
+    $result = create_post($id, $_POST, $_FILES);
 
     if ($result == "") {
         redirect("profile.php");
@@ -48,7 +49,7 @@ $posts = get_posts($id);
 
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>AskIUT Profile</title>
+    <title>AskIUT | Profile</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <style>
@@ -59,7 +60,7 @@ $posts = get_posts($id);
 
     #My_bar {
         height: 50px;
-        background-color: #2F5D62;
+        background-color: #21294C;
         color: white;
 
         background-position: center;
@@ -80,7 +81,7 @@ $posts = get_posts($id);
     }
 
     #Pro_Pic {
-        width: 150px;
+        width: 100px;
         margin-top: 20px;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -108,7 +109,7 @@ $posts = get_posts($id);
         background-color: white;
         min-height: 400px;
         margin-top: 20px;
-        color: #2F5D62;
+        color: #595B83;
         padding: 8px;
 
 
@@ -157,15 +158,13 @@ $posts = get_posts($id);
 
 
 
-<body style="font-family: Georgia, serif;background: linear-gradient(to left, #2F5D62,#DFEEEA);">
+<body style="font-family: Georgia, serif;background-image:linear-gradient(to right, rgba(255,0,0,0), rgba(126,164,246,1));;">
     <!--Top Bar-->
     <?php include("topbar.php"); ?>
-    <!--cover Area-->
-
 
     <div style="width:800px;margin:auto;font-size: 30px;">
 
-        <div style="background: linear-gradient(to left, #2F5D62,#DFEEEA) ;min-height:400px;text-align:center;color:#2F5D62 ">
+        <div>
             <?php
             $image = "logo/pic_holder.jpg ";
             if (file_exists($user_data['profile_image'])) {
@@ -176,52 +175,40 @@ $posts = get_posts($id);
 
             <img id="Pro_Pic" src="<?php echo $image ?>"><br>
 
-
-            <br>
             <div style="font-size: 20px;">
-                <?php echo $user_data['UserName']; ?>
+                <?php echo $user_data['FirstName'] . " " . $user_data['LastName']; ?><br>
+                <div id="menu_button"><a style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
             </div>
-
-            <div id="menu_button"> <a href="index_timeline.php"> Timeline</a></div>
-            <div id="menu_button"> About </div>
-            <div id="menu_button">Friends</div>
-            <div id="menu_button">Photos</div>
-            <div id="menu_button">Settings</div>
-            <div id="menu_button"><a style="text-decoration: none;color: #f0f0f0;" href="change_profile_picture.php?change=profile"> change image</a></div>
+            <div style="text-align:center;">
+                <div id="menu_button"> <a style="text-decoration:none"; href="profile.php"> Profile</a></div>
+                <div id="menu_button"> About </div>
+                <div id="menu_button">Photos</div>
+                <div id="menu_button">Settings</div>
+            </div>
         </div>
         <!-- Below Cover Area -->
         <div style="width:800px;display:flex;">
             <!-- Friends Area -->
-            <div style="min-height:400px;flex:1">
+            <div style="min-height:400px;flex:1; ">
                 <div id="friends_bar">
-                    Friend <br>
+                <br>
                     <div id="friends">
                         <img id="friends_img" src="homePage.png">
-                        <br>
                         Home Page
                     </div>
+                    <br>
                     <div id="friends">
                         <img id="friends_img" src="group.png">
-                        <br>
                         Groups
-                    </div>
-                    <div id="friends">
-                        <img id="friends_img" src="user3.jpg">
-                        <br>
-                        Gordon Ramsey
-                    </div>
-                    <div id="friends">
-                        <img id="friends_img" src="user4.jpg">
-                        <br>
-                        John cena
                     </div>
                 </div>
             </div>
             <!-- Post Area -->
-            <div style="min-height:400px;flex:2.5;padding:20px;">
+            <div style="min-height:400px;flex:3.5;padding:20px;">
                 <div style="border: solid thin #aaa;padding: 10px;background-color: white;">
-                    <form method="post">
-                        <textarea name="post" placeholder="Ask Your Question...."></textarea>
+                    <form method="post" enctype="multipart/form-data">
+                        <textarea name="post" placeholder="Ask Your Question"></textarea>
+                        <input style="font-size:12px;"type="file" name="file">
                         <input id="post_button" type="submit" value="Ask!">
                         <br>
                     </form>

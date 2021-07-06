@@ -46,12 +46,12 @@ function read($query)
 {
 
     global $con;
-    $result = mysqli_query($con, $query);
-    if (!$result) {
+    $result2 = mysqli_query($con, $query);
+    if (!$result2) {
         return false;
     } else {
         $data = false;
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result2)) {
             $data[] = $row;
         }
 
