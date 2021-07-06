@@ -20,7 +20,7 @@ require_once('functions/login_function.php');
 
                         ?>
 
-                        <h2 class="text-center mt-5 bg-secondary" style="border:2px solid Violet ;">Login AskIUT</h2>
+                        <h2 class="text-center mt-5 bg-secondary"style="border:2px solid #aaa;">Login AskIUT</h2>
                         <hr>
                         <hr>
                         <hr>
@@ -28,15 +28,11 @@ require_once('functions/login_function.php');
                     </div>
                     <div class="card-body ">
                         <form method="POST">
-                            <input type="email" name="UEmail" placeholder="User Email " class="form-control py-2 mb-2 bg-info">
-                            <input type="password" name="UPass" placeholder=" Password " class="form-control py-2 mb-2 bg-info">
-                            <button class="btn btn-dark float-right">Log in</button>
-
-
-                    </div>
-                    <div class="card-footer">
-                        <input type="checkbox" name="remember"> <span>Remember Me</span>
-                        <a href="recover.php" class="float-right">Forget Passowrd</a>
+                            <input type="email" name="UEmail" placeholder="User Email " class="form-control py-2 mb-2 ">
+                            <input type="password" name="UPass" placeholder=" Password " class="form-control py-2 mb-2 ">
+                            <button class="btn btn-dark" style="float:right;">Log in</button>
+                            <a class="card-footer" href="recover.php" style="float:right;color:white;padding:10px;">Forget Passowrd</a>
+                            <input class="card-footer" type="checkbox" name="remember"> <span>Remember Me</span>
                         </form>
 
                     </div>

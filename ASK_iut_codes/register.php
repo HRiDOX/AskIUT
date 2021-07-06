@@ -5,7 +5,7 @@ require_once('functions/registration_function.php');
 
 
 
-<body background="logo/register.jpg">
+<body background="logo/register.jpg" style="width:100%;height:100%;">
 
     <! --Navigation Bar -->
         <?php require_once('includes/nav_beforeLogin.php') ?>
@@ -17,7 +17,7 @@ require_once('functions/registration_function.php');
 
                     <div class="card-title">
 
-                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Registration Form as a tudent</h2>
+                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Register as Student</h2>
 
 
                         <hr>

@@ -22,9 +22,8 @@ if (isset($_SESSION['Email'])) {
 <style type="text/css">
     #top_bar {
         height: 50px;
-        background-color: #060930;
+        background-color: #21294C;
         color: #EEEEEE;
-        font-family: 'Satisfy', cursive;
     }
 
     #search_box {
@@ -122,7 +121,7 @@ if (isset($_SESSION['Email'])) {
 
             ?>
             <a href="profile.php"><img src="<?php echo $image ?>" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
-            <input type="text" id="search_box" placeholder="Search tags for posts">
+            <input type="text" id="search_box" placeholder="Search">
 
         </div>
     </div>
@@ -131,7 +130,7 @@ if (isset($_SESSION['Email'])) {
     <!--Menu button area-->
     <div style="width: 800px;margin:auto; min-height:400px;">
         <div style="text-align:center; color:#222831">
-
+            <div id="menu_buttons"><a href="profile.php" style="text-decoration:none;">Profile</a></div>
             <div id="menu_buttons">Repository </div>
             <div id="menu_buttons">Groups</div>
             <div id="menu_buttons">Settings</div>
@@ -151,11 +150,11 @@ if (isset($_SESSION['Email'])) {
             </div>
 
             <!--posts area-->
-            <div style="flex:2.5; padding:20px; min-height: 400px; padding-right: 0px;">
+            <div style="flex:3.5; padding:20px; min-height: 400px; padding-right: 0px;">
 
                 <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
-                    <textarea id="posting_post" placeholder="What's your query?"></textarea>
-                    <input id="post_button" type="submit" value="Post!">
+                    <textarea id="posting_post" placeholder="Ask Your Question"></textarea>
+                    <input id="post_button" type="submit" value="Ask!">
                     <br>
                 </div>
                 <!--posts-->
@@ -166,7 +165,7 @@ if (isset($_SESSION['Email'])) {
                             <img src="milkmocha.jpg" style="width: 70px; margin-right: 4px; border-radius:50%;">
                         </div>
                         <div>
-                            <div style="font-weight: bold; color: black;"> Milk and Mocha </div>
+                            <div style="font-weight: bold; color: black;"> User 1 </div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed consectetur dolor. Maecenas pulvinar risus euismod tincidunt varius. Suspendisse malesuada nunc efficitur augue vulputate rutrum. Aliquam aliquet accumsan mollis. Morbi cursus massa in nunc volutpat, in euismod magna fringilla. Nunc quis sollicitudin justo. Duis nec ipsum in magna rhoncus dignissim ut et justo. Sed suscipit commodo ante.
                             <br /><br />
                             <a href="">Like</a> . <a href="">Comment</a> . <span style="color:#999;">June 28 2021</span>
@@ -179,7 +178,7 @@ if (isset($_SESSION['Email'])) {
                             <img src="panda.jpg" style="width: 70px; margin-right: 4px; border-radius:50%;">
                         </div>
                         <div>
-                            <div style="font-weight: bold; color: black;"> Panda </div>
+                            <div style="font-weight: bold; color: black;"> User 2 </div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed consectetur dolor. Maecenas pulvinar risus euismod tincidunt varius. Suspendisse malesuada nunc efficitur augue vulputate rutrum. Aliquam aliquet accumsan mollis. Morbi cursus massa in nunc volutpat, in euismod magna fringilla. Nunc quis sollicitudin justo. Duis nec ipsum in magna rhoncus dignissim ut et justo. Sed suscipit commodo ante.
                             <br /><br />
                             <a href="">Like</a> . <a href="">Comment</a> . <span style="color:#999;">June 28 2021</span>

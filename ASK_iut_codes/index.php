@@ -43,20 +43,22 @@ require_once('functions/function.php');
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="logo/faculty.jpg" alt="Los Angeles" width="900" height="250">
+                <img src="logo/faculty.jpg" alt="Faculty" width="900" height="250">
             </div>
             <div class="carousel-item">
-                <img src="logo/IUT.jpg" alt="Chicago" width="900" height="250">
+                <img src="logo/IUT.jpg" alt="IUT" width="900" height="250">
             </div>
             <div class="carousel-item">
-                <img src="logo/login.jpg" alt="New York" width="900" height="250">
+                <img src="logo/login.jpg" alt="IUT" width="900" height="250">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col">
 
                         <?php display_message(); ?>
-                        <h3 class="text-center "> Welcome to AskIUT!
+                        <br>
+                        <br>
+                        <h3 style="font-family:cursive;" class="text-center "><b>Welcome to AskIUT!</b>
                         </h3>
 
 
@@ -66,10 +68,6 @@ require_once('functions/function.php');
                 </div>
             </div>
 
-            <br>
-            <br>
-            <br>
-            <br>
             <br>
             <br>
             <br>
