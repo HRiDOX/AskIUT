@@ -11,6 +11,9 @@ function user_validation()
         $FirstName = clean($_POST['FirstName']);
         $LastName = clean($_POST['LastName']);
         $UserName = clean($_POST['UserName']);
+        $Batch = clean($_POST['Batch']);
+        $Department = clean($_POST['Department']);
+
 
         $Email = clean($_POST['Email']);
         $Pass = clean($_POST['pass']);
@@ -60,7 +63,7 @@ function user_validation()
             }
         } else {
 
-            if (user_registration($FirstName, $LastName, $UserName, $Email, $Pass)) {
+            if (user_registration($FirstName, $LastName, $UserName, $Batch, $Department, $Email, $Pass)) {
                 set_message('<p class = "bg-success text-center lead">You Have Succesfully Registered Please ! Check Your Activation Link </p>');
                 redirect("index.php");
             } else {
@@ -147,11 +150,14 @@ function faculty_validation()
 
 //User Student Registration Function
 
-function user_registration($FName, $LName, $UName, $Email, $Pass)
+function user_registration($FName, $LName, $UName, $Batch, $Depart, $Email, $Pass)
 {
     $FirstName = escape($FName);
     $LastName  = escape($LName);
     $UserName = escape($UName);
+    $Batch = escape($Batch);
+    $Department = escape($Depart);
+
     $Email = escape($Email);
     $Pass = escape($Pass);
 
@@ -166,7 +172,7 @@ function user_registration($FName, $LName, $UName, $Email, $Pass)
         $userid = create_userid();
         $url_address = strtolower($FirstName) . "." . strtolower($LastName);
 
-        $sql = "Insert into users(userid,FirstName ,LastName,UserName,Email,Password,Validation_Code,Active,url_address) values('$userid','$FirstName','$LastName',' $UserName','$Email','$Password','$Validation_code','0','$url_address')";
+        $sql = "Insert into users(userid,FirstName ,LastName,UserName,Batch,Department,Email,Password,Validation_Code,Active,url_address) values('$userid','$FirstName','$LastName',' $UserName','$Batch','$Department','$Email','$Password','$Validation_code','0','$url_address')";
 
         $result = query($sql);
 

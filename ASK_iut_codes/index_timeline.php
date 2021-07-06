@@ -4,7 +4,12 @@ require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 
-$user_data = check_login($_SESSION['mybook_userid']);
+if (isset($_SESSION['Email'])) {
+    $d = $_SESSION['mybook_userid'];
+    $user_data = check_login($d);
+} else {
+    redirect("login.php");
+}
 ?>
 
 <!DOCTYPE html>

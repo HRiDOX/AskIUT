@@ -3,7 +3,7 @@ require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
-require_once('functions/image_crop_funnction.php');
+//require_once('functions/image_crop_funnction.php');
 require_once('functions/image_function.php');
 
 if (isset($_SESSION['Email'])) {
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 //$image->resize_image($filename, $filename, 800, 800);
 
-                if (file_exists($filename) && isset($_SESSION['Email'])) {
+                if (file_exists($filename)) {
                     $userid = $user_data['userid'];
 
                     $query = "update users set profile_image = '$filename' where userid= '$userid' limit 1";

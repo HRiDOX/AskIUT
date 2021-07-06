@@ -1,4 +1,5 @@
-<?php require_once('functions/config.php');
+<?php
+require_once('functions/config.php');
 require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
@@ -18,7 +19,7 @@ if (isset($_SESSION['Email'])) {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_SESSION['mybook_userid'];
 
-    $result = create_post($id, $_POST);
+    $result = create_post($id, $_POST, $_FILES);
 
     if ($result == "") {
         redirect("profile.php");
@@ -220,8 +221,9 @@ $posts = get_posts($id);
             <!-- Post Area -->
             <div style="min-height:400px;flex:2.5;padding:20px;">
                 <div style="border: solid thin #aaa;padding: 10px;background-color: white;">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <textarea name="post" placeholder="Ask Your Question...."></textarea>
+                        <input type="file" name="file">
                         <input id="post_button" type="submit" value="Ask!">
                         <br>
                     </form>
