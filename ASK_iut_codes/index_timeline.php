@@ -109,7 +109,14 @@ $user_data = check_login($_SESSION['mybook_userid']);
     <!--search bar-->
     <div>
         <div style="width: 800px; margin:auto;min-height:70px;">
-            <a href="profile.php"><img src="milkmocha.jpg" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
+            <?php
+            $image = "logo/pic_holder.jpg ";
+            if (file_exists($user_data['profile_image'])) {
+                $image = $user_data['profile_image'];
+            }
+
+            ?>
+            <a href="profile.php"><img src="<?php echo $image ?>" id="user_pic" style="width: 50px; border-radius:50px;margin:20px;"></a>
             <input type="text" id="search_box" placeholder="Search tags for posts">
 
         </div>

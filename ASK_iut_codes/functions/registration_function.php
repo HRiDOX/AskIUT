@@ -1,19 +1,8 @@
 <?php
-function create_userid()
-{
 
-    $length = rand(4, 19);
-    $number = '';
-    for ($i = 0; $i < $length; $i++) {
-        $new_rand = rand(0, 9);
-        $number = $number . $new_rand;
-    }
-
-    return $number;
-}
 
 //User Validation Function
-
+include("all_common_function.php");
 function user_validation()
 {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {

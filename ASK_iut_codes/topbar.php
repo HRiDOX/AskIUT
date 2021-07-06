@@ -1,7 +1,13 @@
 <div id="My_bar">
     <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
         <a href="admin.php">AskIUT</a>&nbsp &nbsp <input type="text" id="Search_box" placeholder="Search Your Knowledge😊">
-        <img src="Anika.jpg" style="width: 40px; float:right; border-radius:30px;border: 2px solid white;">
+        <?php
+        $image = "logo/pic_holder.jpg ";
+        if (file_exists($user_data['profile_image'])) {
+            $image = $user_data['profile_image'];
+        } ?>
+
+        <img src="<?php echo $image ?>" style="width: 40px; float:right; border-radius:30px;border: 2px solid white;">
 
 
 

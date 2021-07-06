@@ -13,23 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if ($_FILES['file']['type'] == "image/jpeg") {
             $allowed_size = (1024 * 1024) * 5;
-            if ($_FILES['file']['size'] < $allowed_size) 
-            {
+            if ($_FILES['file']['size'] < $allowed_size) {
                 //creating folder
-                $folder = "uploads/" . $user_data['userid']. "/";
-                if(!file_exists($folder))
-                {
-                    mkdir($folder,0777,true);
+                $folder = "uploads/" . $user_data['userid'] . "/";
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
                 }
 
                 $image = new Image();
 
                 $filename = $folder . $image->generate_filename(15) . ".jpg";
                 move_uploaded_file($_FILES['file']['tmp_name'], $filename);
-                
 
-                if(file_exists($user_data['profile_image']))
-                {
+
+                if (file_exists($user_data['profile_image'])) {
                     unlink($user_data['profile_image']);
                 }
                 $image->resize_image($filename, $filename, 800, 800);
@@ -68,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <head>
     <title>Change Profile Image | AskIUT</title>
-   
+
 </head>
 
 <style type="text/css">
@@ -119,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <input id="post_button" type="submit" value="Change!">
                         <br>
                         <div style="text-align: center;">
-                        <br><br>
+                            <br><br>
                             <img style="max-width: 500px;" src="<?php echo $user_data['profile_image'] ?>">
                         </div>
                     </div>

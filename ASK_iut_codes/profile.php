@@ -160,8 +160,6 @@ $posts = get_posts($id);
 <body style="font-family: Georgia, serif;background: linear-gradient(to left, #2F5D62,#DFEEEA);">
     <!--Top Bar-->
     <?php include("topbar.php"); ?>
-
-    </div>
     <!--cover Area-->
 
 
@@ -169,9 +167,9 @@ $posts = get_posts($id);
 
         <div style="background: linear-gradient(to left, #2F5D62,#DFEEEA) ;min-height:400px;text-align:center;color:#2F5D62 ">
             <?php
-            $image = " ";
+            $image = "logo/pic_holder.jpg ";
             if (file_exists($user_data['profile_image'])) {
-                $image = $user_data['profile_image'];
+                $image = $user_data['profile_image']; //here i need to add thumbnail
             }
 
             ?>
@@ -189,7 +187,7 @@ $posts = get_posts($id);
             <div id="menu_button">Friends</div>
             <div id="menu_button">Photos</div>
             <div id="menu_button">Settings</div>
-            <div id="menu_button"><a style="text-decoration: none;color: #f0f0f0;" href="change_profile_picture.php"> change image</a></div>
+            <div id="menu_button"><a style="text-decoration: none;color: #f0f0f0;" href="change_profile_picture.php?change=profile"> change image</a></div>
         </div>
         <!-- Below Cover Area -->
         <div style="width:800px;display:flex;">
@@ -249,7 +247,7 @@ $posts = get_posts($id);
             </div>
         </div>
     </div>
-    </div>
+
 
 </body>
 
