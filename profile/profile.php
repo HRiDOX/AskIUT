@@ -62,10 +62,10 @@
 }
 
 #friends_bar {
-    background-color: white;
+    
     min-height: 400px;
     margin-top: 20px;
-    color: #2F5D62;
+    color: white;
     padding: 8px;
 
 
@@ -201,7 +201,7 @@ a:hover {
 
 
 
-<body style="font-family: Georgia, serif; background: linear-gradient(to left, #2F5D62,#A7C4BC);">
+<body style="font-family: Georgia, serif; background: linear-gradient(to left,#04009A ,#056676);">
 
     <!--Top Bar-->
     <div id="My_bar">
@@ -218,7 +218,7 @@ a:hover {
         
         <div style="width:800px;margin:auto;font-size: 30px;">
 
-            <div style="background: linear-gradient(to left, #2F5D62,#A7C4BC);min-height:400px;text-align:center;color:#2F5D62 ">
+            <div  >
                 <img id="Pro_Pic" src="Anika.jpg">
                 <br>
                 <div style="font-size: 20px;">
@@ -234,8 +234,8 @@ a:hover {
             <div style="width:800px;display:flex;">
                 <!-- Friends Area -->
                 <div style="min-height:400px;flex:1">
-                    <div id="friends_bar">
-                        Friend <br>
+                    <div id="friends_bar" style="background-color:#47597E">
+                        <br>
                         <div id="friends">
                             <img id="friends_img" src="homePage.png">
                             <br>
