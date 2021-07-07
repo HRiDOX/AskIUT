@@ -57,7 +57,15 @@
 
     <div class="content">
         <h1>AskIUT</h1>
-        <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+        <p>Starting in a new institution is very overwhelming for every new student. Students often lag behind just
+            because they do not know how to ask for suggestions and what they exactly need. It becomes very
+            beneficial for students if they can get proper guidance from batchmates, seniors or even the alumni.
+            Through this website, students can ask for suggestions as a post where other users can give their
+            suggestions. They can also share various resources, source of the resource and related links or videos.
+            Although there are various social medias, there are some people who do not actively use it, they can use
+            this platform easily and it would be easier for them to use. It would have a forum like structure with
+            slightly more features.
+        </p>
         <button id="myBtn" onclick="myFunction()">Pause</button>
     </div>
 

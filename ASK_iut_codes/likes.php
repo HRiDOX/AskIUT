@@ -1,4 +1,5 @@
 <?php
+
 require_once('functions/config.php');
 require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
@@ -14,52 +15,14 @@ if (isset($_SESSION['Email'])) {
 }
 
 $USER = $user_data;
-
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-
-
-	$profile_data = get_profile($_GET['id']);
-
-	if (is_array($profile_data)) {
-		$user_data = $profile_data[0];
-	}
-}
-
-
-if (isset($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "delete.php")) {
-
-	$_SESSION['return_to'] = $_SERVER['HTTP_REFERER'];
-}
-
-
-
+$likes = false;
 $ERROR = "";
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && isset($_GET['type'])) {
 
-	$ROW = get_one_post($_GET['id']);
-
-	if (!$ROW) {
-
-		$ERROR = "No such post was found!";
-	} else {
-
-		if ($ROW['userid'] != $_SESSION['mybook_userid']) {
-
-			$ERROR = "Accesss denied! you cant delete this file!";
-		}
-	}
+	$likes = get_likes($_GET['id'], $_GET['type']);
 } else {
 
-	$ERROR = "No such post was found!";
-}
-
-
-//if something was posted
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-	delete_post($_POST['postid']);
-	//header("Location: " . $_SESSION['return_to']);
-	redirect("profile.php");
+	$ERROR = "No information post was found!";
 }
 
 ?>
@@ -68,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <html>
 
 <head>
-	<title>Delete | Mybook</title>
+	<title>People who like | Mybook</title>
 </head>
 
 <style type="text/css">
@@ -188,30 +151,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 				<div style="border:solid thin #aaa; padding: 10px;background-color: white;">
 
-					<form method="post">
-
-						<?php
-
-						if ($ERROR != "") {
-
-							echo $ERROR;
-						} else {
-
-							echo "Are you sure you want to delete this post??<br><br>";
+					<?php
 
 
-							$ROW_USER = get_user($ROW['userid']);
+					if (is_array($likes)) {
 
-							include("post_delete.php");
+						foreach ($likes as $row) {
+							# code...
+							$FRIEND_ROW = get_user($row['userid']);
+							//include("user_profile_function.php");
 
-							echo "<input type='hidden' name='postid' value='$ROW[postid]'>";
-							echo "<input id='post_button' type='submit' value='Delete'>";
 						}
-						?>
+					}
 
+					?>
 
-						<br>
-					</form>
+					<br style="clear: both;">
 				</div>
 
 

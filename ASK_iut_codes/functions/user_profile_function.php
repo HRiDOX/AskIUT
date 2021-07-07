@@ -36,11 +36,11 @@ function get_user($id)
     } else {
         $query1 = "select  *from users_faculty where userid ='$id' and Active='1'";
         $result1 = read($query1);
-    }
-    if ($result1) {
-        return $result1[0];
-    } else {
-        return false;
+        if ($result1) {
+            return $result1[0];
+        } else {
+            return false;
+        }
     }
 }
 
