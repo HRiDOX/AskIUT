@@ -15,7 +15,7 @@
 
 #My_bar {
     height: 50px;
-    background-color: #2F5D62;
+    background-color: #056676;
     color: white;
 
     background-position: center;
@@ -47,7 +47,7 @@
     display: inline-block;
     margin: 2px;
     /* background-color: #2F5D62; */
-    color: #313f3b;
+    color: white;
     font-size: 14px;
     cursor: pointer;
 
@@ -201,7 +201,7 @@ a:hover {
 
 
 
-<body style="font-family: Georgia, serif; background: linear-gradient(to left,#04009A ,#056676);">
+<body style="font-family: Georgia, serif; background: linear-gradient(to left, #04009A ,#056676);">
 
     <!--Top Bar-->
     <div id="My_bar">
@@ -239,7 +239,7 @@ a:hover {
                         <div id="friends">
                             <img id="friends_img" src="homePage.png">
                             <br>
-                            Home Page
+                            Group
                         </div>
                         <div id="friends">
                             <img id="friends_img" src="group.png">
