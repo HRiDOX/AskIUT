@@ -101,7 +101,7 @@ $posts = get_posts($id);
         display: inline-block;
         margin: 2px;
         /* background-color: #2F5D62; */
-        color: #313f3b;
+        color: white;
         font-size: 14px;
 
 
@@ -111,14 +111,14 @@ $posts = get_posts($id);
     #friends_img {
         width: 75px;
         float: left;
-        margin: 8px;
+        margin: 5px;
     }
 
     #friends_bar {
-        background-color: white;
+        background-color:#47597E;
         min-height: 400px;
         margin-top: 20px;
-        color: #595B83;
+        color: white;
         padding: 8px;
 
 
@@ -167,7 +167,7 @@ $posts = get_posts($id);
 
 
 
-<body style="font-family: Georgia, serif;background-image:linear-gradient(to right, rgba(255,0,0,0), rgba(126,164,246,1));;">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left,#04009A ,#056676);">
     <!--Top Bar-->
     <?php include("topbar.php"); ?>
 
@@ -202,12 +202,12 @@ $posts = get_posts($id);
                 <div id="friends_bar">
                     <br>
                     <div id="friends">
-                        <img id="friends_img" src="homePage.png">
-                        Home Page
+                        <img id="friends_img" src="repository.png"><br><br>
+                        Repository
                     </div>
-                    <br>
+                    <br><br><br>
                     <div id="friends">
-                        <img id="friends_img" src="group.png">
+                        <img id="friends_img" src="group.png"><br><br>
                         Groups
                     </div>
                 </div>

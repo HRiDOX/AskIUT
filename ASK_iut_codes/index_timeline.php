@@ -61,7 +61,7 @@ if (isset($_SESSION['Email'])) {
     }
 
     #notice_board {
-        background-color: #595B83;
+        background-color:#47597E;
         min-height: 400px;
         margin-top: 20px;
         color: #222831;
@@ -102,7 +102,7 @@ if (isset($_SESSION['Email'])) {
     }
 </style>
 
-<body style="font-family: helvetica; background-image:linear-gradient(to right, rgba(255,0,0,0), rgba(126,164,246,1));">
+<body style="font-family: helvetica; background: linear-gradient(to left,#04009A ,#056676);">
     <!--top bar-->
     <div id="top_bar">
         <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
