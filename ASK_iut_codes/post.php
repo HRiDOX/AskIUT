@@ -28,13 +28,81 @@
         ?>
 
         <br /><br />
-        <a href="">Like</a> . <a href="">Comment</a> .
+        <?php
+        $likes = " ";
+        $likes = ($ROW['likes'] > 0) ? "(" . $ROW['likes'] . ")" : "";
+
+
+        ?>
+        <a href="like.php?type=post&id=<?php echo $ROW['postid']; ?>">Like(<?php echo $likes ?>)</a> . <a href="">Comment</a> .
         <span style="color: #aaa;">
             <?php echo $ROW['date']; ?>
         </span>
+
         <span style="color: #aaa; float:right;">
-            <a href="edit.php">Edit </a>.
-            <a href="delete.php?id=<?php echo $ROW['postid'] ?>"> Delete</a>
+            <?php
+
+            if (i_own_post($ROW['postid'], $_SESSION['mybook_userid'])) {
+                # code...
+
+                echo "
+                <a href='edit.php'>
+                 Edit 
+                </a>.
+                  <a href='delete.php?id= $ROW[postid]'>
+                      Delete
+                 </a>";
+            }
+            ?>
         </span>
+        <?php
+        $i_liked = false;
+
+        if (isset($_SESSION['mybook_userid'])) {
+
+
+
+            $sql = "select likes from likes where type='post' && contentid = '$ROW[postid]' limit 1";
+            $result = read($sql);
+            if (is_array($result)) {
+
+                $likes = json_decode($result[0]['likes'], true);
+
+                $user_ids = array_column($likes, "userid");
+
+                if (in_array($_SESSION['mybook_userid'], $user_ids)) {
+                    $i_liked = true;
+                }
+            }
+        }
+        if ($ROW['likes'] > 0) {
+
+            echo "<br/>";
+            echo "<a href='likes.php?type=post&id=$ROW[postid]'>";
+
+            if ($ROW['likes'] == 1) {
+
+                if ($i_liked) {
+                    echo "<div style='text-align:left;'>You liked this post </div>";
+                } else {
+                    echo "<div style='text-align:left;'> 1 person liked this post </div>";
+                }
+            } else {
+
+                if ($i_liked) {
+
+                    $text = "others";
+                    if ($ROW['likes'] - 1 == 1) {
+                        $text = "other";
+                    }
+                    echo "<div style='text-align:left;'> You and " . ($ROW['likes'] - 1) . " $text liked this post </div>";
+                } else {
+                    echo "<div style='text-align:left;'>" . $ROW['likes'] . " other liked this post </div>";
+                }
+            }
+
+            echo "</a>";
+        }
+        ?>
     </div>
 </div>
