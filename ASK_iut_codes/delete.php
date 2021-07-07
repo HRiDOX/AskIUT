@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	}
 </style>
 
-<body style="font-family: tahoma; background-color: #d0d8e4;">
+<body style="font-family: tahoma; background: linear-gradient(to left,#04009A ,#056676);">
 
 	<br>
 	<?php include("topbar.php"); ?>
