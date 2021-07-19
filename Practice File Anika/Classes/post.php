@@ -21,6 +21,64 @@
          return $this->error;
      }
 
+     public function edit_post($data, $files)
+	{
+
+		if(!empty($data['post']) || !empty($files['file']['name']))
+		{
+
+			$myimage = "";
+			$has_image = 0;
+
+ 				if(!empty($files['file']['name']))
+				{
+
+
+					$folder = "uploads/" . $userid . "/";
+
+						//create folder
+						if(!file_exists($folder))
+						{
+
+							mkdir($folder,0777,true);
+							file_put_contents($folder . "index.php", "");
+						}
+
+						$image_class = new Image();
+
+						$myimage = $folder . $image_class->generate_filename(15) . ".jpg";
+						move_uploaded_file($_FILES['file']['tmp_name'], $myimage);
+
+						$image_class->resize_image($myimage,$myimage,1500,1500);
+
+					$has_image = 1;
+				}
+ 
+			$post = "";
+			if(isset($data['post'])){
+
+				$post = addslashes($data['post']);
+			}
+
+			$postid = addslashes($data['postid']);
+
+			if($has_image){
+				$query = "update posts set post = '$post', image = '$myimage' where postid = '$postid' limit 1";
+			}else{
+				$query = "update posts set post = '$post' where postid = '$postid' limit 1";
+			}
+
+			$DB = new Database();
+			$DB->save($query);
+
+		}else
+		{
+			$this->error .= "Please type something to post!<br>";
+		}
+
+		return $this->error;
+	} 
+
      public function get_posts($id)
      {
         $query = "select * from posts where userid = '$id' order by id desc";
