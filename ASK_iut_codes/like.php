@@ -16,7 +16,7 @@ if (isset($_SESSION['Email'])) {
 
 if (isset($_SERVER['HTTP_REFERER'])) {
 
-	redirect( $_SERVER['HTTP_REFERER']);
+	redirect($_SERVER['HTTP_REFERER']);
 } else {
 	redirect("profile.php");
 }
@@ -37,6 +37,3 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
 		}
 	}
 }
-/*header("Location :" . $return_to);
-die;
-*/

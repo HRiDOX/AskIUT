@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 11:11 PM
+-- Generation Time: Aug 03, 2021 at 08:57 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -24,46 +24,85 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` bigint(20) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `contentid` bigint(20) NOT NULL,
+  `likes` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `type`, `contentid`, `likes`) VALUES
+(1, 'post', 562490636500018, '[{\"userid\":\"9469701\",\"date\":\"2021-07-07 02:03:43\"}]'),
+(2, 'post', 6020565041691232940, '[]'),
+(3, 'post', 383410202486679359, '[]'),
+(4, 'post', 287715189152055049, '[]'),
+(5, 'post', 369649889, '[]'),
+(6, 'post', 34861924383109, '[{\"userid\":\"646681960102934\",\"date\":\"2021-07-07 08:58:49\"}]'),
+(7, 'post', 7882753312795232, '[{\"userid\":\"18779009159609\",\"date\":\"2021-07-07 09:09:34\"}]'),
+(8, 'post', 705745412, '[]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` bigint(19) NOT NULL,
+  `postid` bigint(19) NOT NULL,
+  `userid` bigint(19) NOT NULL,
+  `post` text NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `comments` int(11) NOT NULL,
+  `likes` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `has_image` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `postid`, `userid`, `post`, `image`, `comments`, `likes`, `date`, `has_image`) VALUES
+(77, 705745412, 488293949, 'can anyone help?', 'uploads/488293949/zjaLOuFIDrep9r5.jpg', 0, 0, '2021-07-07 08:13:38', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
-  `userid` int(250) NOT NULL,
+  `userid` bigint(19) NOT NULL,
   `FirstName` varchar(255) NOT NULL,
   `LastName` varchar(255) NOT NULL,
   `UserName` varchar(255) NOT NULL,
+  `Batch` int(4) NOT NULL,
+  `Department` varchar(3) NOT NULL,
   `Email` varchar(300) NOT NULL,
   `Password` text NOT NULL,
   `Validation_Code` text NOT NULL,
   `Active` tinyint(4) NOT NULL DEFAULT 0,
-  `url_address` varchar(250) NOT NULL
+  `url_address` varchar(250) NOT NULL,
+  `profile_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `userid`, `FirstName`, `LastName`, `UserName`, `Email`, `Password`, `Validation_Code`, `Active`, `url_address`) VALUES
-(1, 0, 'hridoy', 'hridoy', 'hrd', 'rgrrf123@gmail.com', '1234', '3679', 0, ''),
-(2, 0, 'MHR', 'Hasan', 'hd', 'hridolay@gmail.com', '456', '7912', 1, ''),
-(15, 0, 'anika', 'islam', ' anikaIslam', 'fsdf@gmail.com', 'cb3ce9b06932da6faaa7fc70d5b5d2f4', '0', 1, ''),
-(21, 0, 'suraiya', 'Hridoy', ' anisursddr', 'xascdvc@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, ''),
-(22, 0, 'ruwegiu', 'ifhwifoi', ' jflhfh', 'hffdgf@gmail.com', '202cb962ac59075b964b07152d234b70', '0', 1, ''),
-(23, 0, 'njsjvbjjb hbh ', 'jnjsnbvjbj j', ' nvnsvjjnxn', 'amxkmkks@gmail.com', 'e35cf7b66449df565f93c607d5a81d09', '0', 1, ''),
-(24, 0, 'fkdjvvbdbv', 'jdvnnvvb', ' nvknjvnjn', 'mardala@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, ''),
-(25, 0, 'kdjjjsjajioja', 'alakpkvdv', ' nvnnvododods', 'mariala@gmail.com', '71b3b26aaa319e0cdf6fdb8429c112b0', '0', 1, ''),
-(26, 0, 'chotobhau', 'borobhao', ' Looser', 'sunikaaaa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'b5dc2a6e977939e233db9322721a2113', 0, ''),
-(27, 0, 'nfjkndfjnvnjdv', 'nvjdsknsjd', ' nvjbdvkj', 'nvjdjv@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'b5dc2a6e977939e233db9322721a2113', 0, ''),
-(28, 0, 'vksdvjnvj', 'ndvsdjbvsb', ' bvhbhfhbvsb', 'hfhfh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'b5dc2a6e977939e233db9322721a2113', 0, ''),
-(29, 0, 'vdjnvbv', 'vdijviji', ' jbvjfbid', 'dhurr@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, ''),
-(30, 0, 'vdjnvbv', 'vdijviji', ' jbvjfbid', 'dhurrrr@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, ''),
-(31, 0, 'bchbabca', 'bvbshhba', ' bchbhbhba', 'puchi@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0', 1, ''),
-(32, 0, 'Mahmudul Hasan ', 'ksklkmx', ' Looser', 'csgvgv@gmail.com', '202cb962ac59075b964b07152d234b70', 'b5dc2a6e977939e233db9322721a2113', 0, ''),
-(33, 88588, 'scbhss', 'anbxavgxa ', ' cdbvgsvg', 'csbv@gmail.com', '202cb962ac59075b964b07152d234b70', 'b5dc2a6e977939e233db9322721a2113', 0, 'scbhss.anbxavgxa '),
-(34, 2147483647, 'hridoy', 'hgvvvgfc', ' hgfc', 'hghcsgvgv@gmail.com', '202cb962ac59075b964b07152d234b70', '0', 1, 'hridoy.hgvvvgfc'),
-(35, 9469701, 'anikaSuraiya', 'IslamHasan', ' Sunika', 'hridoy@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'e0218fd86424ee799096e89f5e1a1386', 1, 'anikasuraiya.islamhasan'),
-(36, 92552, 'nbvdvgdgvus', 'fbwheuuwywcv', ' hfvywvyf', 'bwgvwvy@gmail.com', '202cb962ac59075b964b07152d234b70', '0', 1, 'nbvdvgdgvus.fbwheuuwywcv');
+INSERT INTO `users` (`ID`, `userid`, `FirstName`, `LastName`, `UserName`, `Batch`, `Department`, `Email`, `Password`, `Validation_Code`, `Active`, `url_address`, `profile_image`) VALUES
+(51, 646681960102934, 'Mahmudul Hasan ', 'Hridoy', ' Hridoy', 2019, 'CSE', 'hrid@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, 'mahmudul hasan .hridoy', 'uploads/646681960102934/OxvCDBUoI4LOIZ5.jpg'),
+(52, 18779009159609, 'Mahmudul Hasan ', 'Sunika', ' Looser', 2019, 'CSE', 'rgrrf123@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0', 1, 'mahmudul hasan .sunika', 'uploads/18779009159609/TImeBHiwiB1zVeA.jpg'),
+(53, 488293949, 'cbjhbhha', 'cbavsvcgvgvc', ' bshvgvgv', 2019, 'CSE', 'hrdhrd308@gmail.com', '25d55ad283aa400af464c76d713c07ad', '0', 1, 'cbjhbhha.cbavsvcgvgvc', 'uploads/488293949/9NZo6Z3aiiUBwUs.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,45 +112,65 @@ INSERT INTO `users` (`ID`, `userid`, `FirstName`, `LastName`, `UserName`, `Email
 
 CREATE TABLE `users_faculty` (
   `ID` int(11) NOT NULL,
-  `userid` int(250) NOT NULL,
+  `userid` bigint(19) NOT NULL,
   `FirstName` varchar(250) NOT NULL,
   `LastName` varchar(250) NOT NULL,
   `UserName` varchar(255) NOT NULL,
+  `Batch` int(11) NOT NULL,
   `Department` varchar(255) NOT NULL,
   `Faculty` varchar(255) NOT NULL,
   `Email` varchar(300) NOT NULL,
   `Password` text NOT NULL,
   `Validation_Code` text NOT NULL,
   `Active` tinyint(4) NOT NULL DEFAULT 0,
-  `url_address` varchar(250) NOT NULL
+  `url_address` varchar(250) NOT NULL,
+  `profile_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users_faculty`
---
-
-INSERT INTO `users_faculty` (`ID`, `userid`, `FirstName`, `LastName`, `UserName`, `Department`, `Faculty`, `Email`, `Password`, `Validation_Code`, `Active`, `url_address`) VALUES
-(1, 0, 'suraiya', 'anika', 'sunika', 'cse', 'lecturer', 'sunika@gmail.com', '2482', '', 0, '0'),
-(2, 0, 'Mahmudul Hasan ', 'Hridoy', ' Looser', 'CSE', 'Lecturer', 'aha3370@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, '0'),
-(3, 0, 'fhuikko;k', 'gjkhjilhkgj', ' hfjgyhkuji', 'drftgyhuij', 'dyftgyhuji', 'fsdf@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, '0'),
-(4, 0, 'nvnsjvjbsv', 'nvnnvnvn', ' vnnvndnbj', 'CSE', 'nvnkdkffk', 'mardala@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, '0'),
-(5, 0, 'nvnjnvjnvn', 'akpskpkokvo', ' mvkmfmkfpps', 'CSE', 'Lecturer', 'mariala@gmail.com', '71b3b26aaa319e0cdf6fdb8429c112b0', '0', 1, '0'),
-(6, 0, 'bhhihijij', 'jhihuhihiii', ' bjhhijojojoo', 'hgfftf', 'bhhhugsawa', 'avs@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'b5dc2a6e977939e233db9322721a2113', 0, '0'),
-(7, 0, 'cnjdvjd', 'mnccnc', ' njvndkncn', 'CSE', 'Lecturer', 'sjnnco@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'b5dc2a6e977939e233db9322721a2113', 0, '0'),
-(8, 0, 'Mahmudul Hasan ', 'ddddd', ' VJDJVDNJD', 'ASNAJJANJ', 'CHDCHDGDV', 'akaimma@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, '0'),
-(9, 0, ' cndh ahdc', 'bcsgvcgvgva', ' vnsbdhbhbv', 'ncabhcbvhhv', 'cnhdvggv', 'pipi@gmail.com', '6ebe76c9fb411be97b3b0d48b791a7c9', '0', 1, '0'),
-(10, 4776, 'Mahmudul Hasan ', 'Hridoy', ' Looser', 'CSE', 'Lecturer', 'hridox@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, 'mahmudul hasan .hridoy'),
-(11, 2147483647, 'nsbuytyfstcftc', 'chvyytcyvva', ' chdbcvgvyvdgc', 'chvdvytvcy', 'cbdhgvgvch', 'bchgvcv@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, 'nsbuytyfstcftc.chvyytcyvva');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type` (`type`),
+  ADD KEY `contentid` (`contentid`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `postid` (`postid`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `comments` (`comments`),
+  ADD KEY `likes` (`likes`),
+  ADD KEY `date` (`date`);
+ALTER TABLE `posts` ADD FULLTEXT KEY `post` (`post`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID` (`ID`),
+  ADD KEY `ID_2` (`ID`),
+  ADD KEY `FirstName` (`FirstName`),
+  ADD KEY `LastName` (`LastName`),
+  ADD KEY `UserName` (`UserName`),
+  ADD KEY `Email` (`Email`),
+  ADD KEY `Active` (`Active`),
+  ADD KEY `url_address` (`url_address`),
+  ADD KEY `url_address_2` (`url_address`),
+  ADD KEY `Active_2` (`Active`),
+  ADD KEY `url_address_3` (`url_address`),
+  ADD KEY `profile_image` (`profile_image`(768)),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `Department` (`Department`),
+  ADD KEY `Batch` (`Batch`);
 
 --
 -- Indexes for table `users_faculty`
@@ -124,16 +183,28 @@ ALTER TABLE `users_faculty`
 --
 
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `users_faculty`
 --
 ALTER TABLE `users_faculty`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
