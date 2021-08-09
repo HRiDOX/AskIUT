@@ -46,7 +46,7 @@
                 # code...
 
                 echo "
-                <a href='edit.php'>
+                <a href='edit.php?id= $ROW[postid]'>
                  Edit 
                 </a>.
                   <a href='delete.php?id= $ROW[postid]'>

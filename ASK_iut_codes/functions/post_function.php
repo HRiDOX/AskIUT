@@ -104,61 +104,60 @@ function i_own_post($postid, $mybook_userid)
 /////used in like ///////////////
 function like_post($id, $type, $mybook_userid)
 {
-    if ($type == "post") {
-        # code...
+
+    # code...
 
 
-        //save likes details
-        $sql = "select likes from likes where type='post' && contentid = '$id' limit 1";
-        $result = read($sql);
-        if (is_array($result)) {
+    //save likes details
+    $sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
+    $result = read($sql);
+    if (is_array($result)) {
 
-            $likes = json_decode($result[0]['likes'], true);
+        $likes = json_decode($result[0]['likes'], true);
 
-            $user_ids = array_column($likes, "userid");
+        $user_ids = array_column($likes, "userid");
 
-            if (!in_array($mybook_userid, $user_ids)) {
-
-                $arr["userid"] = $mybook_userid;
-                $arr["date"] = date("Y-m-d H:i:s");
-
-                $likes[] = $arr;
-
-                $likes_string = json_encode($likes);
-                $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-                save($sql);
-
-                //increment the right table
-                $sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
-                save($sql);
-            } else {
-
-                $key = array_search($mybook_userid, $user_ids);
-                unset($likes[$key]);
-
-                $likes_string = json_encode($likes);
-                $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-                save($sql);
-
-                //increment the right table
-                $sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
-                save($sql);
-            }
-        } else {
+        if (!in_array($mybook_userid, $user_ids)) {
 
             $arr["userid"] = $mybook_userid;
             $arr["date"] = date("Y-m-d H:i:s");
 
-            $arr2[] = $arr;
+            $likes[] = $arr;
 
-            $likes = json_encode($arr2);
-            $sql = "insert into likes (type,contentid,likes) values ('$type','$id','$likes')";
+            $likes_string = json_encode($likes);
+            $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
             save($sql);
 
             //increment the right table
             $sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
             save($sql);
+        } else {
+
+            $key = array_search($mybook_userid, $user_ids);
+            unset($likes[$key]);
+
+            $likes_string = json_encode($likes);
+            $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
+            save($sql);
+
+            //increment the right table
+            $sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
+            save($sql);
         }
+    } else {
+
+        $arr["userid"] = $mybook_userid;
+        $arr["date"] = date("Y-m-d H:i:s");
+
+        $arr2[] = $arr;
+
+        $likes = json_encode($arr2);
+        $sql = "insert into likes (type,contentid,likes) values ('$type','$id','$likes')";
+        save($sql);
+
+        //increment the right table
+        $sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
+        save($sql);
     }
 }
 
@@ -183,4 +182,72 @@ function get_likes($id, $type)
 
 
     return false;
+}
+
+function edit_post($data, $files, $userid)
+{
+    $Errors = [];
+
+    if (!empty($data['post']) || !empty($files['file']['name'])) {
+
+        $myimage = "";
+        $has_image = 0;
+
+        if (!empty($files['file']['name'])) {
+
+
+            $folder = "uploads/" . $userid . "/";
+
+            //create folder
+            if (!file_exists($folder)) {
+
+                mkdir($folder, 0777, true);
+                file_put_contents($folder . "index.php", "");
+            }
+
+
+
+            $myimage = $folder . generate_filename(15) . ".jpg";
+            move_uploaded_file($_FILES['file']['tmp_name'], $myimage);
+
+            //resize_image($myimage,$myimage,1500,1500);
+
+            $has_image = 1;
+        }
+
+        $post = "";
+        if (isset($data['post'])) {
+
+            $post = addslashes($data['post']);
+        }
+
+        $postid = addslashes($data['postid']);
+
+        if ($has_image) {
+            $query = "update posts set post = '$post', image = '$myimage' where postid = '$postid' limit 1";
+        } else {
+            $query = "update posts set post = '$post' where postid = '$postid' limit 1";
+        }
+
+
+        save($query);
+    } else {
+        $Errors[] .= "Please type something to post!<br>";
+    }
+
+    return $Errors;
+}
+
+function get_thumb_post($filename)
+{
+    $thumbnail = $filename . "_post_thumb.jpg";
+    if (file_exists($thumbnail)) {
+        return $thumbnail;
+    }
+    crop_image($filename, $thumbnail, 400, 400);
+    if (file_exists($thumbnail)) {
+        return $thumbnail;
+    } else {
+        return $filename;
+    }
 }

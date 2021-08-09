@@ -115,7 +115,7 @@ $posts = get_posts($id);
     }
 
     #friends_bar {
-        background-color:#47597E;
+        background-color: #47597E;
         min-height: 400px;
         margin-top: 20px;
         color: white;
@@ -147,6 +147,8 @@ $posts = get_posts($id);
         font-size: 14px;
         border-radius: 2px;
         width: 50px;
+        min-width: 50px;
+        cursor: pointer;
 
 
     }
@@ -193,6 +195,20 @@ $posts = get_posts($id);
                 <div id="menu_button"> About </div>
                 <div id="menu_button">Photos</div>
                 <div id="menu_button">Settings</div>
+
+                <div>
+                    <?php
+                    $mylikes = "";
+                    if ($user_data['likes'] > 0) {
+
+                        $mylikes = "(" . $user_data['likes'] . " Followers)";
+                    }
+                    ?>
+                    <a href="like.php?type=user&id=<?php echo $user_data['userid'] ?>">
+                        <input id="post_button" type="button" value="Follow <?php echo $mylikes ?>" style="margin-right:10px;background-color: #9b409a;width:auto;">
+                    </a>
+
+                </div>
             </div>
         </div>
         <!-- Below Cover Area -->
