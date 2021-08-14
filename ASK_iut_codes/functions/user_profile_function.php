@@ -47,8 +47,49 @@ function get_user($id)
 function get_profile($id)
 {
 
-    $id = addslashes($id);
+    //$id = addslashes($id);
 
-    $query = "select * from users where userid = '$id' active 1";
+    $query = "select * from users where userid = '$id' limit 1";
     return read($query);
+}
+
+/*function get_following($id,$type){
+
+		
+		$type = addslashes($type);
+
+		if(is_numeric($id)){
+ 
+			//get following details
+			$sql = "select following from likes where type='$type' && contentid = '$id' limit 1";
+			$result = read($sql);
+			if(is_array($result)){
+
+				$following = json_decode($result[0]['following'],true);
+				return $following;
+			}
+		}
+
+
+		return false;
+	}*/
+
+
+function get_friends($id)
+{
+
+    $query = "select  *from users where userid !='$id' and Active='1'";
+    $result = read($query);
+
+    if ($result) {
+        return $result;
+    } else {
+        $query1 = "select  *from users_faculty where userid !='$id' and Active='1'";
+        $result1 = read($query1);
+        if ($result1) {
+            return $result1;
+        } else {
+            return false;
+        }
+    }
 }

@@ -159,8 +159,7 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
 						foreach ($likes as $row) {
 							# code...
 							$FRIEND_ROW = get_user($row['userid']);
-							//include("user_profile_function.php");
-
+							//include("user_member.php");
 						}
 					}
 

@@ -44,7 +44,20 @@ function user_login($UEmail, $UPass, $Remember)
     $result = Query($query);
     if ($row = fatech_data($result)) {
         $db_pass = $row['Password'];
-        if (md5($UPass) == $db_pass) {
+        $user_id = $row['userid'];
+        if (hash_text($UPass) == $db_pass) {
+            //md5($UPass)
+            $_SESSION['mybook_userid'] = $row['userid'];
+            if ($Remember == true) {
+
+                setcookie('email', $UEmail, time() + 86400);
+            }
+            $_SESSION['Email'] = $UEmail;
+
+            return true;
+        }
+       else if(md5($UPass) == $db_pass) {
+            //md5($UPass)
             $_SESSION['mybook_userid'] = $row['userid'];
             if ($Remember == true) {
 
@@ -63,7 +76,7 @@ function user_login($UEmail, $UPass, $Remember)
 
             $db_pass1 = $row1['Password'];
 
-            if (md5($UPass) == $db_pass1) {
+            if (hash_text($UPass) == $db_pass1) {
                 $_SESSION['mybook_userid'] = $row1['userid'];
                 if ($Remember == true) {
 
@@ -78,6 +91,13 @@ function user_login($UEmail, $UPass, $Remember)
     }
 }
 
+//password hashing
+function hash_text($text)
+{
+
+    $text = hash("sha1", $text);
+    return $text;
+}
 //logged in Function
 
 function logged_in()
