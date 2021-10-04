@@ -25,7 +25,16 @@ function create_post($userid, $data, $files)
         }
         $post = addslashes($data['post']);
         $postid = create_postid();
-        $query = "insert into posts (userid,postid,post,image,has_image) values ('$userid','$postid','$post','$myimage','$has_image')";
+        $parent = 0;
+        
+			if(isset($data['parent']) && is_numeric($data['parent'])){
+
+				$parent = $data['parent'];
+
+				$sql = "update posts set comments = comments + 1 where postid = '$parent' limit 1";
+				save($sql);
+			}
+        $query = "insert into posts (userid,postid,post,image,parent,has_image) values ('$userid','$postid','$post','$myimage','$parent','$has_image')";
         save($query);
     } else {
         $Errors[] = "Please type something to post!<br>";
@@ -251,3 +260,20 @@ function get_thumb_post($filename)
         return $filename;
     }
 }
+
+ function get_comments($id)
+	{
+
+		$query = "select * from posts where parent = '$id' order by id asc limit 10";
+
+		
+		$result = read($query);
+
+		if($result)
+		{
+			return $result;
+		}else
+		{
+			return false;
+		}
+	}

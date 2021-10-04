@@ -22,10 +22,10 @@
         <div style="font-weight: bold;color: #405d9b;width: 100%;">
             <?php
             echo "<a href='profile.php?id=$COMMENT[userid]'>";
-            echo htmlspecialchars($ROW_USER['first_name']) . " " . htmlspecialchars($ROW_USER['last_name']);
+            echo htmlspecialchars($ROW_USER['FirstName']) . " " . htmlspecialchars($ROW_USER['LastName']);
             echo "</a>";
 
-            if ($COMMENT['is_profile_image']) {
+            if ($COMMENT['image']) {
                 $pronoun = "A person";
                
                 echo "<span style='font-weight:normal;color:#aaa;'> updated $pronoun profile image</span>";
