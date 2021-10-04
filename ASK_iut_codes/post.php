@@ -13,10 +13,17 @@
     </div>
     <div style="width:100%;">
         <div style="font-weight:bold;color: #2F5D62;width:100%">
-            <?php echo $ROW_USER['FirstName'] . " " . $ROW_USER['LastName']; ?>
+
+            <?php
+            echo "<a href='profile.php?id=$ROW[userid]'>";
+
+            echo htmlspecialchars($ROW_USER['FirstName']) . " " . htmlspecialchars($ROW_USER['LastName']);
+            echo "</a>";
+
+            ?>
         </div>
 
-        <?php echo $ROW['post'] ?>
+        <?php echo htmlspecialchars($ROW['post']) ?>
         <br><br>
 
         <?php
@@ -34,10 +41,32 @@
 
 
         ?>
-        <a href="like.php?type=post&id=<?php echo $ROW['postid']; ?>">Like(<?php echo $likes ?>)</a> . <a href="">Comment</a> .
+        <a href="like.php?type=post&id=<?php echo $ROW['postid']; ?>">Like(<?php echo $likes ?>)</a> .
+        <?php
+        $comments = "";
+
+        if ($ROW['comments'] > 0) {
+
+            $comments = "(" . $ROW['comments'] . ")";
+        }
+
+        ?>
+
+
+        <a href="single_post.php?id=<?php echo $ROW['postid'] ?>">Comment<?php echo $comments ?></a> .
         <span style="color: #aaa;">
             <?php echo $ROW['date']; ?>
         </span>
+
+        <?php
+
+        if ($ROW['has_image']) {
+
+            echo "<a href='image_view.php?id=$ROW[postid]' >";
+            echo ". View Full Image . ";
+            echo "</a>";
+        }
+        ?>
 
         <span style="color: #aaa; float:right;">
             <?php

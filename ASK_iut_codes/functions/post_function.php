@@ -66,7 +66,7 @@ function get_one_post($postid)
     }
     $query = "select * from posts where postid = '$postid'  limit 1";
 
-
+//aage $result chilo
     $result = read($query);
 
     if ($result) {
@@ -232,7 +232,7 @@ function edit_post($data, $files, $userid)
 
         save($query);
     } else {
-        $Errors[] .= "Please type something to post!<br>";
+        $Errors[] = "Please type something to post!<br>";
     }
 
     return $Errors;

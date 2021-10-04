@@ -21,7 +21,7 @@ if (is_array($profile_data)) {
 }
 
 
-//$USER = $user_data;
+$USER = $user_data;
 //print_r($_SESSION);
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $profile_data = get_profile($_GET['id']);
