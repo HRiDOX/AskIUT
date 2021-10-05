@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	delete_post($_POST['postid']);
 	//header("Location: " . $_SESSION['return_to']);
-	redirect("profile.php");
+    redirect("profile.php");
 }
 
 ?>

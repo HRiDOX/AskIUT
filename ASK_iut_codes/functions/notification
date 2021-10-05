@@ -1,0 +1,9 @@
+<?php 
+
+
+
+	function get_notifications()
+	{
+		$result = read("select * from users");
+		print_r($result);
+	}

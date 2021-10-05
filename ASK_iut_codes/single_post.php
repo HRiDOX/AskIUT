@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
         echo "<br>The following errors occured:<br><br>";
-        echo '$result';
+        echo $result;
         //aage $result chilo shudhu
         echo "</div>";
     }

@@ -89,6 +89,21 @@ function delete_post($postid)
     if (!is_numeric($postid)) {
         return false;
     }
+   
+		$sql = "select parent from posts where postid = '$postid' limit 1";
+		$result = read($sql);
+		
+		if(is_array($result)){
+
+			if($result[0]['parent'] > 0){
+
+				$parent = $result[0]['parent'];
+
+				$sql = "update posts set comments = comments - 1 where postid = '$parent' limit 1";
+				save($sql);
+			}
+		}
+			
     $query = "delete  from posts where postid = '$postid'  limit 1";
 
     save($query);
