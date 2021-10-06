@@ -38,3 +38,14 @@ https://www.w3schools.com/php/func_string_strstr.asp
 //implode()
 Join array elements with a string:
 https://www.w3schools.com/php/func_string_implode.asp
+
+//is_array
+The is_array() is an inbuilt function in PHP. The is_array() function is used to check whether a variable is an array or not.
+
+Syntax:
+
+bool is_array($variable_name)
+
+//array_column()
+The array_column() function returns the values from a single column in the input array.
+https://www.w3schools.com/php/func_array_column.asp
