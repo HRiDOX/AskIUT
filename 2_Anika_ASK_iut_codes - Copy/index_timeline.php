@@ -219,7 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
  								$posts =read($sql);
  							}
 
- 	 					 	if(isset($posts) && $posts)
+ 	 					 	if($posts)
  	 					 	{
 
  	 					 		foreach ($posts as $ROW) {
