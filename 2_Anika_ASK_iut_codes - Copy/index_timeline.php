@@ -5,47 +5,45 @@ require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 
 if (isset($_SESSION['Email'])) {
-    $d = $_SESSION['mybook_userid'];      // this part not present there
+    $d = $_SESSION['mybook_userid'];
     $user_data = check_login($d);
-} else {
+} 
+else{
     redirect("login.php");
 }
 
-/*$login = new Login();
-	$user_data = $login->check_login($_SESSION['mybook_userid']);
- 
- 	$USER = $user_data;
- 	
- 	if(isset($_GET['id']) && is_numeric($_GET['id'])){                // instead this part is used there
+$USER = $user_data;
+//print_r($_SESSION);
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $profile_data = get_profile($_GET['id']);
 
-	 	$profile = new Profile();
-	 	$profile_data = $profile->get_profile($_GET['id']);
-
-	 	if(is_array($profile_data)){
-	 		$user_data = $profile_data[0];
-	 	}
-
- 	}*/
-//posting starts here
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-
-    $post = new Post();
-    $id = $_SESSION['mybook_userid'];
-    $result = $post->create_post($id, $_POST,$_FILES);
-    
-    if($result == "")
-    {
-        header("Location: index.php");
-        die;
-    }else
-    {
-
-        echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
-        echo "<br>The following errors occured:<br><br>";
-        echo $result;
-        echo "</div>";
+    if (is_array($profile_data)) {
+        $user_data = $profile_data[0];
     }
+}
+
+//posting starts here
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['FirstName'])) {
+
+
+        save_settings($_POST, $_SESSION['mybook_userid']);
+    } else {
+        $id = $_SESSION['mybook_userid'];
+
+        $result = create_post($id, $_POST, $_FILES);
+
+        if ($result == "") {
+            redirect("index_timeline.php");
+            die;
+        } else {
+            echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+            echo "<br>The following errors occured:<br><br>";
+            print_r($result);
+            echo "</div>";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -191,52 +189,51 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
                 <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
                     <form method="post" enctype="multipart/form-data">
-
-                        <textarea name="post" placeholder="Whats on your mind?"></textarea>
-                        <input type="file" name="file">
-                        <input id="post_button" type="submit" value="Post">
-                        <br>
+                      <textarea name="post" placeholder="Ask Your Question"></textarea>
+                      <input style="font-size:12px;" type="file" name="file">
+                      <input id="post_button" type="submit" value="Ask!">
+                      <br>
                     </form>
                 </div>
                 <!--posts-->
                 <div id="post_bar">
                     <?php 
 
-                       $DB = new Database();
-                       $user_class = new User();
-                       $image_class = new Image();
-                       
-                       $followers = $user_class->get_following($_SESSION['mybook_userid'],"user");
-                       
-                       $follower_ids = false;
-                       if(is_array($followers)){
-                       
-                           $follower_ids = array_column($followers, "userid");
-                           $follower_ids = implode("','", $follower_ids);
-                       
-                       }
-                       
-                       if($follower_ids){
-                           $myuserid = $_SESSION['mybook_userid'];
-                           $sql = "select * from posts where parent = 0 and userid = '$myuserid' || userid in('" .$follower_ids. "') order by id desc limit 30";
-                           $posts = $DB->read($sql);
-                       }
-                       
-                         if(isset($posts) && $posts)
-                         {
-                       
-                             foreach ($posts as $ROW) {
-                                 # code...
-                       
-                                 $user = new User();
-                                 $ROW_USER = $user->get_user($ROW['userid']);
-                       
-                                 include("post.php");
-                             }
-                         }
-                       
-                       
-                       ?>
+ 							//$DB = new Database();
+ 							//$user_class = new User();
+ 							//$image_class = new Image();
+
+ 							$followers =get_following($_SESSION['mybook_userid'],"user");
+
+ 							$follower_ids = false;
+ 							if(is_array($followers)){
+
+ 								$follower_ids = array_column($followers, "userid");
+ 								$follower_ids = implode("','", $follower_ids);
+
+ 							}
+
+ 							if($follower_ids){
+ 								$myuserid = $_SESSION['mybook_userid'];
+ 								$sql = "select * from posts where parent = 0 and userid = '$myuserid' || userid in('" .$follower_ids. "') order by id desc limit 30";
+ 								$posts =read($sql);
+ 							}
+
+ 	 					 	if(isset($posts) && $posts)
+ 	 					 	{
+
+ 	 					 		foreach ($posts as $ROW) {
+ 	 					 			# code...
+
+ 	 				
+ 	 					 			$ROW_USER =get_user($ROW['userid']);
+
+ 	 					 			include("post.php");
+ 	 					 		}
+ 	 					 	}
+ 	 			 
+
+	 					 ?>
 
                 </div>
             </div>
