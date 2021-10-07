@@ -4,7 +4,7 @@
 
         $image = "image/pic_holder.jpg";
         if (file_exists($ROW_USER['profile_image'])) {
-            //$image = $image_class->get_thumb_profile($ROW_USER['profile_image']);
+           // $image = get_thumb_profile($ROW_USER['profile_image']);
             $image = $ROW_USER['profile_image'];
         }
 
@@ -19,6 +19,7 @@
 
             echo htmlspecialchars($ROW_USER['FirstName']) . " " . htmlspecialchars($ROW_USER['LastName']);
             echo "</a>";
+              
 
             ?>
         </div>

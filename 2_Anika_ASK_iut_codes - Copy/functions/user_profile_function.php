@@ -74,6 +74,57 @@ function get_following($id,$type){
 		return false;
 	}
 
+function follow_user($id,$type,$mybook_userid){
+
+ 			
+ 			
+			//save likes details
+			$sql = "select following from likes where type='$type' && contentid = '$mybook_userid' limit 1";
+			$result = read($sql);
+			if(is_array($result)){
+
+				$likes = json_decode($result[0]['following'],true);
+
+				$user_ids = array_column($likes, "userid");
+ 
+				if(!in_array($id, $user_ids)){
+
+					$arr["userid"] = $id;
+					$arr["date"] = date("Y-m-d H:i:s");
+
+					$likes[] = $arr;
+
+					$likes_string = json_encode($likes);
+					$sql = "update likes set following = '$likes_string' where type='$type' && contentid = '$mybook_userid' limit 1";
+					save($sql);
+
+				}else{
+
+					$key = array_search($id, $user_ids);
+					unset($likes[$key]);
+
+					$likes_string = json_encode($likes);
+					$sql = "update likes set following = '$likes_string' where type='$type' && contentid = '$mybook_userid' limit 1";
+					save($sql);
+ 
+				}
+				
+
+			}else{
+
+				$arr["userid"] = $id;
+				$arr["date"] = date("Y-m-d H:i:s");
+
+				$arr2[] = $arr;
+
+				$following = json_encode($arr2);
+				$sql = "insert into likes (type,contentid,following) values ('$type','$mybook_userid','$following')";
+				save($sql);
+ 
+			}
+
+	}
+
 
 function get_friends($id)
 {

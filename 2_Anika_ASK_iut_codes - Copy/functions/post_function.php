@@ -111,65 +111,67 @@ function i_own_post($postid, $mybook_userid)
 }
 
 /////used in like ///////////////
-function like_post($id, $type, $mybook_userid)
-{
+function like_post($id,$type,$mybook_userid){
 
-    # code...
+ 			
+ 			
+			//save likes details
+			$sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
+			$result = read($sql);
+			if(is_array($result)){
 
+				$likes = json_decode($result[0]['likes'],true);
 
-    //save likes details
-    $sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
-    $result = read($sql);
-    if (is_array($result)) {
+				$user_ids = array_column($likes, "userid");
+ 
+				if(!in_array($mybook_userid, $user_ids)){
 
-        $likes = json_decode($result[0]['likes'], true);
+					$arr["userid"] = $mybook_userid;
+					$arr["date"] = date("Y-m-d H:i:s");
 
-        $user_ids = array_column($likes, "userid");
+					$likes[] = $arr;
 
-        if (!in_array($mybook_userid, $user_ids)) {
+					$likes_string = json_encode($likes);
+					$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
+					save($sql);
 
-            $arr["userid"] = $mybook_userid;
-            $arr["date"] = date("Y-m-d H:i:s");
+					//increment the right table
+					$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
+					save($sql);
 
-            $likes[] = $arr;
+				}else{
 
-            $likes_string = json_encode($likes);
-            $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-            save($sql);
+					$key = array_search($mybook_userid, $user_ids);
+					unset($likes[$key]);
 
-            //increment the right table
-            $sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
-            save($sql);
-        } else {
+					$likes_string = json_encode($likes);
+					$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
+					save($sql);
 
-            $key = array_search($mybook_userid, $user_ids);
-            unset($likes[$key]);
+					//increment the right table
+					$sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
+					save($sql);
 
-            $likes_string = json_encode($likes);
-            $sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-            save($sql);
+				}
+				
 
-            //increment the right table
-            $sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
-            save($sql);
-        }
-    } else {
+			}else{
 
-        $arr["userid"] = $mybook_userid;
-        $arr["date"] = date("Y-m-d H:i:s");
+				$arr["userid"] = $mybook_userid;
+				$arr["date"] = date("Y-m-d H:i:s");
 
-        $arr2[] = $arr;
+				$arr2[] = $arr;
 
-        $likes = json_encode($arr2);
-        $sql = "insert into likes (type,contentid,likes) values ('$type','$id','$likes')";
-        save($sql);
+				$likes = json_encode($arr2);
+				$sql = "insert into likes (type,contentid,likes) values ('$type','$id','$likes')";
+				save($sql);
 
-        //increment the right table
-        $sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
-        save($sql);
-    }
-}
+				//increment the right table
+				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
+				save($sql);
+			}
 
+	}
 
 function get_likes($id, $type)
 {
@@ -181,7 +183,7 @@ function get_likes($id, $type)
 
         //get like details
         $sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
-        $result = ($sql);
+        $result = read($sql);
         if (is_array($result)) {
 
             $likes = json_decode($result[0]['likes'], true);

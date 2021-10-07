@@ -5,6 +5,8 @@ require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/settings_function.php');
+require_once('functions/image_function.php');
+//require_once('functions/image_crop_function.php');
 
 if (isset($_SESSION['Email'])) {
     $id = $_SESSION['mybook_userid'];
@@ -14,12 +16,12 @@ if (isset($_SESSION['Email'])) {
 }
 
 // collects other profile data
-
+/*
 $profile_data = get_profile($_GET['id']);
 if (is_array($profile_data)) {
     $user_data = $profile_data[0];
 }
-
+*/
 
 $USER = $user_data;
 //print_r($_SESSION);
@@ -50,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
             echo "<br>The following errors occured:<br><br>";
-            print_r($result);
+            echo '$result';
             echo "</div>";
         }
     }
@@ -237,6 +239,8 @@ $friends = get_friends($id);
                                         }
                                         ?>
                 </div>
+                <div id="menu_buttons"> <a href="profile.php?section=followers&id=<?php echo $user_data['userid'] ?>">Followers</a></div>
+                 <div id="menu_buttons"> <a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
 
                 <?php
                 $mylikes = "";
@@ -263,7 +267,16 @@ $friends = get_friends($id);
         if ($section == "default") {
 
             include("profile_content_default.php");
-        } elseif ($section == "settings") {
+        }elseif ($section == "following"){
+	 				
+	 		include("profile_content_following.php");
+
+	 	}elseif ($section == "followers"){
+
+	 		include("profile_content_followers.php");
+
+	 	} 
+        elseif ($section == "settings") {
 
             include("profile_content_settings.php");
         }

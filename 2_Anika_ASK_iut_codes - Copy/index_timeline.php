@@ -3,6 +3,8 @@ require_once('functions/all_common_function.php');
 require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
+require_once('functions/image_function.php');
+//require_once('functions/image_crop_function.php');
 
 if (isset($_SESSION['Email'])) {
     $d = $_SESSION['mybook_userid'];
@@ -31,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $result = create_post($id, $_POST, $_FILES);
 
     if ($result == "") {
-        redirect("index.php");
+        redirect("index_timeline.php");
     } else {
 
         echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
@@ -198,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <?php 
 
  						
-
+                           
  							$followers =get_following($_SESSION['mybook_userid'],"user");
 
  							$follower_ids = false;
@@ -213,15 +215,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
  								$myuserid = $_SESSION['mybook_userid'];
  								$sql = "select * from posts where parent = 0 and userid = '$myuserid' || userid in('" .$follower_ids. "') order by id desc limit 30";
  								$posts =read($sql);
+                                  
  							}
 
  	 					 	if(isset($posts) && $posts)
  	 					 	{
 
+                             
+
  	 					 		foreach ($posts as $ROW) {
  	 					 			# code...
 
- 	 				
+ 	 				 
  	 					 			$ROW_USER =get_user($ROW['userid']);
 
  	 					 			include("post.php");

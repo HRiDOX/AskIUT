@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2021 at 08:57 PM
+-- Generation Time: Oct 07, 2021 at 08:16 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -31,22 +31,9 @@ CREATE TABLE `likes` (
   `id` bigint(20) NOT NULL,
   `type` varchar(10) NOT NULL,
   `contentid` bigint(20) NOT NULL,
-  `likes` text NOT NULL
+  `likes` text NOT NULL,
+  `following` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `likes`
---
-
-INSERT INTO `likes` (`id`, `type`, `contentid`, `likes`) VALUES
-(1, 'post', 562490636500018, '[{\"userid\":\"9469701\",\"date\":\"2021-07-07 02:03:43\"}]'),
-(2, 'post', 6020565041691232940, '[]'),
-(3, 'post', 383410202486679359, '[]'),
-(4, 'post', 287715189152055049, '[]'),
-(5, 'post', 369649889, '[]'),
-(6, 'post', 34861924383109, '[{\"userid\":\"646681960102934\",\"date\":\"2021-07-07 08:58:49\"}]'),
-(7, 'post', 7882753312795232, '[{\"userid\":\"18779009159609\",\"date\":\"2021-07-07 09:09:34\"}]'),
-(8, 'post', 705745412, '[]');
 
 -- --------------------------------------------------------
 
@@ -61,17 +48,11 @@ CREATE TABLE `posts` (
   `post` text NOT NULL,
   `image` varchar(500) NOT NULL,
   `comments` int(11) NOT NULL,
+  `parent` bigint(20) NOT NULL,
   `likes` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `has_image` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `postid`, `userid`, `post`, `image`, `comments`, `likes`, `date`, `has_image`) VALUES
-(77, 705745412, 488293949, 'can anyone help?', 'uploads/488293949/zjaLOuFIDrep9r5.jpg', 0, 0, '2021-07-07 08:13:38', 1);
 
 -- --------------------------------------------------------
 
@@ -92,17 +73,10 @@ CREATE TABLE `users` (
   `Validation_Code` text NOT NULL,
   `Active` tinyint(4) NOT NULL DEFAULT 0,
   `url_address` varchar(250) NOT NULL,
-  `profile_image` varchar(1000) NOT NULL
+  `profile_image` varchar(1000) NOT NULL,
+  `likes` int(11) NOT NULL,
+  `about` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`ID`, `userid`, `FirstName`, `LastName`, `UserName`, `Batch`, `Department`, `Email`, `Password`, `Validation_Code`, `Active`, `url_address`, `profile_image`) VALUES
-(51, 646681960102934, 'Mahmudul Hasan ', 'Hridoy', ' Hridoy', 2019, 'CSE', 'hrid@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0', 1, 'mahmudul hasan .hridoy', 'uploads/646681960102934/OxvCDBUoI4LOIZ5.jpg'),
-(52, 18779009159609, 'Mahmudul Hasan ', 'Sunika', ' Looser', 2019, 'CSE', 'rgrrf123@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0', 1, 'mahmudul hasan .sunika', 'uploads/18779009159609/TImeBHiwiB1zVeA.jpg'),
-(53, 488293949, 'cbjhbhha', 'cbavsvcgvgvc', ' bshvgvgv', 2019, 'CSE', 'hrdhrd308@gmail.com', '25d55ad283aa400af464c76d713c07ad', '0', 1, 'cbjhbhha.cbavsvcgvgvc', 'uploads/488293949/9NZo6Z3aiiUBwUs.jpg');
 
 -- --------------------------------------------------------
 
@@ -148,7 +122,8 @@ ALTER TABLE `posts`
   ADD KEY `userid` (`userid`),
   ADD KEY `comments` (`comments`),
   ADD KEY `likes` (`likes`),
-  ADD KEY `date` (`date`);
+  ADD KEY `date` (`date`),
+  ADD KEY `parent` (`parent`);
 ALTER TABLE `posts` ADD FULLTEXT KEY `post` (`post`);
 
 --
@@ -186,19 +161,19 @@ ALTER TABLE `users_faculty`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` bigint(19) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users_faculty`

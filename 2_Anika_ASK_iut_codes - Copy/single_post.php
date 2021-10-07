@@ -8,6 +8,7 @@ require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/settings_function.php');
 
+
 if (isset($_SESSION['Email'])) {
     $id = $_SESSION['mybook_userid'];
     $user_data = check_login($id);

@@ -7,10 +7,10 @@
         $image = $FRIEND_ROW['profile_image'];
     }
 
-    /* if (file_exists($FRIEND_ROW['profile_image'])) {
+     /*if (file_exists($FRIEND_ROW['profile_image'])) {
         $image = ($FRIEND_ROW['profile_image']);
-    }
-*/
+    }*/
+
 
     ?>
 
