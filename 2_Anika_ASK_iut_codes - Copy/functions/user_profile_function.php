@@ -53,7 +53,7 @@ function get_profile($id)
     return read($query);
 }
 
-/*function get_following($id,$type){
+function get_following($id,$type){
 
 		
 		$type = addslashes($type);
@@ -72,7 +72,7 @@ function get_profile($id)
 
 
 		return false;
-	}*/
+	}
 
 
 function get_friends($id)

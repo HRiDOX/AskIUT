@@ -134,6 +134,7 @@ if (isset($_SESSION['Email'])) {
             <div id="menu_buttons">Repository </div>
             <div id="menu_buttons">Groups</div>
             <div id="menu_buttons">Settings</div>
+            <div id="menu_buttons">Timeline</div>
         </div>
 
         <!--below cover area-->

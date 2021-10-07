@@ -55,7 +55,7 @@
 
         <a href="single_post.php?id=<?php echo $ROW['postid'] ?>">Comment<?php echo $comments ?></a> .
         <span style="color: #aaa;">
-            <?php echo get_time($ROW['date']) ?>
+            <?php echo $ROW['date']; ?>
         </span>
 
         <?php

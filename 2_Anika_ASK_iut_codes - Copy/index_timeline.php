@@ -22,28 +22,26 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 }
 
+
 //posting starts here
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['FirstName'])) {
 
 
-        save_settings($_POST, $_SESSION['mybook_userid']);
+    $id = $_SESSION['mybook_userid'];
+    $result = create_post($id, $_POST, $_FILES);
+
+    if ($result == "") {
+        redirect("index.php");
     } else {
-        $id = $_SESSION['mybook_userid'];
 
-        $result = create_post($id, $_POST, $_FILES);
-
-        if ($result == "") {
-            redirect("index_timeline.php");
-            die;
-        } else {
-            echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
-            echo "<br>The following errors occured:<br><br>";
-            print_r($result);
-            echo "</div>";
-        }
+        echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+        echo "<br>The following errors occured:<br><br>";
+        echo '$result';
+        //aage $result chilo shudhu
+        echo "</div>";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -199,9 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div id="post_bar">
                     <?php 
 
- 							//$DB = new Database();
- 							//$user_class = new User();
- 							//$image_class = new Image();
+ 						
 
  							$followers =get_following($_SESSION['mybook_userid'],"user");
 
@@ -219,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
  								$posts =read($sql);
  							}
 
- 	 					 	if($posts)
+ 	 					 	if(isset($posts) && $posts)
  	 					 	{
 
  	 					 		foreach ($posts as $ROW) {

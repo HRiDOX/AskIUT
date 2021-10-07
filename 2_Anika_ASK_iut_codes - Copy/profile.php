@@ -228,6 +228,7 @@ $friends = get_friends($id);
             </div>
             <div style="text-align:center;">
                 <div id="menu_button"> <a style="text-decoration:none" ; href="profile.php"> Profile</a></div>
+                 <div id="menu_buttons"><a href="index_timeline.php">Timeline</div></a>
                 <div id="menu_button"> About </div>
                 <div id="menu_button">Photos</div>
                 <div id="menu_button"><?php
