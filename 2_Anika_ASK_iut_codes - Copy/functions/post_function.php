@@ -56,7 +56,7 @@ function create_postid()
 }
 function get_posts($id)
 {
-    $query = "select * from posts where userid = '$id' order by id desc limit 10";
+    $query = "select * from posts where parent=0 and userid = '$id' order by id desc limit 10";
 
 
     $result = read($query);
