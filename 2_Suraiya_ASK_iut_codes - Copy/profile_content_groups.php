@@ -4,20 +4,20 @@
  
 		
 
-		$followers = get_likes($user_data['userid'],"user");
+		$groups = get_likes($user_data['userid'],"user");
 
-		if(is_array($followers)){
+		if(is_array($groups)){
 
-			foreach ($followers as $follower) {
+			foreach ($groups as $group) {
 				# code...
 		echo "$user_data[likes]";
-				$FRIEND_ROW = get_user($follower['userid']);
-				include("user_member.php");
+				$FRIEND_ROW = get_user($group['userid']);
+				include("group.php");
 			}
 
 		}else{
 	
-			echo "No followers were found!";
+			echo "No groups were found!";
 		}
 
 
