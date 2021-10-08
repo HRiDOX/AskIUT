@@ -196,7 +196,7 @@ function get_likes($id, $type)
 
         //get like details
         $sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
-        $result = ($sql);
+        $result = read($sql);
         if (is_array($result)) {
 
             $likes = json_decode($result[0]['likes'], true);
