@@ -228,15 +228,17 @@ $friends = get_friends($id);
                 <div id="menu_button"><a style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
             </div>
             <div style="text-align:center;">
-                <div id="menu_button"> <a style="text-decoration:none" ; href="profile.php"> Profile</a></div>
+                <div id="menu_button"> <a style="text-decoration:none" href="profile.php"> Profile</a></div>
                <div id="menu_buttons"><a href="index_timeline.php">Timeline</div></a>
-               <div id="menu_button"> About </div>
+               <div id="menu_button"> Group </div>
                 <div id="menu_button">Photos</div>
-                <div id="menu_button"><?php
-                                        if ($user_data['userid'] == $_SESSION['mybook_userid']) {
-                                            echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
-                                        }
-                                        ?>
+                <div id="menu_button">
+                    <?php
+                         if ($user_data['userid'] == $_SESSION['mybook_userid']) 
+                         {
+                            echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
+                        }
+                    ?>
                 </div>
 
                 <?php
