@@ -231,7 +231,7 @@ $friends = get_friends($id);
             <div style="text-align:center;">
                 <div id="menu_button"> <a style="text-decoration:none" ; href="profile.php"> Profile</a></div>
                  <div id="menu_buttons"><a href="index_timeline.php">Timeline</div></a>
-                <div id="menu_button"> About </div>
+                <div id="menu_button"> <a href="group.php">Groups</a>  </div>
                 <div id="menu_button">Photos</div>
                 <div id="menu_button"><?php
                                         if ($user_data['userid'] == $_SESSION['mybook_userid']) {
@@ -279,6 +279,10 @@ $friends = get_friends($id);
         elseif ($section == "settings") {
 
             include("profile_content_settings.php");
+        }
+        elseif ($section == "groups") {
+
+            include("profile_content_groupss.php");
         }
 
 

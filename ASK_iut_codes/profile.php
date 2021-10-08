@@ -134,7 +134,7 @@ $friends = get_friends($id);
 
     #menu_button {
         width: 100px;
-        display: inline-block;
+        display: inline;
         margin: 2px;
         /* background-color: #2F5D62; */
         color: white;
@@ -244,7 +244,6 @@ $friends = get_friends($id);
 
                 
                 </div>
-
                 <?php
                 $mylikes = "";
                 if ($user_data['likes'] > 0) {
