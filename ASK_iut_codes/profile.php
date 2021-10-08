@@ -232,7 +232,8 @@ $friends = get_friends($id);
                <div id="menu_buttons"><a href="index_timeline.php">Timeline</div></a>
                <div id="menu_button"> Group </div>
                 <div id="menu_button">Photos</div>
-<<<<<<< Updated upstream
+                <div id="menu_buttons"><a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
+
                 <div id="menu_button">
                     <?php
                          if ($user_data['userid'] == $_SESSION['mybook_userid']) 
@@ -240,14 +241,8 @@ $friends = get_friends($id);
                             echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
                         }
                     ?>
-=======
-                <a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>"><div id="menu_buttons">Following</div></a>
-                <div id="menu_button"><?php
-                                        if ($user_data['userid'] == $_SESSION['mybook_userid']) {
-                                            echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
-                                        }
-                                        ?>
->>>>>>> Stashed changes
+
+                
                 </div>
 
                 <?php
