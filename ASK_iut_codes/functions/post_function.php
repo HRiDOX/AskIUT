@@ -41,6 +41,46 @@ function create_post($userid, $data, $files)
     }
     return $Errors;
 }
+function create_repository_post($userid, $data, $files)
+{
+    $Errors = [];
+    if (!empty($data['post']) || !empty($files['file']['name'])) {
+        $myimage = " ";
+        $has_image = 0;
+
+        if (!empty($files['file']['name'])) {
+            //creating folder
+            $folder = "repository_uploads/" . $userid . "/";
+            if (!file_exists($folder)) {
+                mkdir($folder, 0777, true);
+            }
+
+
+
+            $myimage = $folder . generate_filename(15) . ".jpg";
+            move_uploaded_file($_FILES['file']['tmp_name'], $myimage);
+            //after this we need to add resize image function
+
+            $has_image = 1;
+        }
+        $post = addslashes($data['post']);
+        $postid = create_postid();
+        $parent = 0;
+        
+			/*if(isset($data['parent']) && is_numeric($data['parent'])){
+
+				$parent = $data['parent'];
+
+				$sql = "update posts set comments = comments + 1 where postid = '$parent' limit 1";
+				save($sql);
+			}*/
+        $query = "insert into repository (userid,postid,post,image,has_image) values ('$userid','$postid','$post','$myimage','$has_image')";
+        save($query);
+    } else {
+        $Errors[] = "Please type something to post!<br>";
+    }
+    return $Errors;
+}
 
 function create_postid()
 {
@@ -80,6 +120,33 @@ function get_posts($id)
         return false;
     }
 }
+
+function get_repository_posts($id)
+{   
+    
+    $page_number = 1;
+                            
+    //$page_number = isset($_Get['page']) ? (int)$_Get['page'] : 1;
+    //$page_number = ($page_number<1) ? 1 : $page_number;
+    if (isset($_GET['page'])) {
+         $page_number = (int)$_GET['page'];
+    }
+        if ($page_number<1) {
+             $page_number = 1;
+        }
+    $limit = 3;
+    $offset =($page_number - 1) * $limit;
+    $query = "select * from repository where userid = '$id' order by id desc limit  $limit offset $offset";
+
+
+    $result = read($query);
+
+    if ($result) {
+        return $result;
+    } else {
+        return false;
+    }
+}
 /////////////used is delet///////////////
 function get_one_post($postid)
 {
@@ -87,6 +154,23 @@ function get_one_post($postid)
         return false;
     }
     $query = "select * from posts where postid = '$postid'  limit 1";
+
+//aage $result chilo
+    $result = read($query);
+
+    if ($result) {
+        return $result[0];
+    } else {
+        return false;
+    }
+}
+
+function get_one_repository_post($postid)
+{
+    if (!is_numeric($postid)) {
+        return false;
+    }
+    $query = "select * from repository where postid = '$postid'  limit 1";
 
 //aage $result chilo
     $result = read($query);
