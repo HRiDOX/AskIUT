@@ -139,13 +139,13 @@
 
 <script type="text/javascript">
 		
-		function ajax_data(data){
+		function ajax_send(data){
 
           
 			var ajax = new XMLHttpRequest();
 			ajax.addEventListener ('readystatechange',function(){
 
-				if(ajax.readyState == 4 || ajax.status == 200){
+				if(ajax.readyState == 4 && ajax.status == 200){
 
 					response(ajax.responseText);
 				}
