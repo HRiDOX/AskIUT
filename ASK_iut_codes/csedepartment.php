@@ -67,12 +67,8 @@ ul li:nth-child(even):hover {
 
 <body>
 <ul>
-  <li><a class="link" href="csedepartment.php">CSE</a></li>
-  <li>EEE</li>
-  <li>CEE</li>
-  <li>BTM</li>
-  <li>ME</li>
-  <li>TVE</li>
+  <li><a class="link" href="https://www.google.com/search?gs_ssp=eJzj4tTP1TdIKrHMKTJg9GJNyU9PrwQAMt4Flg&q=doggy&oq=&aqs=chrome.0.46i39i275i362j35i39i362l7...8.119202j0j1&sourceid=chrome&ie=UTF-8">CSE</a></li>
+  <li>SWE</li>
 </ul>
 </body>
 
