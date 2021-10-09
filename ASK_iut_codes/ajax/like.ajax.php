@@ -33,18 +33,13 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
 		$allowed[] = 'comment';
 
 		if (in_array($_GET['type'], $allowed)) {
-           if($_GET['type']== 'post'){
-					like_post($_GET['id'], $_GET['type'], $_SESSION['mybook_userid']);
-					
-				}
-
-			
-			if($_GET['type']== 'user'){
-					
+           if($_GET['type'] == "user"  ){
 					follow_user($_GET['id'],$_GET['type'],$_SESSION['mybook_userid']);
 					like_post($_GET['id'], $_GET['type'], $_SESSION['mybook_userid']);
-				
-					
+				}else if ($_GET['type'] == "user" || $_GET['type'] == "post") 
+					# code...
+				{
+                      like_post($_GET['id'], $_GET['type'], $_SESSION['mybook_userid']);   
 				}
 		}
 	}
