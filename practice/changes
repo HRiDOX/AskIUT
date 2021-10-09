@@ -45,3 +45,6 @@ funtion ajax_send(data,elemet){
 }
 
 //116
+after for each loop in like.ajax.php
+$_GET['id'] = addslashes($_GET['id']);
+$_GET['type'] = addslashes($_GET['type']);
