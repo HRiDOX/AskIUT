@@ -12,7 +12,8 @@
                  <img id="friends_img" src="group.png"><br><br>
                  Groups
              </div>
-             <div>
+             <br><br><br>
+             <div id="friends">
                  Following<br>
                  <?php
                     if ($friends) {
