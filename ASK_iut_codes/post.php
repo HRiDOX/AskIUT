@@ -41,7 +41,7 @@
 
 
         ?>
-         <a  href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">Like<?php echo $likes ?></a> . 
+       <a href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">Like<?php echo $likes ?></a> .
         <?php
         $comments = "";
 
