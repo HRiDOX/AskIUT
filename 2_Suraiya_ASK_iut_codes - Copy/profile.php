@@ -133,7 +133,7 @@ $friends = get_friends($id);
         border: 2px solid #ffffff;
     }
 
-    #menu_button {
+    #menu_buttons {
         width: 100px;
         display: inline-block;
         margin: 2px;
@@ -229,15 +229,15 @@ $friends = get_friends($id);
                 <div id="menu_button"><a style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
             </div>
             <div style="text-align:center;">
-                <div id="menu_button"> <a style="text-decoration:none" ; href="profile.php"> Profile</a></div>
+                <div id="menu_buttons"> <a style="text-decoration:none" ; href="profile.php"> Profile</a></div>
                  <div id="menu_buttons"><a href="index_timeline.php">Timeline</div></a>
-                <div id="menu_button"> About </div>
-                <div id="menu_button">Photos</div>
-                <div id="menu_button"><?php
-                                        if ($user_data['userid'] == $_SESSION['mybook_userid']) {
-                                            echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
-                                        }
-                                        ?>
+                <div id="menu_buttons">Photos</div>
+                <div id="menu_buttons"><?php
+                    if ($user_data['userid'] == $_SESSION['mybook_userid']) 
+                    {
+                        //echo '<a href = ".ROOT.profile/<?php echo $user_data['userid']./groups"><div id ="menu_buttons">Groups</div></a>';
+                         echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_buttons">Settings</div></a>';
+                    }?>
                 </div>
                 <div id="menu_buttons"> <a href="profile.php?section=followers&id=<?php echo $user_data['userid'] ?>">Followers</a></div>
                  <div id="menu_buttons"> <a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
@@ -279,6 +279,10 @@ $friends = get_friends($id);
         elseif ($section == "settings") {
 
             include("profile_content_settings.php");
+        }
+        elseif ($section == "groups") {
+
+            include("profile_content_groupss.php");
         }
 
 

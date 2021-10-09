@@ -137,7 +137,7 @@ $friends = get_following($user_data['userid'],"user");
 
     #menu_button {
         width: 100px;
-        display: inline-block;
+        display: inline;
         margin: 2px;
         /* background-color: #2F5D62; */
         color: white;
@@ -248,7 +248,6 @@ $friends = get_following($user_data['userid'],"user");
 
                 
                 </div>
-
                 <?php
                 $mylikes = "";
                 if ($user_data['likes'] > 0) {
