@@ -1,0 +1,47 @@
+//114
+//like.ajax.php
+//at the very end before the last curly braces
+
+$likes = $post->get_likes($_GET['id'],$_GET['type']);
+$obj = (object)[];
+$obj->likes = count($likes);
+$obj->action = "like_post";
+$likes_count=count($likes);
+echo json_encode($obj);
+
+//115
+//in post.php
+function like_post(e){
+	e.preventdefault();
+	var link = e.target.href;
+	var data = {};
+	data.link = link;
+	data.action = "like_post";
+	ajax_send(data,e.target);
+}
+funtion response(result,element){
+if(result != ""){
+var obj = JSON.parse(result);
+if(typeof obj.action != "undefined"){
+	if(obj.action == 'like_post'){
+		var likes = "";
+		$likes = (parseInt(obj.likes)>0)? "Like(" +obj.likes+s")":"Like";
+	element.innerHTML = likes;
+			}
+		}
+	}
+}
+}
+funtion ajax_send(data,elemet){
+	var ajax = new XMLHttpRequest();
+	ajax.addEventListener('readystatechange',function(){
+	if(ajax.readyState == 4 && ajax.statue == 200){
+	response(ajax.responseText,element);
+	}
+	});
+	data = JSON.stringify(data);
+	ajax.open("post","ajax.php",true);
+	ajax.send(data);
+}
+
+//116
