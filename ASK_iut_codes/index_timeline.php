@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($result == "") {
         redirect("index_timeline.php");
-    } else {
+    } /*else {
 
         echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
         echo "<br>The following errors occured:<br><br>";
         echo '$result';
         //aage $result chilo shudhu
         echo "</div>";
-    }
+    }*/
 }
 
 ?>
