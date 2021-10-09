@@ -1,0 +1,105 @@
+//114
+//like.ajax.php
+//at the very end before the last curly braces
+//read likes
+$likes = $post->get_likes($_GET['id'],$_GET['type']);
+//create info
+$likes = array();
+$info= "";
+        $i_liked = false;
+
+        if (isset($_SESSION['mybook_userid'])) {
+
+
+
+            $sql = "select likes from likes where type='post' && contentid = '$_GET[id]' limit 1";
+            $result = read($sql);
+            if (is_array($result)) {
+
+                $likes = json_decode($result[0]['likes'], true);
+
+                $user_ids = array_column($likes, "userid");
+
+                if (in_array($_SESSION['mybook_userid'], $user_ids)) {
+                    $i_liked = true;
+                }
+            }
+        }
+		$like_count = count($likes);
+        if ($like_count > 0) {
+
+           
+            $info .= "<a id = 'info_$_GET[id]' href='likes.php?type=post&id=$_GET[id]'>";
+            $info .= "<br/>";
+
+            if ($like_count == 1) {
+
+                if ($i_liked) {
+                    $info .= "<div style='text-align:left;'>You liked this post </div>";
+                } else {
+                    $info .= "<div style='text-align:left;'> 1 person liked this post </div>";
+                }
+            } else {
+
+                if ($i_liked) {
+
+                    $text = "others";
+                    if ($like_count - 1 == 1) {
+                        $text = "other";
+                    }
+                    $info .= "<div style='text-align:left;'> You and " . ($like_count - 1) . " $text liked this post </div>";
+                } else {
+                    $info .= "<div style='text-align:left;'>" . $like_count . " other liked this post </div>";
+                }
+            }
+
+            $info .= "</a>";
+        }
+        ////////
+$obj = (object)[];
+$obj->likes = count($likes);
+$obj->action = "like_post";
+$obj->info = $info;
+$obj->id = "info_$_GET[id]";
+$likes_count=count($likes);
+$info .= json_encode($obj);
+
+//115
+//in post.php
+function like_post(e){
+	e.preventDefault();
+	var link = e.target.href;
+	var data = {};
+	data.link = link;
+	data.action = "like_post";
+	ajax_send(data,e.target);
+}
+function response(result,element){
+	if(result != "")
+	{
+		var obj = JSON.parse(result);
+			if(typeof obj.action != "undefined")
+			{
+				if(obj.action == 'like_post')
+				{
+					var likes = "";
+					likes = (parseInt(obj.likes)>0)? "Like(" +obj.likes+ ")":"Like";
+					element.innerHTML = likes;
+				}
+			}
+	}
+}
+
+function ajax_send(data,element){
+	var ajax = new XMLHttpRequest();
+	ajax.addEventListener('readystatechange',function(){
+	if(ajax.readyState == 4 && ajax.statue == 200){
+	response(ajax.responseText,element);
+	}
+	});
+	data = JSON.stringify(data);
+	ajax.open("post","ajax.php",true);
+	ajax.send(data);
+}
+
+//116
