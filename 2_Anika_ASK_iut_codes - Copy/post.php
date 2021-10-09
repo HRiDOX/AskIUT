@@ -42,7 +42,7 @@
 
 
         ?>
-        <a onclick="ajax_data(event)" href="like.php?type=post&id=<?php echo $ROW['postid']; ?>">Like(<?php echo $likes ?>)</a> .
+        <a onclick="like_post(event)" href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">Like<?php echo $likes ?></a> . 
         <?php
         $comments = "";
 
@@ -139,26 +139,39 @@
 
 <script type="text/javascript">
 		
-		function ajax_data(e){
+		function ajax_data(data){
 
-            e.preventDefault();
-
+          
 			var ajax = new XMLHttpRequest();
 			ajax.addEventListener ('readystatechange',function(){
 
-				if(ajax.readyState == 4 && ajax.status == 200){
+				if(ajax.readyState == 4 || ajax.status == 200){
 
 					response(ajax.responseText);
 				}
 
 			});
 
+            
+            data = JSON.stringify(data);
+
 			ajax.open("post","ajax.php",true);
-			ajax.send();
+			ajax.send(data);
 		}
 
         function response(result){
             alert(result);
+        }
+
+        function like_post(e){
+
+            e.preventDefault();
+            var link = e.target.href;
+
+            var data = {};
+            data.link = link;
+            data.action = "like_post";
+            ajax_send(data);
         }
 
 	</script>
