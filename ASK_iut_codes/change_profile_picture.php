@@ -170,17 +170,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <input type="file" name="file">
                         <input id="post_button" type="submit" value="Change!">
                         <br>
-                        <?php
+                        <div style="text-align: center;">
+								<br><br>
+                           <?php
 
-                        //check for mode
-
-
-                        echo "<img src= ' $user_data[profile_image]' style='max-width:500px;'>";
-
+                            //check for mode
 
 
-                        ?>
-                    </div>
+                            echo "<img src= ' $user_data[profile_image]' style='max-width:500px;'>";
+
+
+
+                          ?>
+                        </div>
+                    </div>   
                 </form>
 
             </div>

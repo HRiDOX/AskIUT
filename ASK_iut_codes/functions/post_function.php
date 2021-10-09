@@ -55,8 +55,21 @@ function create_postid()
     return $number;
 }
 function get_posts($id)
-{
-    $query = "select * from posts where parent=0 and userid = '$id' order by id desc limit 10";
+{   
+    
+    $page_number = 1;
+                            
+    //$page_number = isset($_Get['page']) ? (int)$_Get['page'] : 1;
+    //$page_number = ($page_number<1) ? 1 : $page_number;
+    if (isset($_GET['page'])) {
+         $page_number = (int)$_GET['page'];
+    }
+        if ($page_number<1) {
+             $page_number = 1;
+        }
+    $limit = 3;
+    $offset =($page_number - 1) * $limit;
+    $query = "select * from posts where parent=0 and userid = '$id' order by id desc limit  $limit offset $offset";
 
 
     $result = read($query);
@@ -279,7 +292,19 @@ function get_thumb_post($filename)
  function get_comments($id)
 	{
 
-		$query = "select * from posts where parent = '$id' order by id asc limit 10";
+        // $page_number = 1;
+                            
+    $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $page_number = ($page_number<1) ? 1 : $page_number;
+   /* if (isset($_GET['page'])) {
+         $page_number = (int)$_GET['page'];
+    }
+    if ($page_number<1) {
+             $page_number = 1;
+        }*/
+    $limit = 10;
+    $offset =($page_number - 1) * $limit;
+		$query = "select * from posts where parent = '$id' order by id asc limit $limit offset $offset";
 
 		
 		$result = read($query);

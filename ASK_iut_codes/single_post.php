@@ -7,6 +7,7 @@ require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/settings_function.php');
+require_once('functions/new_function.php');
 
 if (isset($_SESSION['Email'])) {
     $id = $_SESSION['mybook_userid'];
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
         echo "<br>The following errors occured:<br><br>";
-        echo $result;
+        echo '$result';
         //aage $result chilo shudhu
         echo "</div>";
     }
@@ -227,11 +228,19 @@ if (isset($_GET['id'])) {
 
                         foreach ($comments as $COMMENT) {
                             # code...
-
+                            $ROW_USER = get_user($COMMENT['userid']);
                             include("comment.php");
                         }
                     }
+
+                     $pg = pagination_link();
                     ?>
+                    <a href = "<?=   $pg['next_page'] ?>">
+                          <input id="post_button" type="button" value="Next Page" style="float : right; width:150px;">
+                    </a>
+                    <a href = "<?=  $pg['prev_page'] ?>">
+                          <input id="post_button" type="button" value="Previous Page" style = "float : left; width:150px;">
+                     </a>
                 </div>
 
 

@@ -13,12 +13,12 @@
                  Groups
              </div>
              <div>
-                 IUTIANS<br>
+                 Following<br>
                  <?php
                     if ($friends) {
 
-                        foreach ($friends as $FRIEND_ROW) {
-
+                        foreach ($friends as $friend) {
+                             $FRIEND_ROW =get_user($friend['userid']);
                             include("user_member.php");
                         }
                     }
@@ -52,7 +52,16 @@
                     }
                 }
 
+                
+                     $pg = pagination_link();
+
                 ?>
+                 <a href = "<?=   $pg['next_page'] ?>">
+                          <input id="post_button" type="button" value="Next Page" style="float : right; width:150px;">
+                        </a>
+                        <a href = "<?=  $pg['prev_page'] ?>">
+                          <input id="post_button" type="button" value="Previous Page" style = "float : left; width:150px;">
+                        </a>
 
 
          </div>

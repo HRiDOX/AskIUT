@@ -34,10 +34,12 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
 
 
 			
-			if($_GET['type'] == "user"){
+			if($_GET['type'] == "user"  ){
 					follow_user($_GET['id'],$_GET['type'],$_SESSION['mybook_userid']);
 					like_post($_GET['id'], $_GET['type'], $_SESSION['mybook_userid']);
-				}else{
+				}else if ($_GET['type'] == "user" || $_GET['type'] == "post") 
+					# code...
+				{
                       like_post($_GET['id'], $_GET['type'], $_SESSION['mybook_userid']);   
 				}
 		}

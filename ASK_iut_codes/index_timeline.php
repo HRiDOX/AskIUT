@@ -4,6 +4,8 @@ require_once('functions/user_profile_function.php');
 require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/image_function.php');
+require_once('functions/new_function.php');
+
 //require_once('functions/image_crop_function.php');
 
 if (isset($_SESSION['Email'])) {
@@ -23,6 +25,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $user_data = $profile_data[0];
     }
 }
+/*echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";*/
 
 
 //posting starts here
@@ -111,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     font-size: 14px;
     border-radius: 2px;
     width: 50px;
+    cursor : pointer;
 }
 
 #posting_post {
@@ -197,10 +203,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
                 <!--posts-->
                 <div id="post_bar">
-                    <?php 
+                    <?php
+                            $page_number = 1;
+                            
+                            //$page_number = isset($_Get['page']) ? (int)$_Get['page'] : 1;
+                            //$page_number = ($page_number<1) ? 1 : $page_number;
+                            if (isset($_GET['page'])) {
+                              $page_number = (int)$_GET['page'];
+                            }
+                            if ($page_number<1) {
+                                 $page_number = 1;
+                            }
+                            
 
- 						
-                           
+                           //echo  $next_page_link;
+                            
+
+                            //echo $page_number;
+                            $limit = 3;
+                            $offset =($page_number - 1) * $limit;
  							$followers =get_following($_SESSION['mybook_userid'],"user");
 
  							$follower_ids = false;
@@ -213,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
  							if($follower_ids){
  								$myuserid = $_SESSION['mybook_userid'];
- 								$sql = "select * from posts where parent = 0 and userid = '$myuserid' || userid in('" .$follower_ids. "') order by id desc limit 30";
+ 								$sql = "select * from posts where parent = 0 and (userid = '$myuserid' || userid in('" .$follower_ids. "')) order by id desc limit $limit offset $offset";
  								$posts =read($sql);
                                   
  							}
@@ -232,10 +253,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
  	 					 			include("post.php");
  	 					 		}
  	 					 	}
- 	 			 
 
-	 					 ?>
-
+                     $pg = pagination_link();
+                    ?>
+                    <a href = "<?=   $pg['next_page'] ?>">
+                          <input id="post_button" type="button" value="Next Page" style="float : right; width:150px;">
+                        </a>
+                        <a href = "<?=  $pg['prev_page'] ?>">
+                          <input id="post_button" type="button" value="Previous Page" style = "float : left; width:150px;">
+                        </a>
+                         
                 </div>
             </div>
         </div>

@@ -6,6 +6,8 @@ require_once('functions/post_function.php');
 require_once('functions/login_function.php');
 require_once('functions/settings_function.php');
 require_once('functions/time.php');
+require_once('functions/image_function.php');
+require_once('functions/new_function.php');
 
 if (isset($_SESSION['Email'])) {
     $id = $_SESSION['mybook_userid'];
@@ -16,10 +18,10 @@ if (isset($_SESSION['Email'])) {
 
 // collects other profile data
 
-$profile_data = get_profile($_GET['id']);
+/*$profile_data = get_profile($_GET['id']);
 if (is_array($profile_data)) {
     $user_data = $profile_data[0];
-}
+}*/
 
 
 $USER = $user_data;
@@ -36,6 +38,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 //posting starts here
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+   
+    
     if (isset($_POST['FirstName'])) {
 
 
@@ -51,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
             echo "<br>The following errors occured:<br><br>";
-            print_r($result);
+            echo $result;
             echo "</div>";
         }
     }
@@ -68,8 +72,7 @@ $posts = get_posts($id);
 //collect friends
 //$id = $user_data['$userid'];
 
-$friends = get_friends($id);
-
+$friends = get_following($user_data['userid'],"user");
 
 
 
@@ -210,6 +213,7 @@ $friends = get_friends($id);
     <!--Top Bar-->
     <?php include("topbar.php"); ?>
 
+   
     <div style="width:800px;margin:auto;font-size: 30px;">
 
         <div>
@@ -225,7 +229,7 @@ $friends = get_friends($id);
 
             <div style="font-size: 20px;">
                 <?php echo $user_data['FirstName'] . " " . $user_data['LastName']; ?><br>
-                <div id="menu_button"><a style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
+                <div id="menu_button"><a  style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
             </div>
             <div style="text-align:center;">
                 <div id="menu_button"> <a style="text-decoration:none" href="profile.php"> Profile</a></div>
@@ -290,3 +294,4 @@ $friends = get_friends($id);
 </body>
 
 </html>
+
