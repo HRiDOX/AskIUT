@@ -45,14 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($result == "") {
         header("Location: single_post.php?id=$_GET[id]");
         die;
-    } else {
+    }/* else {
 
         echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
         echo "<br>The following errors occured:<br><br>";
         echo '$result';
         //aage $result chilo shudhu
         echo "</div>";
-    }
+    }*/
 }
 
 
