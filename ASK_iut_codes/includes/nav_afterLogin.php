@@ -16,9 +16,6 @@
             <li class="nav-item">
                 <a href="about.php" class="nav-link">About</a>
             </li>
-            <li class="nav-item">
-                <a href="profile.php" class="nav-link">Profile</a>
-            </li>
 
         </ul>
 
