@@ -5,7 +5,7 @@
              <br>
              <div id="friends">
                  <img id="friends_img" src="repository.png"><br><br>
-                 Repository
+                 <a href="departments.php">Repository</a> 
              </div>
              <br><br><br>
              <div id="friends">
