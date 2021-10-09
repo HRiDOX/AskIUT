@@ -1,0 +1,8 @@
+
+//in index_timeline.php in line 232 post.php
+//in post.php in line 45 
+// from post.php of Anika AskIut copy code from line 140
+
+// in line 45 of post 
+
+// new file ajax.php added
