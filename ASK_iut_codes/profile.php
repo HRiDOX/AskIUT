@@ -234,7 +234,7 @@ $friends = get_following($user_data['userid'],"user");
             <div style="text-align:center;">
                 <div id="menu_button"> <a style="text-decoration:none" href="profile.php"> Profile</a></div>
                <div id="menu_button"><a href="index_timeline.php">Timeline</div></a>
-               <div id="menu_button"> Group </div>
+               <div id="menu_button"><a href="group_by_department.php"> Group </a></div>
                 <div id="menu_button">Photos</div>
                 <div id="menu_button"><a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
 

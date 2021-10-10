@@ -10,7 +10,7 @@
              <br><br><br>
              <div id="friends">
                  <img id="friends_img" src="group.png"><br><br>
-                 Groups
+                 <div id="menu_button"><a href="group_by_department.php"> Group </a></div>
              </div>
              <br><br><br>
              <div id="friends">

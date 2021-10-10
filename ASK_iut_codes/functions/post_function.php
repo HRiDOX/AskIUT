@@ -107,7 +107,7 @@ function get_posts($id)
         if ($page_number<1) {
              $page_number = 1;
         }
-    $limit = 3;
+    $limit = 6;
     $offset =($page_number - 1) * $limit;
     $query = "select * from posts where parent=0 and userid = '$id' order by id desc limit  $limit offset $offset";
 

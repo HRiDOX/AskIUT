@@ -53,6 +53,66 @@ function get_profile($id)
     return read($query);
 }
 
+function get_cse_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'CSE' limit 1";
+    return read($query);
+}
+function get_eee_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'EEE' limit 1";
+    return read($query);
+}
+
+function get_civil_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'CEE' limit 1";
+    return read($query);
+}
+
+function get_me_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'ME' limit 1";
+    return read($query);
+}
+function get_btm_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'BTM' limit 1";
+    return read($query);
+}
+function get_tve_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'TVE' limit 1";
+    return read($query);
+}
+
+function get_ipe_profile($id)
+{
+
+    //$id = addslashes($id);
+
+    $query = "select * from users where userid = '$id' &&  department = 'IPE' limit 1";
+    return read($query);
+}
+
 function get_following($id,$type){
 
 		
@@ -142,4 +202,87 @@ function get_friends($id)
             return false;
         }
     }
+}
+
+function get_departments_member_cse($id){
+
+    $query = "select  *from users where department='CSE' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+
+function get_departments_member_me($id){
+
+    $query = "select  *from users where department= 'ME' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+
+function get_departments_member_civil($id){
+
+    $query = "select  *from users where department= 'CEE' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+
+function get_departments_member_eee($id){
+
+    $query = "select  *from users where department= 'EEE' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+
+function get_departments_member_btm($id){
+
+    $query = "select  *from users where department= 'BTM' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+
+function get_departments_member_tve($id){
+
+    $query = "select  *from users where department= 'TVE' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
+}
+function get_departments_member_ipe($id){
+
+    $query = "select  *from users where department= 'IPE' and Active='1'";
+    $result = read($query);
+    if ($result) {
+        return $result;
+    }else {
+        return false;
+    }
+
 }
