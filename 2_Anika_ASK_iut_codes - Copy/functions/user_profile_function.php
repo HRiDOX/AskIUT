@@ -43,6 +43,24 @@ function get_user($id)
         }
     }
 }
+function get_department($id)
+{
+
+    $query = "select  *from users where Department='CSE' and Active='1'";
+    $result = read($query);
+
+    if ($result) {
+        return $result[0];
+    } else {
+        $query1 = "select  *from users_faculty where userid ='$id' and Active='1'";
+        $result1 = read($query1);
+        if ($result1) {
+            return $result1[0];
+        } else {
+            return false;
+        }
+    }
+}
 
 function get_profile($id)
 {
@@ -73,6 +91,23 @@ function get_following($id,$type){
 
 		return false;
 	}
+    function cse(){
+
+		
+		
+
+		
+ 
+			//get following details
+			$sql = "select * from users where Department='CSE'";
+			$result = read($sql);
+			
+				return $result;
+			
+		
+	}
+    
+    
 
 function follow_user($id,$type,$mybook_userid){
 

@@ -201,22 +201,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
  						
                            
- 							$followers =get_following($_SESSION['mybook_userid'],"user");
-
- 							$follower_ids = false;
- 							if(is_array($followers)){
-
- 								$follower_ids = array_column($followers, "userid");
- 								$follower_ids = implode("','", $follower_ids);
-
- 							}
-
- 							if($follower_ids){
- 								$myuserid = $_SESSION['mybook_userid'];
- 								$sql = "select * from posts where parent = 0 and userid = '$myuserid' || userid in('" .$follower_ids. "') order by id desc limit 30";
+ 		
+ 							
+                             $sql = "select * from users where Department='MPE'";
+                             $result = read($sql);
+                             $i=0;
+                             if(isset($result) && $result)
+ 	 					 	{
+                             foreach ($result as $result) {
+                             //$i=0;
+                            
+                           
+                    
+                                 $cse_user = implode("','",$result);
+                                 
+                                 
+                                 
+                                $myuserid = $_SESSION['mybook_userid'];
+ 								$sql = "select * from posts where parent = 0 and ( userid in('" .$cse_user. "')) order by id desc limit 30";
  								$posts =read($sql);
                                   
- 							}
+ 						
 
  	 					 	if(isset($posts) && $posts)
  	 					 	{
@@ -231,7 +236,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
  	 					 			include("post.php");
  	 					 		}
+                                   
  	 					 	}
+                               
+                               
+
+
+                        }
+                    }
+                            
+                        
+                                
  	 			 
 
 	 					 ?>
