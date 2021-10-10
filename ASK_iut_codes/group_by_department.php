@@ -6,13 +6,13 @@
 </head>
 
 <style>
-    body {
+   body {
     margin: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background-color: #a8d6b8;
 }
 
 ul {
@@ -20,59 +20,77 @@ ul {
     list-style-type: none;
 }
 
-ul li {
-    box-sizing: border-box;
-    width: 15em;
-    height: 3em;
-    font-size: 20px;
-    border-radius: 0.5em;
-    margin: 0.5em;
-    box-shadow: 0 0 1em rgba(0,0,0,0.2);
-    color: white;
-    font-family: sans-serif;
-    text-transform: capitalize;
-    line-height: 3em;
-    transition: 0.3s;
+li {
+    font-size: 25px;
+    width: 8em;
+    height: 2em;
+    color: #2eb82e;
+    border-left: 0.08em solid;
+    position: relative;
+    margin-top: 0.8em;
     cursor: pointer;
 }
 
-ul li:nth-child(odd) {
-    background: linear-gradient(to right, black, #d9d9d9);
-    text-align: left;
-    padding-left: 10%;
-    transform: perspective(500px) rotateY(45deg);
+li::before,
+li::after
+ {
+    content: '';
+    position: absolute;
+    width: inherit;
+    border-left: inherit;
+    z-index: -1;
 }
 
-ul li:nth-child(even) {
-    background: linear-gradient(to left, black, #d9d9d9);
-    text-align: right;
-    padding-right: 10%;
-    transform: perspective(500px) rotateY(-45deg);
+li::before {
+    height: 80%;
+    top: 10%;
+    left: calc(-0.15em - 0.08em * 2);
+    filter: brightness(0.8);
 }
 
-ul li:nth-child(odd):hover {
-    transform: perspective(200px) rotateY(45deg);
-    padding-left: 5%;
+li::after {
+    height: 60%;
+    top: 20%;
+    left: calc(-0.15em * 2 - 0.08em * 3);
+    filter: brightness(0.6);
 }
 
-ul li:nth-child(even):hover {
-    transform: perspective(200px) rotateY(-45deg);
-    padding-right: 5%;
+li span {
+    position: relative;
+    height: 120%;
+    top: -10%;
+    box-sizing: border-box;
+    border: 0.08em solid;
+    background-color:#004d2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
+    transition: 0.3s;
 }
+
+li:hover span {
+    transform: translateX(0.15em);
+}
+
 
 .link { color: #a6a6a6; } /* CSS link color (red) */
-/*.link:hover { color: #00FF00; }  CSS link hover (green) */
+.link:hover { color: #66ff66; } /*  CSS link hover (green) */
 
 </style>
 
 <body>
+    
 <ul>
-  <li><a  href="cse_department.php">CSE</a></li>
-  <li><a  href="eee_department.php">EEE</a></li>
-  <li><a  href="cee_department.php">CEE</a></li>
-  <li><a  href="btm_department.php">BTM</a></li>
-  <li><a  href="me_department.php">MPE</a></li>
-  <li><a  href="tve_department.php">TVE</a></li>
+    
+  <li><span><a class="link" href="cse_department.php">CSE</a></span></li>
+  <li><span><a class="link" href="eee_department.php">EEE</a></span></li>
+  <li><span><a class="link" href="cee_department.php">CEE</a></span></li>
+  <li><span><a class="link" href="btm_department.php">BTM</a></span></li>
+  <li><span><a class="link" href="me_department.php">MPE</a></span></li>
+  <li><span><a class="link" href="tve_department.php">TVE</a></span></li>
   
 </ul>
 </body>

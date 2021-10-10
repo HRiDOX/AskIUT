@@ -55,55 +55,7 @@
             }
             ?>
         </span>
-        <?php
-        $i_liked = false;
-
-        if (isset($_SESSION['mybook_userid'])) {
-
-
-
-            $sql = "select likes from likes where type='post' && contentid = '$ROW[postid]' limit 1";
-            $result = read($sql);
-            if (is_array($result)) {
-
-                $likes = json_decode($result[0]['likes'], true);
-
-                $user_ids = array_column($likes, "userid");
-
-                if (in_array($_SESSION['mybook_userid'], $user_ids)) {
-                    $i_liked = true;
-                }
-            }
-        }
-        if ($ROW['likes'] > 0) {
-
-            echo "<br/>";
-            echo "<a href='likes.php?type=post&id=$ROW[postid]'>";
-
-            if ($ROW['likes'] == 1) {
-
-                if ($i_liked) {
-                    echo "<div style='text-align:left;'>You liked this post </div>";
-                } else {
-                    echo "<div style='text-align:left;'> 1 person liked this post </div>";
-                }
-            } else {
-
-                if ($i_liked) {
-
-                    $text = "others";
-                    if ($ROW['likes'] - 1 == 1) {
-                        $text = "other";
-                    }
-                    echo "<div style='text-align:left;'> You and " . ($ROW['likes'] - 1) . " $text liked this post </div>";
-                } else {
-                    echo "<div style='text-align:left;'>" . $ROW['likes'] . " other liked this post </div>";
-                }
-            }
-
-            echo "</a>";
-        }
-        ?>
+       
     </div>
 </div>
 

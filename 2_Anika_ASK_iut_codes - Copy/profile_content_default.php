@@ -4,8 +4,7 @@
          <div id="friends_bar">
              <br>
              <div id="friends">
-                 <img id="friends_img" src="repository.png"><br><br>
-                 Repository
+                 <button class="glow-on-hover" type="button"><a href="">Repository</a> </button> 
              </div>
              <br><br><br>
              <div id="friends">
