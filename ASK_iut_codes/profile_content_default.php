@@ -40,7 +40,7 @@
              </form>
          </div>
          <!-- post -->
-         <div id="post_bar">
+            <div id="post_bar">
              <?php
 
                 if ($posts) {
@@ -63,8 +63,6 @@
                         <a href = "<?=  $pg['prev_page'] ?>">
                           <input id="post_button" type="button" value="Previous Page" style = "float : left; width:150px;">
                         </a>
-
-
-         </div>
+           </div>
      </div>
  </div>
