@@ -228,37 +228,45 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             //echo $page_number;
                             $limit = 3;
                             $offset =($page_number - 1) * $limit;
- 							$followers =get_following($_SESSION['mybook_userid'],"user");
-
- 							$follower_ids = false;
- 							if(is_array($followers)){
-
- 								$follower_ids = array_column($followers, "userid");
- 								$follower_ids = implode("','", $follower_ids);
-
- 							}
-
  							
- 								$myuserid = $_SESSION['mybook_userid'];
- 								$sql = "select * from posts where parent = 0 order by id desc limit $limit offset $offset";
- 								$posts =read($sql);
+                            $sql = "select * from users where Department='BTM'";
+                            $result = read($sql);
+                            $i=0;
+                            if(isset($result) && $result)
+                              {
+                            foreach ($result as $result) {
+                            //$i=0;
+                           
+                          
+                   
+                                $btm_user = implode("','",$result);
+                                
+                                
+                                
+                               $myuserid = $_SESSION['mybook_userid'];
+                                $sql = "select * from posts where parent = 0 and ( userid in('" .$btm_user. "')) order by id desc limit $limit offset $offset";
+                                $posts =read($sql);
+                                 
+                        
+
+                              if(isset($posts) && $posts)
+                              {
+
+                            
+
+                                  foreach ($posts as $ROW) {
+                                      # code...
+
+                      
+                                      $ROW_USER =get_user($ROW['userid']);
+
+                                      include("post.php");
+                                  }
                                   
- 							
-
- 	 					 	if(isset($posts) && $posts)
- 	 					 	{
-
-                             
-
- 	 					 		foreach ($posts as $ROW) {
- 	 					 			# code...
-
- 	 				 
- 	 					 			$ROW_USER =get_user($ROW['userid']);
-
- 	 					 			include("post.php");
- 	 					 		}
- 	 					 	}
+                              }    
+  
+                          }
+                        }
 
                      $pg = pagination_link();
                     ?>

@@ -46,9 +46,9 @@ function user_validation()
             $Errors[] = "User Name cannot be accept those  Characters ";
         }
          // check department 
-        if (!preg_match("/^[CSE,ME,CEE,IPE,TVE,BTM]*$/", $Department)) {
+        if (!preg_match("/^[CSE,MPE,CEE,EEE,TVE,BTM]*$/", $Department)) {
 
-            $Errors[] = "Department can only be CSE,ME,CEE,IPE,TVE,BTM  departments ";
+            $Errors[] = "Department can only be CSE,MPE,CEE,EEE,TVE,BTM  departments ";
         }
         //check the email existance
         if (Email_Exits($Email)) {
