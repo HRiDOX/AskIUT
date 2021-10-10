@@ -5,7 +5,8 @@ require_once('functions/registration_function.php');
 
 
 
-<body background="logo/register.jpg" style="width:100%;height:100%;">
+<body background="logo/register.jpg" style="width:100%;height:100%;background-position: center;background-repeat: no-repeat;
+  background-size: cover;">
 
     <! --Navigation Bar -->
         <?php require_once('includes/nav_beforeLogin.php') ?>
@@ -20,8 +21,6 @@ require_once('functions/registration_function.php');
                         <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Register</h2>
 
 
-                        <hr>
-                        <hr>
                         <hr>
 
                     </div>
@@ -41,8 +40,8 @@ require_once('functions/registration_function.php');
                             <button class="btn btn-success float-md-right">Register Now</button>
 
                         </form>
+                        
                     </div>
-
 
 
                 </div>

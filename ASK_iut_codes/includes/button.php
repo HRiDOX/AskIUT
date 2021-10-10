@@ -7,12 +7,11 @@
     
     <div class="row">
         <div class="col text-center">
-
             <a href="register.php"><button class="btn btn-success">Register Now</button></a>
 
         </div>
     </div>
-    <br><br>
+    <br>
 
     
     

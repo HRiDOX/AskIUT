@@ -77,11 +77,10 @@ if (isset($_GET['id'])) {
 </head>
 
 <style type="text/css">
-    #blue_bar {
-
+    #My_bar {
         height: 50px;
-        background-color: #405d9b;
-        color: #d9dfeb;
+    background-color: #2EC462;
+    color: #EEEEEE;
 
     }
 
@@ -152,13 +151,15 @@ if (isset($_GET['id'])) {
     #post_button {
 
         float: right;
-        background-color: #405d9b;
+        background-color: #095D26;
         border: none;
         color: white;
         padding: 4px;
         font-size: 14px;
         border-radius: 2px;
         width: 50px;
+        min-width: 50px;
+        cursor: pointer;
     }
 
     #post_bar {
@@ -175,13 +176,32 @@ if (isset($_GET['id'])) {
         display: flex;
         margin-bottom: 20px;
     }
+    .link { color: #05712A; } /* CSS link color (red) */
+    .link:hover { color: #00FF00; } /* CSS link hover (green) */
+    .link2 { color: #C3E3CE; } /* CSS link color (red) */
+    .link2:hover { color: #00FF00; } /* CSS link hover (green) */
 </style>
 
-<body style="font-family: tahoma; background-color: #d0d8e4;">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left,#C3E3CE ,#ffffff);;">
 
-    <br>
-    <?php include("topbar.php"); ?>
+<div id="My_bar">
+    <form method="get" action="search.php">
+        <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
+            <a class = "link2" href="index_timeline.php">AskIUT</a>
 
+            <?php
+            $image = "logo/pic_holder.jpg ";
+            if (file_exists($user_data['profile_image'])) {
+                $image = $user_data['profile_image']; //here i need to add thumbnail
+            }
+            ?>
+            
+        <img src="<?php echo $image ?>" style="width: 40px; float:right; border-radius:30px;border: 2px solid white;">
+    </div>
+
+    </form>
+
+</div>
 
     <!--cover area-->
     <div style="width: 800px;margin:auto;min-height: 400px;">

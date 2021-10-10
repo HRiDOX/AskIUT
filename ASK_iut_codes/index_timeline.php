@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <style type="text/css">
 #top_bar {
     height: 50px;
-    background-color: #21294C;
+    background-color: #2EC462;
     color: #EEEEEE;
 }
 
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 #notice_board {
-    background-color: #47597E;
+    background-color: #32675a;
     min-height: 400px;
     margin-top: 20px;
     color: #222831;
@@ -110,15 +110,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 #post_button {
-    float: right;
-    background-color: #000000;
-    border: none;
-    color: white;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 2px;
-    width: 50px;
-    cursor : pointer;
+        float: right;
+        background-color: #095D26;
+        border: none;
+        color: white;
+        padding: 4px;
+        font-size: 14px;
+        border-radius: 2px;
+        width: 50px;
+        min-width: 50px;
+        cursor: pointer;
 }
 
 #posting_post {
@@ -142,13 +143,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     display: flex;
     margin-bottom: 20px;
 }
+.link { color: #05712A; } /* CSS link color (red) */
+.link:hover { color: #00FF00; } /* CSS link hover (green) */
+.link2 { color: #C3E3CE; } /* CSS link color (red) */
+.link2:hover { color: #00FF00; } /* CSS link hover (green) */
 </style>
 
-<body style="font-family: helvetica; background: linear-gradient(to left,#04009A ,#056676);">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left,#C3E3CE ,#ffffff);">
     <!--top bar-->
     <div id="top_bar">
         <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
-            <a href="admin.php">AskIUT</a>
+            <a class="link2" href="admin.php">AskIUT</a>
         </div>
 
     </div>
@@ -160,11 +165,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (file_exists($user_data['profile_image'])) {
                 $image = $user_data['profile_image'];
             }
-
             ?>
+            
             <a href="profile.php"><img src="<?php echo $image ?>" id="user_pic"
                     style="width: 50px; border-radius:50px;margin:20px;"></a>
-            <input type="text" id="search_box" placeholder="Search">
+                    <div><?php echo $user_data['FirstName'] . " " . $user_data['LastName']; ?></div>
 
         </div>
     </div>
@@ -173,9 +178,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!--Menu button area-->
     <div style="width: 800px;margin:auto; min-height:400px;">
         <div style="text-align:center; color:#222831">
-            <div id="menu_buttons"><a href="profile.php">Profile</a></div>
-            <div id="menu_buttons">Repository </div>
-            <div id="menu_buttons">Groups</div>
+            <div id="menu_buttons"><a class="link" href="profile.php">Profile</a></div>
+            <div id="menu_buttons"><a class="link" href="departments.php">Repository</a> </div>
+            <div id="menu_buttons"><a class="link" href="group_by_department.php">Groups</a></div>
             
         </div>
 
@@ -197,16 +202,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <!--posts area-->
-            <div style="flex:3.5; padding:20px; min-height: 400px; padding-right: 0px;">
-
-                <div style="border: solid thin #aaa; padding: 10px; background-color:white;">
-                    <form method="post" enctype="multipart/form-data">
-                      <textarea name="post" placeholder="Ask Your Question"></textarea>
-                      <input style="font-size:12px;" type="file" name="file">
-                      <input id="post_button" type="submit" value="Ask!">
-                      <br>
-                    </form>
-                </div>
+            <div style="min-height:400px;flex:3.5;padding:20px;">
+         <div style="border: solid thin #aaa;padding: 10px;background-color: white;">
+             <form method="post" enctype="multipart/form-data">
+             <textarea name="post" placeholder="Ask Your Question" style="margin: 0px; width: 570px; height: 80px;"></textarea>
+                 <div><input style="font-size:12px;" type="file" name="file"></div>
+                 <input id="post_button" type="submit" value="Ask!">
+                 <br>
+             </form>
+         </div>
                 <!--posts-->
                 <div id="post_bar">
                     <?php

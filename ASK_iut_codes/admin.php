@@ -21,8 +21,7 @@ require_once('functions/login_function.php');
                         <h3 class="text-center mt-2">
                             <?php
                             if (logged_in()) {
-                                echo 'You Have Successfully Logged in. 
-                                Go to: ';
+                                echo 'Go to: ';
                             } else {
                                 redirect('login.php');
                             }
@@ -35,6 +34,6 @@ require_once('functions/login_function.php');
                 </div>
                 <div>
                     <div><a href="profile.php"><img id= "intro_img" src="profile_adm.jpg" alt="Profile">Profile</a></div>
-                    <div><a href="repository.php"><img id= "intro_img" src="repository_adm.jpg" alt="Repository">Repository</a></div>
+                    <div><a href="departments.php"><img id= "intro_img" src="repository_adm.jpg" alt="Repository">Repository</a></div>
                 </div>
                 <?php require_once('includes/footer.php') ?>

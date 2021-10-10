@@ -1,7 +1,7 @@
 <div id="My_bar">
     <form method="get" action="search.php">
         <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">
-            <a href="index_timeline.php">AskIUT</a>
+            <a class = "link" href="index_timeline.php">AskIUT</a>
             &nbsp &nbsp <input type="text" id="Search_box" name='find' placeholder="Search">
 
             <?php

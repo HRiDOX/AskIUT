@@ -3,7 +3,8 @@ require_once('functions/all_common_function.php');
 require_once('functions/login_function.php');
 ?>
 
-<body background="logo/login.jpg">
+<body background="logo/login.jpg"style="width:100%;height:100%;background-position: center;background-repeat: no-repeat;
+  background-size: cover;">
 
     <! --Navigation Bar -->
 

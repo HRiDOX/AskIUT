@@ -4,13 +4,13 @@
          <div id="friends_bar">
              <br>
              <div id="friends">
-                 <img id="friends_img" src="repository.png"><br><br>
-                 <a href="departments.php">Repository</a> 
+                 <img id="friends_img" src="repository_adm.jpg"><br><br>
+                 <a class="link2" href="departments.php">Repository</a> 
              </div>
              <br><br><br>
              <div id="friends">
-                 <img id="friends_img" src="group.png"><br><br>
-                 <div id="menu_button"><a href="group_by_department.php"> Group </a></div>
+                 <img id="friends_img" src="group_timeline.png"><br><br>
+                 <div id="menu_button"><a class="link2" href="group_by_department.php"> Group </a></div>
              </div>
              <br><br><br>
              <div id="friends">

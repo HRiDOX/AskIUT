@@ -95,9 +95,8 @@ $friends = get_following($user_data['userid'],"user");
 
     #My_bar {
         height: 50px;
-        background-color: #21294C;
+        background-color: #2EC462;
         color: white;
-
         background-position: center;
     }
 
@@ -139,7 +138,6 @@ $friends = get_following($user_data['userid'],"user");
         width: 100px;
         display: inline;
         margin: 2px;
-        /* background-color: #2F5D62; */
         color: white;
         font-size: 14px;
 
@@ -151,10 +149,11 @@ $friends = get_following($user_data['userid'],"user");
         width: 75px;
         float: left;
         margin: 5px;
+        border-radius:50%;
     }
 
     #friends_bar {
-        background-color: #47597E;
+        background-color: #32675a;
         min-height: 400px;
         margin-top: 20px;
         color: white;
@@ -180,7 +179,7 @@ $friends = get_following($user_data['userid'],"user");
 
     #post_button {
         float: right;
-        background-color: #2F5D62;
+        background-color: #095D26;
         border: none;
         color: white;
         padding: 4px;
@@ -205,11 +204,15 @@ $friends = get_following($user_data['userid'],"user");
         display: flex;
         margin-bottom: 20px;
     }
+    .link { color: #05712A; } /* CSS link color (red) */
+    .link:hover { color: #00FF00; } /* CSS link hover (green) */
+    .link2 { color: #C3E3CE; } /* CSS link color (red) */
+    .link2:hover { color: #00FF00; } /* CSS link hover (green) */
 </style>
 
 
 
-<body style="font-family: Georgia, serif;background: linear-gradient(to left,#04009A ,#056676);">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left,#C3E3CE ,#ffffff);">
     <!--Top Bar-->
     <?php include("topbar.php"); ?>
 
@@ -229,14 +232,12 @@ $friends = get_following($user_data['userid'],"user");
 
             <div style="font-size: 20px;">
                 <?php echo $user_data['FirstName'] . " " . $user_data['LastName']; ?><br>
-                <div id="menu_button"><a  style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
+                <div id="menu_button"><a class="link" style="text-decoration: none;color: black;" href="change_profile_picture.php?change=profile"> Change Image</a></div>
             </div>
             <div style="text-align:center;">
-                <div id="menu_button"> <a style="text-decoration:none" href="profile.php"> Profile</a></div>
-               <div id="menu_button"><a href="index_timeline.php">Timeline</div></a>
-               <div id="menu_button"><a href="group_by_department.php"> Group </a></div>
-                <div id="menu_button">Photos</div>
-                <div id="menu_button"><a href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
+                <div id="menu_button"> <a  class="link" style="text-decoration:none" href="profile.php"> Profile</a></div>
+               <div id="menu_button"><a  class="link" href="index_timeline.php">Timeline</div></a>
+                <div id="menu_button"><a  class="link" href="profile.php?section=following&id=<?php echo $user_data['userid'] ?>">Following</a></div>
 
                 <div id="menu_button">
                     <?php
@@ -245,8 +246,6 @@ $friends = get_following($user_data['userid'],"user");
                             echo '<a href="profile.php?section=settings&id=' . $user_data['userid'] . '"><div id="menu_button">Settings</div></a>';
                         }
                     ?>
-
-                
                 </div>
                 <?php
                 $mylikes = "";
@@ -255,7 +254,7 @@ $friends = get_following($user_data['userid'],"user");
                     $mylikes = "(" . $user_data['likes'] . " Followers)";
                 }
                 ?> <a href="like.php?type=user&id=<?php echo $user_data['userid'] ?>">
-                    <input id="post_button" type="button" value="Follow <?php echo $mylikes ?>" style="margin-right:10px;background-color: #9b409a;width:auto;">
+                    <input id="post_button" type="button" value="Follow <?php echo $mylikes ?>" style="margin-right:10px;background-color: #095D26;width:auto;">
                 </a>
 
 
