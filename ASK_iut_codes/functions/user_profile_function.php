@@ -79,12 +79,12 @@ function get_civil_profile($id)
     return read($query);
 }
 
-function get_me_profile($id)
+function get_mpe_profile($id)
 {
 
     //$id = addslashes($id);
 
-    $query = "select * from users where userid = '$id' &&  department = 'ME' limit 1";
+    $query = "select * from users where userid = '$id' &&  department = 'MPE' limit 1";
     return read($query);
 }
 function get_btm_profile($id)
@@ -216,9 +216,9 @@ function get_departments_member_cse($id){
 
 }
 
-function get_departments_member_me($id){
+function get_departments_member_mpe($id){
 
-    $query = "select  *from users where department= 'ME' and Active='1'";
+    $query = "select  *from users where department= 'MPE' and Active='1'";
     $result = read($query);
     if ($result) {
         return $result;

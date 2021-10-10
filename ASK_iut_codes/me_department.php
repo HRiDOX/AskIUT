@@ -18,7 +18,7 @@ $USER = $user_data;
 
 // collecting others profile data
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $profile_data = get_me_profile($_GET['id']);
+    $profile_data = get_mpe_profile($_GET['id']);
 
     if (is_array($profile_data)) {
         $user_data = $profile_data[0];
@@ -27,7 +27,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 // collecting cse peeps
 
-$friends = get_departments_member_me($id);
+$friends = get_departments_member_mpe($id);
 
 
 ?>

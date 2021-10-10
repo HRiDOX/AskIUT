@@ -71,9 +71,9 @@ ul li:nth-child(even):hover {
   <li><a  href="eee_department.php">EEE</a></li>
   <li><a  href="cee_department.php">CEE</a></li>
   <li><a  href="btm_department.php">BTM</a></li>
-  <li><a  href="me_department.php">ME</a></li>
+  <li><a  href="me_department.php">MPE</a></li>
   <li><a  href="tve_department.php">TVE</a></li>
-  <li><a  href="ipe_department.php">IPE</a></li>
+  
 </ul>
 </body>
 
