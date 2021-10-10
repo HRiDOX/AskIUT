@@ -1,23 +1,12 @@
 +<div id="post">
-    <div>
-        <?php
-
-        $image = "image/pic_holder.jpg";
-        if (file_exists($ROW_USER['profile_image'])) {
-           // $image = get_thumb_profile($ROW_USER['profile_image']);
-            $image = $ROW_USER['profile_image'];
-        }
-
-        ?>
-        <img src="<?php echo $image ?>" style="width: 75px;margin-right:4px;">
-    </div>
+    
     <div style="width:100%;">
         <div style="font-weight:bold;color: #2F5D62;width:100%">
 
             <?php
             echo "<a href='profile.php?id=$ROW[userid]'>";
 
-            echo htmlspecialchars($ROW_USER['FirstName']) . " " . htmlspecialchars($ROW_USER['LastName']);
+            //echo htmlspecialchars($ROW_USER['FirstName']) . " " . htmlspecialchars($ROW_USER['LastName']);
             echo "</a>";
               
 
@@ -36,28 +25,9 @@
         ?>
 
         <br /><br />
-        <?php
-        $likes = " ";
-        $likes = ($ROW['likes'] > 0) ? "(" . $ROW['likes'] . ")" : "";
+        
 
-
-        ?>
-        <a onclick="like_post(event)" href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">Like<?php echo $likes ?></a> . 
-        <?php
-        $comments = "";
-
-        if ($ROW['comments'] > 0) {
-
-            $comments = "(" . $ROW['comments'] . ")";
-        }
-
-        ?>
-
-
-        <a href="single_post.php?id=<?php echo $ROW['postid'] ?>">Comment<?php echo $comments ?></a> .
-        <span style="color: #aaa;">
-            <?php echo $ROW['date']; ?>
-        </span>
+        
 
         <?php
 
