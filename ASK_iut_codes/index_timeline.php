@@ -185,9 +185,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <!--notice board area-->
             <div style="flex:1; min-height: 400px;">
                 <div id="notice_board">
-                    Notice Board <br>
-                    <textarea id="notice_box" placeholder="Share a Notice"></textarea>
-                    <input id="post_button" type="submit" value="Share!">
+                    <h3>Filter Post By Department</h3>
+                    <div><a href="https://www.google.com/"><input type="button" value = "MPE"></a><br></div>
+                    <div><a href="https://www.google.com/"><input type="button" value = "CEE"></a><br></div>
+                    <div><a href="https://www.google.com/"><input type="button" value = "EEE"></a><br></div>
+                    <div><a href="https://www.google.com/"><input type="button" value = "CSE"></a><br></div>
+                    <div><a href="https://www.google.com/"><input type="button" value = "BTM"></a><br></div>
+                    <div><a href="https://www.google.com/"><input type="button" value = "TVE"></a><br></div>
                 </div>
 
             </div>

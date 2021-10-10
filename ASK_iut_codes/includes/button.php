@@ -8,24 +8,11 @@
     <div class="row">
         <div class="col text-center">
 
-            <a href="register.php"><button class="btn btn-success">Register as Student</button></a>
+            <a href="register.php"><button class="btn btn-success">Register Now</button></a>
 
         </div>
     </div>
     <br><br>
-    <div class="row">
-
-        <div class="col text-center">
-
-            <a href="faculty.php"><button class="btn btn-info">Register as Faculty</button></a>
-
-
-        </div>
-
-        <br><br>
-
-
-    </div>
 
     
     

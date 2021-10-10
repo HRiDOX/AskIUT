@@ -17,7 +17,7 @@ require_once('functions/registration_function.php');
 
                     <div class="card-title">
 
-                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Register as Student</h2>
+                        <h2 class="text-center mt-2" style="border:2px solid DodgerBlue;">Register</h2>
 
 
                         <hr>
