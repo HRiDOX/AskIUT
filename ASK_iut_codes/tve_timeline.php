@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <style type="text/css">
 #top_bar {
     height: 50px;
-    background-color: #21294C;
+    background-color: #2EC462;
     color: #EEEEEE;
 }
 
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 #notice_board {
-    background-color: #47597E;
+    background-color: #32675a;
     min-height: 400px;
     margin-top: 20px;
     color: #222831;
@@ -110,15 +110,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 #post_button {
-    float: right;
-    background-color: #000000;
-    border: none;
-    color: white;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 2px;
-    width: 50px;
-    cursor : pointer;
+        float: right;
+        background-color: #095D26;
+        border: none;
+        color: white;
+        padding: 4px;
+        font-size: 14px;
+        border-radius: 2px;
+        width: 50px;
+        min-width: 50px;
+        cursor: pointer;
 }
 
 #posting_post {
@@ -142,13 +143,82 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     display: flex;
     margin-bottom: 20px;
 }
+#Boo {
+    padding: 4px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.link { color: #05712A; } /* CSS link color (red) */
+.link:hover { color: #00FF00; } /* CSS link hover (green) */
+.link2 { color: #C3E3CE; } /* CSS link color (red) */
+.link2:hover { color: #00FF00; } /* CSS link hover (green) */
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color:  #C3E3CE;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: white
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #C3E3CE;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
 </style>
 
-<body style="font-family: helvetica; background: linear-gradient(to left,#04009A ,#056676);">
+<body style="font-family: helvetica; background: linear-gradient(to left,#C3E3CE ,#ffffff);">
     <!--top bar-->
     <div id="top_bar">
         <div style="width: 800px; margin:auto; font-size: 30px; text-align:center;">
-            <a href="admin.php">AskIUT</a>
+            <a  class="link2" href="admin.php">AskIUT</a>
         </div>
 
     </div>
@@ -164,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             ?>
             <a href="profile.php"><img src="<?php echo $image ?>" id="user_pic"
                     style="width: 50px; border-radius:50px;margin:20px;"></a>
-            <input type="text" id="search_box" placeholder="Search">
+                    <div><?php echo $user_data['FirstName'] . " " . $user_data['LastName']; ?></div>
 
         </div>
     </div>
@@ -173,9 +243,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!--Menu button area-->
     <div style="width: 800px;margin:auto; min-height:400px;">
         <div style="text-align:center; color:#222831">
-            <div id="menu_buttons"><a href="profile.php">Profile</a></div>
-            <div id="menu_buttons">Repository </div>
-            <div id="menu_buttons">Groups</div>
+            <div id="menu_buttons"><a class="link" href="profile.php">Profile</a></div>
+            <div id="menu_buttons"><a class="link" href="departments.php">Repository</a> </div>
+            <div id="menu_buttons"><a class="link" href="group_by_department.php">Groups</a></div>
             
         </div>
 
@@ -186,12 +256,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div style="flex:1; min-height: 400px;">
                 <div id="notice_board">
                     <h3>Filter Post By Department</h3>
-                    <div><a href="mpe_timeline.php"><input type="button" value = "MPE"></a><br></div>
-                    <div><a href="cee_timeline.php"><input type="button" value = "CEE"></a><br></div>
-                    <div><a href="eee_timeline.php"><input type="button" value = "EEE"></a><br></div>
-                    <div><a href="cse_timeline.php"><input type="button" value = "CSE"></a><br></div>
-                    <div><a href="btm_timeline.php"><input type="button" value = "BTM"></a><br></div>
-                    <div><a href="tve_timeline.php"><input type="button" value = "TVE"></a><br></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="mpe_timeline.php">MPE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="cee_timeline.php">CEE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="eee_timeline.php">EEE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="cse_timeline.php">CSE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="btm_timeline.php">BTM</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="tve_timeline.php">TVE</a> </button></div>
                 </div>
 
             </div>
