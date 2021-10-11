@@ -179,7 +179,7 @@ function user_registration($FName, $LName, $UName, $Batch, $Depart, $Email, $Pas
     } else {
         //$Password = md5($Pass);
         $Password = hash("sha1", $Pass);
-        $Validation_code = md5('$UserName + microtime()');
+        $Validation_code = md5($UserName.microtime());
         $userid = (create_userid());
         //$Password = hash("$userid", $Pass);
         $url_address = strtolower($FirstName) . "." . strtolower($LastName);
