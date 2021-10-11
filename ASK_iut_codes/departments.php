@@ -68,11 +68,11 @@ ul li:nth-child(even):hover {
 <body style="background: linear-gradient(to left,#C3E3CE ,#ffffff)" >
 <ul>
   <li><a class="link"  href="cse_repository.php">CSE</a></li>
-  <li>EEE</li>
-  <li>CEE</li>
-  <li>BTM</li>
-  <li>ME</li>
-  <li>TVE</li>
+  <li><a class="link"  href="eee_repository.php">EEE</a></li>
+  <li><a class="link"  href="cee_repository.php">CEE</a></li>
+  <li><a class="link"  href="btm_repository.php">BTM</a></li>
+  <li><a class="link"  href="mpe_repository.php">MPE</a></li>
+  <li><a class="link"  href="tve_repository.php">TVE</a></li>
 </ul>
 </body>
 
