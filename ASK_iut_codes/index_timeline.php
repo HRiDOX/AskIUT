@@ -147,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     padding: 4px;
     font-size: 20px;
     font-weight: bold;
+
 }
 .link { color: #05712A; } /* CSS link color (red) */
 .link:hover { color: #00FF00; } /* CSS link hover (green) */
