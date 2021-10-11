@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-danger">
+<nav class="navbar navbar-expand-sm navbar-light bg-success">
     <div class="container ">
         <a href="index.php" class="navbar navbar-brand">
             <h3>AskIUT</h3>

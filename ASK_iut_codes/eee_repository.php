@@ -260,12 +260,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div style="flex:1; min-height: 400px;">
                 <div id="notice_board">
                     <h3>Resources For</h3>
-                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="mpe_timeline.php">MPE</a> </button></div>
-                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="cee_timeline.php">CEE</a> </button></div>
-                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="eee_timeline.php">EEE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="mpe_repository.php">MPE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="cee_repository.php">CEE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="eee_repository.php">EEE</a> </button></div>
                     <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="cse_repository.php">CSE</a> </button></div>
-                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="btm_timeline.php">BTM</a> </button></div>
-                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="tve_timeline.php">TVE</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="btm_repository.php">BTM</a> </button></div>
+                    <div id="Boo"><button class="glow-on-hover" type="button"><a class="link" href="tve_repository.php">TVE</a> </button></div>
                 </div>
 
             </div>

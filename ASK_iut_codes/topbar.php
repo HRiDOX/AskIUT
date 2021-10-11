@@ -1,3 +1,15 @@
+<style>
+    #My_bar{
+        height: 50px;
+        background-color: #2EC462;
+        color: white;
+        background-position: center;
+    }
+    .link { color: #05712A; } /* CSS link color (red) */
+    .link:hover { color: #00FF00; } /* CSS link hover (green) */
+    .link2 { color: #C3E3CE; } /* CSS link color (red) */
+    .link2:hover { color: #00FF00; } /* CSS link hover (green) */
+</style>
 <div id="My_bar">
     <form method="get" action="search.php">
         <div style="width: 800px;margin:auto;font-size: 30px;padding: 5px;">

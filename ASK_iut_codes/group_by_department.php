@@ -81,7 +81,9 @@ li:hover span {
 
 </style>
 
-<body>
+<body style="background: linear-gradient(to left,#C3E3CE ,#ffffff)">
+<div><h2 style="tex-alignment:center">Groups</h2>
+<br>
     
 <ul>
     
@@ -93,5 +95,6 @@ li:hover span {
   <li><span><a class="link" href="tve_department.php">TVE</a></span></li>
   
 </ul>
+</div>
 </body>
 

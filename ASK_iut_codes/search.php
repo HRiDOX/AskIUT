@@ -29,15 +29,16 @@ if (isset($_GET['find'])) {
 <html>
 
 <head>
-    <title>People who like | Mybook</title>
+    <title>Results</title>
 </head>
 
 <style type="text/css">
     #blue_bar {
 
         height: 50px;
-        background-color: #405d9b;
-        color: #d9dfeb;
+        background-color: #2EC462;
+        color: white;
+        background-position: center;
 
     }
 
@@ -133,9 +134,8 @@ if (isset($_GET['find'])) {
     }
 </style>
 
-<body style="font-family: tahoma; background-color: #d0d8e4;">
+<body style="font-family: Georgia, serif;background: linear-gradient(to left,#C3E3CE ,#ffffff);"">
 
-    <br>
     <?php include("topbar.php"); ?>
 
     <!--cover area-->

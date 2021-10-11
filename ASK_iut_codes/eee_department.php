@@ -140,7 +140,7 @@ $friends = get_departments_member_eee($id);
 	}
 </style>
 
-<body style="font-family: tahoma; background-color: #d0d8e4;">
+<body style="background: linear-gradient(to left,#C3E3CE ,#ffffff)"">
 
 	<br>
 	<?php include("topbar.php"); ?>
