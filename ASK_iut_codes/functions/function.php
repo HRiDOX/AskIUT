@@ -540,7 +540,7 @@ function recover_password() {
 }
 /// Validation Code Function
 function validation_code() {
-  if (!isset($_COOKIE['temp_code'])) {
+  if (isset($_COOKIE['temp_code'])) {
     if (!isset($_GET['Email']) && !isset($_GET['Code'])) {
       redirect("index.php");
     } else if (empty($_GET['Email']) && empty($_GET['Code'])) {
