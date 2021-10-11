@@ -37,14 +37,14 @@ ul li {
 }
 
 ul li:nth-child(odd) {
-    background: linear-gradient(to right, black, #d9d9d9);
+    background: linear-gradient(to right,#2eb82e, #d9d9d9);
     text-align: left;
     padding-left: 10%;
     transform: perspective(500px) rotateY(45deg);
 }
 
 ul li:nth-child(even) {
-    background: linear-gradient(to left, black, #d9d9d9);
+    background: linear-gradient(to left, #2eb82e, #d9d9d9);
     text-align: right;
     padding-right: 10%;
     transform: perspective(500px) rotateY(-45deg);
@@ -60,14 +60,14 @@ ul li:nth-child(even):hover {
     padding-right: 5%;
 }
 
-.link { color: #a6a6a6; } /* CSS link color (red) */
-/*.link:hover { color: #00FF00; }  CSS link hover (green) */
+.link { color:  #d9d9d9; } /* CSS link color (red) */
+.link:hover { color: #00FF00; } /* CSS link hover (green) */
 
 </style>
 
-<body>
+<body style="background: linear-gradient(to left,#C3E3CE ,#ffffff)" >
 <ul>
-  <li><a  href="cse_repository.php">CSE</a></li>
+  <li><a class="link"  href="cse_repository.php">CSE</a></li>
   <li>EEE</li>
   <li>CEE</li>
   <li>BTM</li>
