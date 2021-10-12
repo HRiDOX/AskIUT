@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($result == "") {
             redirect("profile.php");
             die;
-        } else {
+        } /*else {
             echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
             echo "<br>The following errors occured:<br><br>";
             echo $result;
             echo "</div>";
-        }
+        }*/
     }
 }
 
