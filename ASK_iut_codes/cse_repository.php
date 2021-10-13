@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     top: 20px;
 }
 
-#menu_buttons {
+#menu_button {
     width: 100px;
     display: inline;
     margin: 20px;
@@ -247,8 +247,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!--Menu button area-->
     <div style="width: 800px;margin:auto; min-height:400px;">
         <div style="text-align:center; color:#222831">
-        
-            <div id="menu_buttons"><a class="link" href="departments.php">Repository</a> </div>
+        <div id="menu_button"> <a  class="link" style="text-decoration:none" href="profile.php"> Profile</a></div>
+               <div id="menu_button"><a  class="link" href="index_timeline.php">Timeline</div></a>
+            <div id="menu_button"><a class="link" href="departments.php">Repository</a> </div>
           
             
         </div>
